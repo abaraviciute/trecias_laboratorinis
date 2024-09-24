@@ -1,12 +1,20 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <iomanip>
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::string;
 using std::vector;
+using std::numeric_limits;
+using std::streamsize;
+using std::setprecision;
+using std::setw;
+using std::left;
+using std::right;
+using std::fixed;
 
 const int MAX_ND = 10;
 
@@ -16,9 +24,12 @@ struct Studentas {
     int nd[MAX_ND];
     int ndSkaicius;
     int egzaminas;
+    double galutinisVid;
 };
 
 void ivestis(Studentas& Lok);
+void isvestis(Studentas Lok);
+double rezultatai(Studentas Lok);
 
 int main() {
     vector<Studentas> Vec1;
@@ -32,7 +43,7 @@ int main() {
         if (cin.fail() || n <= 0) {
             cout << "Prasome ivesti teigiama skaiciu!\n";
             cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else {
             break;
@@ -42,8 +53,18 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << "Iveskite studento duomenis: " << endl;
         ivestis(Temporary);
+        Temporary.galutinisVid = rezultatai(Temporary);
         Vec1.push_back(Temporary);
     }
+
+    cout << "\n";
+    cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
+        << setw(3) << right << "Galutinis (Vid.)" << endl;
+    cout << "-------------------------------------------------" << endl;
+
+    for (int i = 0; i < n; i++)
+        isvestis(Vec1.at(i));
+    cout << "\n";
 
     system("pause");
 
@@ -66,7 +87,7 @@ void ivestis(Studentas& Lok)
         if (cin.fail() || Lok.ndSkaicius < 1) {
             cout << "Iveskite bent 1 namu darbus!\n";
             cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else {
             if (Lok.ndSkaicius > MAX_ND) {
@@ -86,7 +107,7 @@ void ivestis(Studentas& Lok)
             if (cin.fail() || Lok.nd[i]<1) {
                 cout << "Galima ivesti tik skaitmenis (teigiamus)!\n";
                 cin.clear();
-                cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
             else {
                 break;
@@ -101,10 +122,28 @@ void ivestis(Studentas& Lok)
         if (cin.fail() || Lok.egzaminas<1) {
             cout << "Galima ivesti tik skaitmenis (teigiamus)!\n";
             cin.clear();
-            cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
         else {
             break;
         }
     }
+}
+
+double rezultatai(Studentas Lok)
+{
+    double vidurkis = 0.0;
+
+    for (int i = 0; i < Lok.ndSkaicius; i++) {
+        vidurkis += Lok.nd[i];
+    }
+    vidurkis /= Lok.ndSkaicius;
+
+    return 0.4 * vidurkis + 0.6 * Lok.egzaminas;
+}
+
+void isvestis(Studentas Lok)
+{
+    cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas 
+        << setw(3) << right << fixed << setprecision(2) << Lok.galutinisVid << endl;
 }
