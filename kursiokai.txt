@@ -1,8 +1,8 @@
-Pavarde Vardas ND1 ND2 ND3 ND4 ND5 Egzaminas
-Jonavicius Jonas 8 2 4 10 9 8
-Onaityte Onute 10 10 10 8 9 9
-Petraityte Jurate 8 7 10 9 10 10
-Julionis Julius 2 2 2 8 9 7
-Rakauskas Rokas 7 1 8 9 8 8
-Umaite Uma 4 8 7 9 2 10
-Antanaite Ona 8 8 9 7 9 8
+Vardas Pavarde ND1 ND2 ND3 ND4 ND5 Egzaminas
+Jonas Jonavicius 8 2 4 10 9 8
+Onute Onaityte 10 10 10 8 9 9
+Jurate Petraityte 8 7 10 9 10 10
+Julius Julionis 2 2 2 8 9 7
+Rokas Rakauskas 7 1 8 9 8 8
+Uma Umaite 4 8 7 9 2 10
+Ona Antanaite 8 8 9 7 9 8
