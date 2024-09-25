@@ -5,6 +5,8 @@
 #include <algorithm>
 #include <fstream>
 #include <sstream>
+#include <cstdlib>
+#include <ctime>
 
 using std::cout;
 using std::cin;
@@ -16,7 +18,6 @@ using std::streamsize;
 using std::setprecision;
 using std::setw;
 using std::left;
-using std::right;
 using std::fixed;
 using std::sort;
 using std::ifstream;
@@ -30,17 +31,22 @@ struct Studentas {
     int ndSkaicius;
     int egzaminas;
     double galutinisPazymys;
+    double galutinisPazymysVid;
+    double galutinisPazymysMed;
 };
 
 void ivestis(Studentas& Lok, bool generavimas);
-void isvestis(Studentas Lok);
-double rezultatai(Studentas Lok, string pasirinkimas);
-void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
+void isvestis(Studentas Lok, int ivestiesPasirinkimas);
+double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas);
+int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
 
 int main() {
+
+    srand(static_cast<unsigned>(std::time(0)));
+
     vector<Studentas> Vec1;
     Studentas Temporary;
-    int n; //studentu skaicius
+    int n = 0; //studentu skaicius
     string pasirinkimas;
     bool generavimas;
 
@@ -89,7 +95,7 @@ int main() {
             cout << "Iveskite studento duomenis: " << endl;
             ivestis(Temporary, generavimas);
 
-            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
+            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas, duomenuIvedimoBudas);
             Vec1.push_back(Temporary);
         }
     }
@@ -104,20 +110,22 @@ int main() {
         cin >> failoNr;
 
         if (failoNr == 1) {
-            ivestisIsFailo("kursiokai.txt", Vec1);
+            n = ivestisIsFailo("kursiokai.txt", Vec1);
         }
         else if (failoNr == 2) {
-            ivestisIsFailo("studentai10000.txt", Vec1);
+            n = ivestisIsFailo("studentai10000.txt", Vec1);
         }
         else if (failoNr == 3) {
-            ivestisIsFailo("studentai100000.txt", Vec1);
+            n = ivestisIsFailo("studentai100000.txt", Vec1);
         }
         else if (failoNr == 4) {
-            ivestisIsFailo("studentai1000000.txt", Vec1);
+            n = ivestisIsFailo("studentai1000000.txt", Vec1);
         }
         else {
             cout << "Neteisingai pasirinktas failas!\n";
         }
+
+        rezultatai(Temporary, "", duomenuIvedimoBudas);
         
     }
     else {
@@ -125,22 +133,31 @@ int main() {
     }
 
 
-    //string pazymioTipas;
-    //if (pasirinkimas == "Med") {
-    //    pazymioTipas = "Med";
-    //}
-    //else {
-    //    pazymioTipas = "Vid";
-    //}
+    string pazymiotipas;
+    if (pasirinkimas == "Med") {
+        pazymiotipas = "Med";
+    }
+    else {
+        pazymiotipas = "Vid";
+    }
 
-    //cout << "\n";
-    //cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-    //    << setw(3) << right << "Galutinis (" << pazymioTipas << ".)" << endl;
-    //cout << "-------------------------------------------------" << endl;
-
-    //for (int i = 0; i < n; i++)
-    //    isvestis(Vec1.at(i));
-    //cout << "\n";
+    cout << "\n";
+    if (duomenuIvedimoBudas == 1) {
+        cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
+            << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
+        cout << "-------------------------------------------------" << endl;
+        for (int i = 0; i < n; i++)
+            isvestis(Vec1.at(i), duomenuIvedimoBudas);
+    }
+    else if (duomenuIvedimoBudas == 2) {
+        cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+            << setw(20) << left << "Galutinis (Vid.)" 
+            << setw(10) << left << "Galutinis (Med.)" << endl;
+        cout << "-------------------------------------------------------------" << endl;
+        for (int i = 0; i < n; i++)
+            isvestis(Vec1.at(i), duomenuIvedimoBudas);
+    }
+    cout << "\n";
 
     return 0;
 }
@@ -205,9 +222,8 @@ void ivestis(Studentas& Lok, bool generavimas)
 
 }
 
-double rezultatai(Studentas Lok, string pasirinkimas)
+double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas)
 {
-
     if (pasirinkimas == "Vid") {
         double vidurkis = 0.0;
 
@@ -233,28 +249,36 @@ double rezultatai(Studentas Lok, string pasirinkimas)
 
         return 0.4 * mediana + 0.6 * Lok.egzaminas;
     }
-
+  
     return 0;
 }
 
-void isvestis(Studentas Lok)
+void isvestis(Studentas Lok, int ivestiesPasirinkimas)
 {
-    cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas 
-        << setw(3) << right << fixed << setprecision(2) << Lok.galutinisPazymys << endl;
+    if (ivestiesPasirinkimas == 1) {
+        cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas
+            << setw(10) << left << fixed << setprecision(2) << Lok.galutinisPazymys << endl;
+    }
+    else if (ivestiesPasirinkimas == 2) {
+        cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas 
+            << setw(20) << left << fixed << setprecision(2) << Lok.galutinisPazymysVid 
+            << setw(10) << left << fixed << setprecision(2) << Lok.galutinisPazymysMed << endl;
+    }
 }
 
-void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1) 
+int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
 {
     ifstream inFile(failas);
 
     if (!inFile) {
         cout << "Nepavyko atidaryti failo: " << failas << endl;
-        return;
+        return 0;
     }
 
     string line;
     getline(inFile, line);
 
+    int studentu = 0;
     while (getline(inFile, line)) {
         istringstream iss(line);
         Studentas Temp;
@@ -271,8 +295,15 @@ void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
         Temp.nd.pop_back();
         Temp.ndSkaicius = Temp.nd.size();
 
+        Temp.galutinisPazymysVid = rezultatai(Temp, "Vid", 2);
+        Temp.galutinisPazymysMed = rezultatai(Temp, "Med", 2);
+
         Vec1.push_back(Temp);
+
+        studentu++;
     }
 
     inFile.close();
+
+    return studentu;
 }
