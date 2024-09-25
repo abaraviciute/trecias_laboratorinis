@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <iomanip>
+#include <algorithm>
 
 using std::cout;
 using std::cin;
@@ -24,17 +25,31 @@ struct Studentas {
     int nd[MAX_ND];
     int ndSkaicius;
     int egzaminas;
-    double galutinisVid;
+    double galutinisPazymys;
 };
 
 void ivestis(Studentas& Lok);
 void isvestis(Studentas Lok);
-double rezultatai(Studentas Lok);
+double rezultatai(Studentas Lok, string pasirinkimas);
 
 int main() {
     vector<Studentas> Vec1;
     Studentas Temporary;
     int n; //studentu skaicius
+
+    string pasirinkimas;
+
+    while (true) {
+        cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)? ";
+        cin >> pasirinkimas;
+
+        if (pasirinkimas == "Vid" || pasirinkimas == "Med") {
+            break;
+        }
+        else {
+            cout << "Neteisingas pasirinkimas. Iveskite \"Vid\" arba \"Med\".\n";
+        }
+    }
 
     while (true) {
         cout << "Iveskite studentu skaiciu: ";
@@ -53,20 +68,27 @@ int main() {
     for (int i = 0; i < n; i++) {
         cout << "Iveskite studento duomenis: " << endl;
         ivestis(Temporary);
-        Temporary.galutinisVid = rezultatai(Temporary);
+
+        Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
         Vec1.push_back(Temporary);
+    }
+
+    string pazymioTipas;
+    if (pasirinkimas == "Med") {
+        pazymioTipas = "Med";
+    }
+    else {
+        pazymioTipas = "Vid";
     }
 
     cout << "\n";
     cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-        << setw(3) << right << "Galutinis (Vid.)" << endl;
+        << setw(3) << right << "Galutinis (" << pazymioTipas << ".)" << endl;
     cout << "-------------------------------------------------" << endl;
 
     for (int i = 0; i < n; i++)
         isvestis(Vec1.at(i));
     cout << "\n";
-
-    system("pause");
 
     return 0;
 }
@@ -104,8 +126,8 @@ void ivestis(Studentas& Lok)
             cout << "Pazymys " << (i + 1) << ": ";
             cin >> Lok.nd[i];
 
-            if (cin.fail() || Lok.nd[i]<1) {
-                cout << "Galima ivesti tik skaitmenis (teigiamus)!\n";
+            if (cin.fail() || Lok.nd[i]<1 || Lok.nd[i]>10) {
+                cout << "Galima ivestis nuo 1 iki 10!\n";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
             }
@@ -119,8 +141,8 @@ void ivestis(Studentas& Lok)
         cout << "Iveskite egzamino pazymi: ";
         cin >> Lok.egzaminas;
 
-        if (cin.fail() || Lok.egzaminas<1) {
-            cout << "Galima ivesti tik skaitmenis (teigiamus)!\n";
+        if (cin.fail() || Lok.egzaminas<1 || Lok.egzaminas>10) {
+            cout << "Galima ivestis nuo 1 iki 10!!\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -130,20 +152,40 @@ void ivestis(Studentas& Lok)
     }
 }
 
-double rezultatai(Studentas Lok)
+double rezultatai(Studentas Lok, string pasirinkimas)
 {
-    double vidurkis = 0.0;
 
-    for (int i = 0; i < Lok.ndSkaicius; i++) {
-        vidurkis += Lok.nd[i];
+    if (pasirinkimas == "Vid") {
+        double vidurkis = 0.0;
+
+        for (int i = 0; i < Lok.ndSkaicius; i++) {
+            vidurkis += Lok.nd[i];
+        }
+        vidurkis /= Lok.ndSkaicius;
+
+        return 0.4 * vidurkis + 0.6 * Lok.egzaminas;
     }
-    vidurkis /= Lok.ndSkaicius;
 
-    return 0.4 * vidurkis + 0.6 * Lok.egzaminas;
+    if (pasirinkimas == "Med") {
+        double mediana;
+        vector<int> pazymiai(Lok.nd, Lok.nd + Lok.ndSkaicius);
+        std::sort(pazymiai.begin(), pazymiai.end());
+
+        if (Lok.ndSkaicius % 2 == 0) {
+            mediana = (pazymiai[Lok.ndSkaicius / 2 - 1] + pazymiai[Lok.ndSkaicius / 2]) / 2.0;
+        }
+        else {
+            mediana = pazymiai[Lok.ndSkaicius / 2];
+        }
+
+        return 0.4 * mediana + 0.6 * Lok.egzaminas;
+    }
+
+    return 0.0;
 }
 
 void isvestis(Studentas Lok)
 {
     cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas 
-        << setw(3) << right << fixed << setprecision(2) << Lok.galutinisVid << endl;
+        << setw(3) << right << fixed << setprecision(2) << Lok.galutinisPazymys << endl;
 }
