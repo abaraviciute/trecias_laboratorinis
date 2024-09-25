@@ -94,7 +94,31 @@ int main() {
         }
     }
     else if (duomenuIvedimoBudas == 2) {
-        ivestisIsFailo("kursiokai.txt", Vec1);
+        cout << "Iveskite, kuri faila skaityti:\n";
+        cout << "\"1\" - kursiokai.txt\n";
+        cout << "\"2\" - studentai10000.txt\n";
+        cout << "\"3\" - studentai100000.txt\n";
+        cout << "\"4\" - studentai1000000.txt\n";
+
+        int failoNr;
+        cin >> failoNr;
+
+        if (failoNr == 1) {
+            ivestisIsFailo("kursiokai.txt", Vec1);
+        }
+        else if (failoNr == 2) {
+            ivestisIsFailo("studentai10000.txt", Vec1);
+        }
+        else if (failoNr == 3) {
+            ivestisIsFailo("studentai100000.txt", Vec1);
+        }
+        else if (failoNr == 4) {
+            ivestisIsFailo("studentai1000000.txt", Vec1);
+        }
+        else {
+            cout << "Neteisingai pasirinktas failas!\n";
+        }
+        
     }
     else {
         cout << "Neteisingai pasirinktas ivedimo budas!\n";
@@ -235,17 +259,17 @@ void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
         istringstream iss(line);
         Studentas Temp;
 
-        iss >> Temp.pavarde >> Temp.vardas;
+        iss >> Temp.vardas >> Temp.pavarde;
 
         int pazymys;
         Temp.nd.clear();
-        Temp.ndSkaicius = 5;
-        for (int i = 0; i < Temp.ndSkaicius; i++) {
-            iss >> pazymys;
+        while (iss >> pazymys) {
             Temp.nd.push_back(pazymys);
         }
 
-        iss >> Temp.egzaminas;
+        Temp.egzaminas = Temp.nd.back();
+        Temp.nd.pop_back();
+        Temp.ndSkaicius = Temp.nd.size();
 
         Vec1.push_back(Temp);
     }
