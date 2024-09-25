@@ -39,7 +39,7 @@ int main() {
     string pasirinkimas;
 
     while (true) {
-        cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)? ";
+        cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
         cin >> pasirinkimas;
 
         if (pasirinkimas == "Vid" || pasirinkimas == "Med") {
@@ -55,7 +55,7 @@ int main() {
         cin >> n;
 
         if (cin.fail() || n <= 0) {
-            cout << "Prasome ivesti teigiama skaiciu!\n";
+            cout << "Iveskite teigiama skaiciu!\n";
             cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
@@ -67,7 +67,7 @@ int main() {
     bool generavimas;
 
     for (int i = 0; i < n; i++) {
-        cout << "Ar norite ivesti pazymius rankiniu budu, ar juos sugeneruoti atsitiktinai? (Iveskite \"R\" arba \"A\"): ";
+        cout << "Ar norite ivesti pazymius \"R\" (rankiniu) budu, ar juos sugeneruoti \"A\" (atsitiktinai)?: ";
         string pasirinkimasGeneravimo;
         cin >> pasirinkimasGeneravimo;
 
