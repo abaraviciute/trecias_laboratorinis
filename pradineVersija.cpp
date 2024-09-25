@@ -3,6 +3,8 @@
 #include <vector>
 #include <iomanip>
 #include <algorithm>
+#include <fstream>
+#include <sstream>
 
 using std::cout;
 using std::cin;
@@ -17,6 +19,9 @@ using std::left;
 using std::right;
 using std::fixed;
 using std::sort;
+using std::ifstream;
+using std::getline;
+using std::istringstream;
 
 struct Studentas {
     string vardas;
@@ -30,72 +35,88 @@ struct Studentas {
 void ivestis(Studentas& Lok, bool generavimas);
 void isvestis(Studentas Lok);
 double rezultatai(Studentas Lok, string pasirinkimas);
+void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
 
 int main() {
     vector<Studentas> Vec1;
     Studentas Temporary;
     int n; //studentu skaicius
-
     string pasirinkimas;
-
-    while (true) {
-        cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
-        cin >> pasirinkimas;
-
-        if (pasirinkimas == "Vid" || pasirinkimas == "Med") {
-            break;
-        }
-        else {
-            cout << "Neteisingas pasirinkimas. Iveskite \"Vid\" arba \"Med\".\n";
-        }
-    }
-
-    while (true) {
-        cout << "Iveskite studentu skaiciu: ";
-        cin >> n;
-
-        if (cin.fail() || n <= 0) {
-            cout << "Iveskite teigiama skaiciu!\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        else {
-            break;
-        }
-    }
-
     bool generavimas;
 
-    for (int i = 0; i < n; i++) {
-        cout << "Ar norite ivesti pazymius \"R\" (rankiniu) budu, ar juos sugeneruoti \"A\" (atsitiktinai)?: ";
-        string pasirinkimasGeneravimo;
-        cin >> pasirinkimasGeneravimo;
 
-        generavimas = (pasirinkimasGeneravimo == "A");
+    cout << "Pasirinkite duomenu ivedimo buda:\n";
+    cout << "\"1\" Rankiniu budu\n";
+    cout << "\"2\" Skaityti is failo\n";
+    int duomenuIvedimoBudas;
+    cin >> duomenuIvedimoBudas;
 
-        cout << "Iveskite studento duomenis: " << endl;
-        ivestis(Temporary, generavimas);
+    if (duomenuIvedimoBudas == 1) {
 
-        Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
-        Vec1.push_back(Temporary);
+        while (true) {
+            cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
+            cin >> pasirinkimas;
+
+            if (pasirinkimas == "Vid" || pasirinkimas == "Med") {
+                break;
+            }
+            else {
+                cout << "Neteisingas pasirinkimas. Iveskite \"Vid\" arba \"Med\".\n";
+            }
+        }
+
+        while (true) {
+            cout << "Iveskite studentu skaiciu: ";
+            cin >> n;
+
+            if (cin.fail() || n <= 0) {
+                cout << "Iveskite teigiama skaiciu!\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            }
+            else {
+                break;
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+            cout << "Ar norite ivesti pazymius \"R\" (rankiniu) budu, ar juos sugeneruoti \"A\" (atsitiktinai)?: ";
+            string pasirinkimasGeneravimo;
+            cin >> pasirinkimasGeneravimo;
+
+            generavimas = (pasirinkimasGeneravimo == "A");
+
+            cout << "Iveskite studento duomenis: " << endl;
+            ivestis(Temporary, generavimas);
+
+            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
+            Vec1.push_back(Temporary);
+        }
     }
-
-    string pazymioTipas;
-    if (pasirinkimas == "Med") {
-        pazymioTipas = "Med";
+    else if (duomenuIvedimoBudas == 2) {
+        ivestisIsFailo("kursiokai.txt", Vec1);
     }
     else {
-        pazymioTipas = "Vid";
+        cout << "Neteisingai pasirinktas ivedimo budas!\n";
     }
 
-    cout << "\n";
-    cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-        << setw(3) << right << "Galutinis (" << pazymioTipas << ".)" << endl;
-    cout << "-------------------------------------------------" << endl;
 
-    for (int i = 0; i < n; i++)
-        isvestis(Vec1.at(i));
-    cout << "\n";
+    //string pazymioTipas;
+    //if (pasirinkimas == "Med") {
+    //    pazymioTipas = "Med";
+    //}
+    //else {
+    //    pazymioTipas = "Vid";
+    //}
+
+    //cout << "\n";
+    //cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
+    //    << setw(3) << right << "Galutinis (" << pazymioTipas << ".)" << endl;
+    //cout << "-------------------------------------------------" << endl;
+
+    //for (int i = 0; i < n; i++)
+    //    isvestis(Vec1.at(i));
+    //cout << "\n";
 
     return 0;
 }
@@ -196,4 +217,38 @@ void isvestis(Studentas Lok)
 {
     cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas 
         << setw(3) << right << fixed << setprecision(2) << Lok.galutinisPazymys << endl;
+}
+
+void ivestisIsFailo(const string& failas, vector<Studentas>& Vec1) 
+{
+    ifstream inFile(failas);
+
+    if (!inFile) {
+        cout << "Nepavyko atidaryti failo: " << failas << endl;
+        return;
+    }
+
+    string line;
+    getline(inFile, line);
+
+    while (getline(inFile, line)) {
+        istringstream iss(line);
+        Studentas Temp;
+
+        iss >> Temp.pavarde >> Temp.vardas;
+
+        int pazymys;
+        Temp.nd.clear();
+        Temp.ndSkaicius = 5;
+        for (int i = 0; i < Temp.ndSkaicius; i++) {
+            iss >> pazymys;
+            Temp.nd.push_back(pazymys);
+        }
+
+        iss >> Temp.egzaminas;
+
+        Vec1.push_back(Temp);
+    }
+
+    inFile.close();
 }
