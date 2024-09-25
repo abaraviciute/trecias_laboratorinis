@@ -16,13 +16,12 @@ using std::setw;
 using std::left;
 using std::right;
 using std::fixed;
-
-const int MAX_ND = 10;
+using std::sort;
 
 struct Studentas {
     string vardas;
     string pavarde;
-    int nd[MAX_ND];
+    vector<int> nd;
     int ndSkaicius;
     int egzaminas;
     double galutinisPazymys;
@@ -102,40 +101,28 @@ void ivestis(Studentas& Lok)
     cout << "Iveskite pavarde: ";
     cin >> Lok.pavarde;
 
+    Lok.ndSkaicius = 0;
+    cout << "Iveskite namu darbu pazymius (iveskite -1 noredami baigti): " << endl;
     while (true) {
-        cout << "Iveskite atliktu namu darbu skaiciu: ";
-        cin >> Lok.ndSkaicius;
+        int pazymys;
+        cout << "Pazymys " << (Lok.ndSkaicius + 1) << ": ";
+        cin >> pazymys;
 
-        if (cin.fail() || Lok.ndSkaicius < 1) {
-            cout << "Iveskite bent 1 namu darbus!\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
-        }
-        else {
-            if (Lok.ndSkaicius > MAX_ND) {
-                Lok.ndSkaicius = MAX_ND;
-                cout << "Iveskite tik " << MAX_ND << " namu darbu pazymius.\n";
-            }
+        if (pazymys == -1) {
             break;
         }
-    }
 
-    cout << "Iveskite namu darbu pazymius: " << endl;
-    for (int i = 0; i < Lok.ndSkaicius; i++) {
-        while (true) {
-            cout << "Pazymys " << (i + 1) << ": ";
-            cin >> Lok.nd[i];
-
-            if (cin.fail() || Lok.nd[i]<1 || Lok.nd[i]>10) {
-                cout << "Galima ivestis nuo 1 iki 10!\n";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-            else {
-                break;
-            }
+        if (cin.fail() || pazymys<1 || pazymys>10) {
+             cout << "Galima ivestis nuo 1 iki 10!\n";
+             cin.clear();
+             cin.ignore(numeric_limits<streamsize>::max(), '\n');
+             continue;
         }
+
+        Lok.nd.push_back(pazymys);
+        Lok.ndSkaicius++;
     }
+   
 
     while (true) {
         cout << "Iveskite egzamino pazymi: ";
@@ -168,8 +155,8 @@ double rezultatai(Studentas Lok, string pasirinkimas)
 
     if (pasirinkimas == "Med") {
         double mediana;
-        vector<int> pazymiai(Lok.nd, Lok.nd + Lok.ndSkaicius);
-        std::sort(pazymiai.begin(), pazymiai.end());
+        vector<int> pazymiai = Lok.nd;
+        sort(pazymiai.begin(), pazymiai.end());
 
         if (Lok.ndSkaicius % 2 == 0) {
             mediana = (pazymiai[Lok.ndSkaicius / 2 - 1] + pazymiai[Lok.ndSkaicius / 2]) / 2.0;
