@@ -27,3 +27,4 @@ using std::ifstream;
 using std::getline;
 using std::istringstream;
 using std::invalid_argument;
+using std::out_of_range;

@@ -18,45 +18,51 @@ void ivestis(Studentas& Lok, bool generavimas)
         Lok.egzaminas = rand() % 10 + 1;
     }
     else {
-        Lok.ndSkaicius = 0;
-        cout << "Iveskite namu darbu pazymius (iveskite -1 noredami baigti): " << endl;
-        Lok.nd.clear();
-        while (true) {
+            Lok.ndSkaicius = 0;
+            Lok.nd.clear();
+            cout << "Iveskite namu darbu pazymius (iveskite -1 noredami baigti): " << endl;
+
+            while (true) {
             int pazymys;
-            cout << "Pazymys " << (Lok.ndSkaicius + 1) << ": ";
-            cin >> pazymys;
 
-            if (pazymys == -1) {
-                break;
+                try {
+                    cout << "Pazymys " << (Lok.ndSkaicius + 1) << ": ";
+                    cin >> pazymys;
+
+                    if (pazymys == -1) {
+                        break;
+                    }
+
+                    if (cin.fail() || pazymys < 1 || pazymys>10) {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        throw  invalid_argument("Galima ivestis nuo 1 iki 10!\n");
+                    }
+                    Lok.nd.push_back(pazymys);
+                    Lok.ndSkaicius++;
+                }
+                catch (const invalid_argument& e) {
+                        cout << e.what();
+                } 
             }
-
-            if (cin.fail() || pazymys < 1 || pazymys>10) {
-                cout << "Galima ivestis nuo 1 iki 10!\n";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                continue;
-            }
-
-            Lok.nd.push_back(pazymys);
-            Lok.ndSkaicius++;
-        }
-
 
         while (true) {
-            cout << "Iveskite egzamino pazymi: ";
-            cin >> Lok.egzaminas;
+            try {
+                cout << "Iveskite egzamino pazymi: ";
+                cin >> Lok.egzaminas;
 
-            if (cin.fail() || Lok.egzaminas < 1 || Lok.egzaminas>10) {
-                cout << "Galima ivestis nuo 1 iki 10!!\n";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-            else {
+                if (cin.fail() || Lok.egzaminas < 1 || Lok.egzaminas>10) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Galima ivestis nuo 1 iki 10!\n");
+                }
                 break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
             }
         }
     }
-
 }
 
 double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas)

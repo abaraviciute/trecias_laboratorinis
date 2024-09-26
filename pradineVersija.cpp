@@ -130,9 +130,8 @@ int main() {
         }
 
         rezultatai(Temporary, "", duomenuIvedimoBudas);
-        
-    }
 
+    }
 
     string pazymiotipas;
     if (pasirinkimas == "Med") {
