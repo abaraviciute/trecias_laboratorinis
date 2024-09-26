@@ -9,6 +9,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <ctime>
+#include <stdexcept>
 
 using std::cout;
 using std::cin;
@@ -25,3 +26,4 @@ using std::sort;
 using std::ifstream;
 using std::getline;
 using std::istringstream;
+using std::invalid_argument;

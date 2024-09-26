@@ -9,48 +9,80 @@ int main() {
     Studentas Temporary;
     int n = 0; //studentu skaicius
     string pasirinkimas;
+    string pasirinkimasGeneravimo;
     bool generavimas;
-
-
-    cout << "Pasirinkite duomenu ivedimo buda:\n";
-    cout << "\"1\" Rankiniu budu\n";
-    cout << "\"2\" Skaityti is failo\n";
     int duomenuIvedimoBudas;
-    cin >> duomenuIvedimoBudas;
+    int failoNr;
+
+    while (true) {
+        try {
+            cout << "Pasirinkite duomenu ivedimo buda:\n";
+            cout << "\"1\" Rankiniu budu\n";
+            cout << "\"2\" Skaityti is failo\n";
+        
+            cin >> duomenuIvedimoBudas;
+
+            if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2) || cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+            }
+            break;
+        }
+        catch (const invalid_argument& e) {
+            cout << e.what();
+        }
+    }
 
     if (duomenuIvedimoBudas == 1) {
 
         while (true) {
-            cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
-            cin >> pasirinkimas;
+            try {
+                cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
+                cin >> pasirinkimas;
 
-            if (pasirinkimas == "Vid" || pasirinkimas == "Med") {
+                if (pasirinkimas != "Vid" && pasirinkimas != "Med") {
+                    throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"Vid\" arba \"Med\".\n");
+                }
                 break;
             }
-            else {
-                cout << "Neteisingas pasirinkimas. Iveskite \"Vid\" arba \"Med\".\n";
+            catch (const invalid_argument& e) {
+                cout << e.what();
             }
         }
 
         while (true) {
-            cout << "Iveskite studentu skaiciu: ";
-            cin >> n;
+            try {
+                cout << "Iveskite studentu skaiciu: ";
+                cin >> n;
 
-            if (cin.fail() || n <= 0) {
-                cout << "Iveskite teigiama skaiciu!\n";
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-            }
-            else {
+                if (cin.fail() || n < 1) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas ivedimas. Iveskite sveikaji skaiciu > 1.\n");
+                }
                 break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
             }
         }
 
         for (int i = 0; i < n; i++) {
-            cout << "Ar norite ivesti pazymius \"R\" (rankiniu) budu, ar juos sugeneruoti \"A\" (atsitiktinai)?: ";
-            string pasirinkimasGeneravimo;
-            cin >> pasirinkimasGeneravimo;
+            while (true) {
+                try {
+                    cout << "Ar norite ivesti pazymius \"R\" (rankiniu) budu, ar juos sugeneruoti \"A\" (atsitiktinai)?: ";
+                    cin >> pasirinkimasGeneravimo;
 
+                    if (pasirinkimasGeneravimo != "R" && pasirinkimasGeneravimo != "A") {
+                        throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"R\" arba \"A\".\n");
+                    }
+                    break;
+                }
+                catch (const invalid_argument& e) {
+                    cout << e.what();
+                }
+            }
             generavimas = (pasirinkimasGeneravimo == "A");
 
             cout << "Iveskite studento duomenis: " << endl;
@@ -61,14 +93,28 @@ int main() {
         }
     }
     else if (duomenuIvedimoBudas == 2) {
-        cout << "Iveskite, kuri faila skaityti:\n";
-        cout << "\"1\" - kursiokai.txt\n";
-        cout << "\"2\" - studentai10000.txt\n";
-        cout << "\"3\" - studentai100000.txt\n";
-        cout << "\"4\" - studentai1000000.txt\n";
 
-        int failoNr;
-        cin >> failoNr;
+        while (true) {
+            try {
+                cout << "Iveskite, kuri faila skaityti:\n";
+                cout << "\"1\" - kursiokai.txt\n";
+                cout << "\"2\" - studentai10000.txt\n";
+                cout << "\"3\" - studentai100000.txt\n";
+                cout << "\"4\" - studentai1000000.txt\n";
+
+                cin >> failoNr;
+
+                if ((failoNr < 1 || failoNr > 4) || cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite sveikaji skaiciu nuo \"1\" iki \"4\".\n");
+                }
+                break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
+            }
+        }
 
         if (failoNr == 1) {
             n = ivestisIsFailo("kursiokai.txt", Vec1);
@@ -82,15 +128,9 @@ int main() {
         else if (failoNr == 4) {
             n = ivestisIsFailo("studentai1000000.txt", Vec1);
         }
-        else {
-            cout << "Neteisingai pasirinktas failas!\n";
-        }
 
         rezultatai(Temporary, "", duomenuIvedimoBudas);
         
-    }
-    else {
-        cout << "Neteisingai pasirinktas ivedimo budas!\n";
     }
 
 
