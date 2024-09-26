@@ -18,5 +18,16 @@
     <ClCompile Include="pradineVersija.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Stud.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mylib.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stud.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -183,6 +183,11 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="pradineVersija.cpp" />
+    <ClCompile Include="Stud.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Mylib.h" />
+    <ClInclude Include="Stud.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
