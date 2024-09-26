@@ -1,4 +1,4 @@
-#v0.1 release
+# v0.1 release
 
 Studentų galutinio pažymio skaičiavimo programa.
 
