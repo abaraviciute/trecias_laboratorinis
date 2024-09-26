@@ -39,6 +39,7 @@ void ivestis(Studentas& Lok, bool generavimas);
 void isvestis(Studentas Lok, int ivestiesPasirinkimas);
 double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas);
 int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
+bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2);
 
 int main() {
 
@@ -141,6 +142,8 @@ int main() {
         pazymiotipas = "Vid";
     }
 
+    sort(Vec1.begin(), Vec1.end(), rusiavimas);
+
     cout << "\n";
     if (duomenuIvedimoBudas == 1) {
         cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
@@ -193,23 +196,23 @@ void ivestis(Studentas& Lok, bool generavimas)
                 break;
             }
 
-            if (cin.fail() || pazymys<1 || pazymys>10) {
-                 cout << "Galima ivestis nuo 1 iki 10!\n";
-                 cin.clear();
-                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                 continue;
+            if (cin.fail() || pazymys < 1 || pazymys>10) {
+                cout << "Galima ivestis nuo 1 iki 10!\n";
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                continue;
             }
 
             Lok.nd.push_back(pazymys);
             Lok.ndSkaicius++;
         }
-   
+
 
         while (true) {
             cout << "Iveskite egzamino pazymi: ";
             cin >> Lok.egzaminas;
 
-            if (cin.fail() || Lok.egzaminas<1 || Lok.egzaminas>10) {
+            if (cin.fail() || Lok.egzaminas < 1 || Lok.egzaminas>10) {
                 cout << "Galima ivestis nuo 1 iki 10!!\n";
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -306,4 +309,9 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
     inFile.close();
 
     return studentu;
+}
+
+bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
+{
+    return Lok1.pavarde < Lok2.pavarde;
 }
