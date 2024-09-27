@@ -28,3 +28,5 @@ using std::getline;
 using std::istringstream;
 using std::invalid_argument;
 using std::out_of_range;
+using std::runtime_error;
+using std::cerr;
