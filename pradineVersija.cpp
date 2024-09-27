@@ -116,17 +116,22 @@ int main() {
             }
         }
 
-        if (failoNr == 1) {
-            n = ivestisIsFailo("kursiokai.txt", Vec1);
+        try {
+            if (failoNr == 1) {
+                n = ivestisIsFailo("kursiokai.txt", Vec1);
+            }
+            else if (failoNr == 2) {
+                n = ivestisIsFailo("studentai10000.txt", Vec1);
+            }
+            else if (failoNr == 3) {
+                n = ivestisIsFailo("studentai100000.txt", Vec1);
+            }
+            else if (failoNr == 4) {
+                n = ivestisIsFailo("studentai1000000.txt", Vec1);
+            }
         }
-        else if (failoNr == 2) {
-            n = ivestisIsFailo("studentai10000.txt", Vec1);
-        }
-        else if (failoNr == 3) {
-            n = ivestisIsFailo("studentai100000.txt", Vec1);
-        }
-        else if (failoNr == 4) {
-            n = ivestisIsFailo("studentai1000000.txt", Vec1);
+        catch (const runtime_error& e) {
+            cerr << "Klaida: " << e.what() << endl;
         }
 
         rezultatai(Temporary, "", duomenuIvedimoBudas);
