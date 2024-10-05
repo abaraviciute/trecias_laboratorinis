@@ -9,16 +9,15 @@ void ivestis(Studentas& Lok, bool generavimas)
     cin >> Lok.pavarde;
 
     if (generavimas) {
-        Lok.ndSkaicius = 5;
+        int ndSkaicius = 5;
         Lok.nd.clear();
-        for (int i = 0; i < Lok.ndSkaicius; i++) {
+        for (int i = 0; i < ndSkaicius; i++) {
             int pazymys = rand() % 10 + 1;
             Lok.nd.push_back(pazymys);
         }
         Lok.egzaminas = rand() % 10 + 1;
     }
     else {
-            Lok.ndSkaicius = 0;
             Lok.nd.clear();
             cout << "Iveskite namu darbu pazymius (iveskite -1 noredami baigti): " << endl;
 
@@ -26,7 +25,7 @@ void ivestis(Studentas& Lok, bool generavimas)
             int pazymys;
 
                 try {
-                    cout << "Pazymys " << (Lok.ndSkaicius + 1) << ": ";
+                    cout << "Pazymys " << (Lok.nd.size() + 1) << ": ";
                     cin >> pazymys;
 
                     if (pazymys == -1) {
@@ -39,7 +38,6 @@ void ivestis(Studentas& Lok, bool generavimas)
                         throw  invalid_argument("Galima ivestis nuo 1 iki 10!\n");
                     }
                     Lok.nd.push_back(pazymys);
-                    Lok.ndSkaicius++;
                 }
                 catch (const invalid_argument& e) {
                         cout << e.what();
@@ -70,10 +68,10 @@ double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas)
     if (pasirinkimas == "Vid") {
         double vidurkis = 0.0;
 
-        for (int i = 0; i < Lok.ndSkaicius; i++) {
+        for (int i = 0; i < Lok.nd.size(); i++) {
             vidurkis += Lok.nd[i];
         }
-        vidurkis /= Lok.ndSkaicius;
+        vidurkis /= Lok.nd.size();
 
         return 0.4 * vidurkis + 0.6 * Lok.egzaminas;
     }
@@ -83,11 +81,11 @@ double rezultatai(Studentas Lok, string pasirinkimas, int ivestiesPasirinkimas)
         vector<int> pazymiai = Lok.nd;
         sort(pazymiai.begin(), pazymiai.end());
 
-        if (Lok.ndSkaicius % 2 == 0) {
-            mediana = (pazymiai[Lok.ndSkaicius / 2 - 1] + pazymiai[Lok.ndSkaicius / 2]) / 2.0;
+        if (Lok.nd.size() % 2 == 0) {
+            mediana = (pazymiai[Lok.nd.size() / 2 - 1] + pazymiai[Lok.nd.size() / 2]) / 2.0;
         }
         else {
-            mediana = pazymiai[Lok.ndSkaicius / 2];
+            mediana = pazymiai[Lok.nd.size() / 2];
         }
 
         return 0.4 * mediana + 0.6 * Lok.egzaminas;
@@ -136,7 +134,6 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
 
         Temp.egzaminas = Temp.nd.back();
         Temp.nd.pop_back();
-        Temp.ndSkaicius = Temp.nd.size();
 
         Temp.galutinisPazymysVid = rezultatai(Temp, "Vid", 2);
         Temp.galutinisPazymysMed = rezultatai(Temp, "Med", 2);

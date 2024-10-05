@@ -5,7 +5,6 @@ struct Studentas {
     string vardas;
     string pavarde;
     vector<int> nd;
-    int ndSkaicius;
     int egzaminas;
     double galutinisPazymys;
     double galutinisPazymysVid;
