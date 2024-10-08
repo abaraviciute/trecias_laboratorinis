@@ -90,7 +90,7 @@ int main() {
             cout << "Iveskite studento duomenis: " << endl;
             ivestis(Temporary, generavimas);
 
-            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas, duomenuIvedimoBudas);
+            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
             Vec1.push_back(Temporary);
         }
     }
@@ -155,8 +155,7 @@ int main() {
         catch (const runtime_error& e) {
             cerr << "Klaida: " << e.what() << endl;
         }
-
-        rezultatai(Temporary, "", duomenuIvedimoBudas);
+        rezultatai(Temporary, "");
     }
     else if (duomenuIvedimoBudas == 3) {
         for (int dydis : dydziai) {
@@ -179,6 +178,8 @@ int main() {
     }
 
     sort(Vec1.begin(), Vec1.end(), rusiavimas);
+
+    isvestisIFaila(Vec1.size(), Vec1, duomenuIvedimoBudas, pazymiotipas);
 
     cout << "\n";
     if (duomenuIvedimoBudas == 1) {
