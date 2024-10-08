@@ -103,13 +103,18 @@ int main() {
                 cout << "\"2\" - studentai10000.txt\n";
                 cout << "\"3\" - studentai100000.txt\n";
                 cout << "\"4\" - studentai1000000.txt\n";
+                cout << "\"5\" - studentai_1000.txt\n";
+                cout << "\"6\" - studentai_10000.txt\n";
+                cout << "\"7\" - studentai_100000.txt\n";
+                cout << "\"8\" - studentai_1000000.txt\n";
+                cout << "\"9\" - studentai_10000000.txt\n";
 
                 cin >> failoNr;
 
-                if ((failoNr < 1 || failoNr > 4) || cin.fail()) {
+                if ((failoNr < 1 || failoNr > 9) || cin.fail()) {
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite sveikaji skaiciu nuo \"1\" iki \"4\".\n");
+                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite sveikaji skaiciu nuo \"1\" iki \"9\".\n");
                 }
                 break;
             }
@@ -130,6 +135,21 @@ int main() {
             }
             else if (failoNr == 4) {
                 n = ivestisIsFailo("studentai1000000.txt", Vec1);
+            }
+            else if (failoNr == 5) {
+                n = ivestisIsFailo("studentai_1000.txt", Vec1);
+            }
+            else if (failoNr == 6) {
+                n = ivestisIsFailo("studentai_10000.txt", Vec1);
+            }
+            else if (failoNr == 7) {
+                n = ivestisIsFailo("studentai_100000.txt", Vec1);
+            }
+            else if (failoNr == 8) {
+                n = ivestisIsFailo("studentai_1000000.txt", Vec1);
+            }
+            else if (failoNr == 9) {
+                n = ivestisIsFailo("studentai_10000000.txt", Vec1);
             }
         }
         catch (const runtime_error& e) {
