@@ -152,3 +152,30 @@ bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 {
     return Lok1.pavarde < Lok2.pavarde;
 }
+
+void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
+{
+    ofstream out(failoPavadinimas);
+    if (!out) {
+        throw runtime_error("Nepavyko sukurti failo.");
+    }
+
+    out << "Vardas " << "Pavarde " << "ND1 " << "ND2 " << "ND3 " << "ND4 " << "ND5 " << "Egz." << endl;
+
+    srand(time(nullptr));
+
+    for (int i = 1; i <= studentuSkaicius; i++) {
+        out << "Vardas" << i << " Pavarde" << i;
+
+        for (int j = 0; j < 5; j++) {
+            int ndPazymys = rand() % 10 + 1;
+            out << " " << ndPazymys;
+        }
+
+        int egzaminas = rand() % 10 + 1;
+        out << " " << egzaminas << endl;
+    }
+
+    out.close();
+    cout << "Failas " << failoPavadinimas << " sugeneruotas." << endl;
+}

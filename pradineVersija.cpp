@@ -13,19 +13,21 @@ int main() {
     bool generavimas;
     int duomenuIvedimoBudas;
     int failoNr;
+    vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
 
     while (true) {
         try {
             cout << "Pasirinkite duomenu ivedimo buda:\n";
             cout << "\"1\" Rankiniu budu\n";
             cout << "\"2\" Skaityti is failo\n";
+            cout << "\"3\" Generuoti failus\n";
         
             cin >> duomenuIvedimoBudas;
 
-            if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2) || cin.fail()) {
+            if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2 && duomenuIvedimoBudas != 3) || cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+                throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\", \"2\" arba \"3\".\n");
             }
             break;
         }
@@ -135,7 +137,17 @@ int main() {
         }
 
         rezultatai(Temporary, "", duomenuIvedimoBudas);
-
+    }
+    else if (duomenuIvedimoBudas == 3) {
+        for (int dydis : dydziai) {
+            string failoPavadinimas = "studentai_" + to_string(dydis) + ".txt";
+            try {
+                generuotiFaila(dydis, failoPavadinimas);
+            }
+            catch (const exception& e) {
+                cout << "Klaida generuojant faila: " << e.what() << endl;
+            }
+        }
     }
 
     string pazymiotipas;
