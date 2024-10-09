@@ -15,6 +15,11 @@ int main() {
     int failoNr;
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
     vector<Studentas> galvociai, nuskriaustukai;
+    duration<double> trukmeNuskaitymo;
+    duration<double> trukmeRusiavimo;
+    duration<double> trukmeGalvociu;
+    duration<double> trukmeNuskriaustuku;
+    int rezultataiArTyrimas;
 
     while (true) {
         try {
@@ -29,6 +34,26 @@ int main() {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\", \"2\" arba \"3\".\n");
+            }
+            break;
+        }
+        catch (const invalid_argument& e) {
+            cout << e.what();
+        }
+    }
+
+    while (true) {
+        try {
+            cout << "Iveskite, ka daryti su duomenimis: \n";
+            cout << "\"1\" Skaiciuoti galutini bala\n";
+            cout << "\"2\" Vykdyti programos spartos analize\n";
+
+            cin >> rezultataiArTyrimas;
+
+            if ((rezultataiArTyrimas != 1 && rezultataiArTyrimas != 2) || cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
             }
             break;
         }
@@ -124,6 +149,8 @@ int main() {
             }
         }
 
+        auto pradzia = high_resolution_clock::now();
+
         try {
             if (failoNr == 1) {
                 ivestisIsFailo("kursiokai.txt", Vec1);
@@ -165,6 +192,11 @@ int main() {
         catch (const runtime_error& e) {
             cerr << "Klaida: " << e.what() << endl;
         }
+
+        auto pabaiga = high_resolution_clock::now();
+
+        trukmeNuskaitymo = pabaiga - pradzia;
+
         rezultatai(Temporary, "");
     }
     else if (duomenuIvedimoBudas == 3) {
@@ -189,26 +221,39 @@ int main() {
 
     sort(Vec1.begin(), Vec1.end(), rusiavimas);
 
+    auto pradzia = high_resolution_clock::now();
     studentoKategorija(Vec1, duomenuIvedimoBudas, galvociai, nuskriaustukai);
+    auto pabaiga = high_resolution_clock::now();
+    trukmeRusiavimo = pabaiga - pradzia;
 
-    isvestisIFaila(galvociai, nuskriaustukai, duomenuIvedimoBudas, pazymiotipas);
+    isvestisIFaila(galvociai, nuskriaustukai, duomenuIvedimoBudas, pazymiotipas, trukmeGalvociu, trukmeNuskriaustuku);
 
     cout << "\n";
-    if (duomenuIvedimoBudas == 1) {
-        cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-            << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
-        cout << "-------------------------------------------------" << endl;
-        for (int i = 0; i < n; i++)
-            isvestis(Vec1.at(i), duomenuIvedimoBudas);
+
+    if (rezultataiArTyrimas == 1) {
+        if (duomenuIvedimoBudas == 1) {
+            cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
+                << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
+            cout << "-------------------------------------------------" << endl;
+            for (int i = 0; i < n; i++)
+                isvestis(Vec1.at(i), duomenuIvedimoBudas);
+        }
+        else if (duomenuIvedimoBudas == 2) {
+            cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+                << setw(20) << left << "Galutinis (Vid.)" 
+                << setw(10) << left << "Galutinis (Med.)" << endl;
+            cout << "-------------------------------------------------------------" << endl;
+            for (int i = 0; i < n; i++)
+                isvestis(Vec1.at(i), duomenuIvedimoBudas);
+        }
     }
-    else if (duomenuIvedimoBudas == 2) {
-        cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
-            << setw(20) << left << "Galutinis (Vid.)" 
-            << setw(10) << left << "Galutinis (Med.)" << endl;
-        cout << "-------------------------------------------------------------" << endl;
-        for (int i = 0; i < n; i++)
-            isvestis(Vec1.at(i), duomenuIvedimoBudas);
+    else {
+        cout << "Failo nuskaitymo laikas: " << trukmeNuskaitymo.count() << endl;
+        cout << "Irasu dalijimo i dvi grupes laikas: " << trukmeRusiavimo.count() << endl;
+        cout << "Irasu irasymo i faila galvociai.txt laikas: " << trukmeGalvociu.count() << endl;
+        cout << "Iraso irasymo i faila nuskriaustukai.txt laikas: " << trukmeNuskriaustuku.count() << endl;
     }
+
     cout << "\n";
 
     return 0;

@@ -214,7 +214,7 @@ void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, 
     }
 }
 
-void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas)
+void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku)
 {
     ofstream galvociu("galvociai.txt");
     ofstream nuskriaustuku("nuskriaustukai.txt");
@@ -224,6 +224,7 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
     }
 
     if (duomenuIvedimoBudas == 2) {
+        auto pradziaGalvociu = high_resolution_clock::now();
         galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
         galvociu << "-------------------------------------------------------------" << endl;
@@ -233,8 +234,13 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
                 << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysVid
                 << setw(10) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysMed << endl;
         }
+        galvociu.close();
 
+        auto pabaigaGalvociu = high_resolution_clock::now();
 
+        trukmeGalvociu = pabaigaGalvociu - pradziaGalvociu;
+
+        auto pradziaNuskriaustuku = high_resolution_clock::now();
         nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
         nuskriaustuku << "-------------------------------------------------------------" << endl;
@@ -244,8 +250,14 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
                 << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysVid
                 << setw(10) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysMed << endl;
         }
+        nuskriaustuku.close();
+
+        auto pabaigaNuskriaustuku = high_resolution_clock::now();
+
+        trukmeNuskriaustuku = pabaigaNuskriaustuku - pradziaNuskriaustuku;
     }
     else if (duomenuIvedimoBudas == 1) {
+        auto pradziaGalvociu = high_resolution_clock::now();
         galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
         galvociu << "-------------------------------------------------" << endl;
@@ -254,8 +266,13 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
             galvociu << setw(15) << left << galvociai[i].pavarde << setw(15) << left << galvociai[i].vardas
                 << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymys << endl;
         }
+        galvociu.close();
 
+        auto pabaigaGalvociu = high_resolution_clock::now();
 
+        trukmeGalvociu = pabaigaGalvociu - pradziaGalvociu;
+
+        auto pradziaNuskriaustuku = high_resolution_clock::now();
         nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
         nuskriaustuku << "-------------------------------------------------" << endl;
@@ -264,10 +281,12 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
             nuskriaustuku << setw(15) << left << nuskriaustukai[i].pavarde << setw(15) << left << nuskriaustukai[i].vardas
                 << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymys << endl;
         }
-    }
+        nuskriaustuku.close();
 
-    galvociu.close();
-    nuskriaustuku.close();
+        auto pabaigaNuskriaustuku = high_resolution_clock::now();
+
+        trukmeNuskriaustuku = pabaigaNuskriaustuku - pradziaNuskriaustuku;
+    }
 
     cout << "Failai \"galvociai.txt\" ir \"nuskriaustukai.txt\" sugeneruoti." << endl;
 }
