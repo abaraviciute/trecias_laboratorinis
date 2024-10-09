@@ -17,4 +17,5 @@ double rezultatai(Studentas Lok, string pasirinkimas);
 int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2);
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas);
-void isvestisIFaila(int studentuSkaicius, const vector<Studentas>& Vec1, int duomenuIvedimoBudas, string pazymioTipas);
+void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai);
+void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas);

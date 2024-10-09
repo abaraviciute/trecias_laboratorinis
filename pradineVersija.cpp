@@ -14,6 +14,7 @@ int main() {
     int duomenuIvedimoBudas;
     int failoNr;
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
+    vector<Studentas> galvociai, nuskriaustukai;
 
     while (true) {
         try {
@@ -125,31 +126,40 @@ int main() {
 
         try {
             if (failoNr == 1) {
-                n = ivestisIsFailo("kursiokai.txt", Vec1);
+                ivestisIsFailo("kursiokai.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 2) {
-                n = ivestisIsFailo("studentai10000.txt", Vec1);
+                ivestisIsFailo("studentai10000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 3) {
-                n = ivestisIsFailo("studentai100000.txt", Vec1);
+                ivestisIsFailo("studentai100000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 4) {
-                n = ivestisIsFailo("studentai1000000.txt", Vec1);
+                ivestisIsFailo("studentai1000000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 5) {
-                n = ivestisIsFailo("studentai_1000.txt", Vec1);
+                ivestisIsFailo("studentai_1000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 6) {
-                n = ivestisIsFailo("studentai_10000.txt", Vec1);
+                ivestisIsFailo("studentai_10000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 7) {
-                n = ivestisIsFailo("studentai_100000.txt", Vec1);
+                ivestisIsFailo("studentai_100000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 8) {
-                n = ivestisIsFailo("studentai_1000000.txt", Vec1);
+                ivestisIsFailo("studentai_1000000.txt", Vec1);
+                n = Vec1.size();
             }
             else if (failoNr == 9) {
-                n = ivestisIsFailo("studentai_10000000.txt", Vec1);
+                ivestisIsFailo("studentai_10000000.txt", Vec1);
+                n = Vec1.size();
             }
         }
         catch (const runtime_error& e) {
@@ -179,7 +189,9 @@ int main() {
 
     sort(Vec1.begin(), Vec1.end(), rusiavimas);
 
-    isvestisIFaila(Vec1.size(), Vec1, duomenuIvedimoBudas, pazymiotipas);
+    studentoKategorija(Vec1, duomenuIvedimoBudas, galvociai, nuskriaustukai);
+
+    isvestisIFaila(galvociai, nuskriaustukai, duomenuIvedimoBudas, pazymiotipas);
 
     cout << "\n";
     if (duomenuIvedimoBudas == 1) {

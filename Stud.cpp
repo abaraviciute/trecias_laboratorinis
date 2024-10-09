@@ -119,7 +119,6 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
     string line;
     getline(inFile, line);
 
-    int studentu = 0;
     while (getline(inFile, line)) {
         istringstream iss(line);
         Studentas Temp;
@@ -139,13 +138,9 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
         Temp.galutinisPazymysMed = rezultatai(Temp, "Med");
 
         Vec1.push_back(Temp);
-
-        studentu++;
     }
 
     inFile.close();
-
-    return studentu;
 }
 
 bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
@@ -195,61 +190,84 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
     cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << endl;
 }
 
-void isvestisIFaila(int studentuSkaicius, const vector<Studentas>& Vec1, int duomenuIvedimoBudas, string pazymioTipas)
+void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai)
 {
-    ofstream galvociai("galvociai.txt");
-    ofstream nuskriaustukai("nuskriaustukai.txt");
+    if (duomenuIvedimoBudas == 2) {
+        for (int i = 0; i < Vec1.size(); i++) {
+            if (Vec1[i].galutinisPazymysVid >= 5) {
+                galvociai.push_back(Vec1[i]);
+            }
+            else {
+                nuskriaustukai.push_back(Vec1[i]);
+            }
+        }
+    }
+    else {
+        for (int i = 0; i < Vec1.size(); i++) {
+            if (Vec1[i].galutinisPazymys >= 5) {
+                galvociai.push_back(Vec1[i]);
+            }
+            else {
+                nuskriaustukai.push_back(Vec1[i]);
+            }
+        }
+    }
+}
 
-    if (!galvociai || !nuskriaustukai) {
+void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas)
+{
+    ofstream galvociu("galvociai.txt");
+    ofstream nuskriaustuku("nuskriaustukai.txt");
+
+    if (!galvociu || !nuskriaustuku) {
         throw runtime_error("Nepavyko sukurti failo.");
     }
 
-    if (duomenuIvedimoBudas == 2 || duomenuIvedimoBudas == 3) {
-        galvociai << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+    if (duomenuIvedimoBudas == 2) {
+        galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
-        galvociai << "-------------------------------------------------------------" << endl;
+        galvociu << "-------------------------------------------------------------" << endl;
 
-        nuskriaustukai << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+        for (int i = 0; i < galvociai.size(); i++) {
+            galvociu << setw(15) << left << galvociai[i].pavarde << setw(15) << left << galvociai[i].vardas
+                << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysVid
+                << setw(10) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysMed << endl;
+        }
+
+
+        nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
-        nuskriaustukai << "-------------------------------------------------------------" << endl;
+        nuskriaustuku << "-------------------------------------------------------------" << endl;
 
-        for (int i = 0; i < studentuSkaicius; i++) {
-            if (Vec1[i].galutinisPazymysVid >= 5.0) {
-                galvociai << setw(15) << left << Vec1[i].pavarde << setw(15) << left << Vec1[i].vardas
-                    << setw(20) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymysVid
-                    << setw(10) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymysMed << endl;
-            }
-            else {
-                nuskriaustukai << setw(15) << left << Vec1[i].pavarde << setw(15) << left << Vec1[i].vardas
-                    << setw(20) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymysVid
-                    << setw(10) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymysMed << endl;
-            }
+        for (int i = 0; i < nuskriaustukai.size(); i++) {
+            nuskriaustuku << setw(15) << left << nuskriaustukai[i].pavarde << setw(15) << left << nuskriaustukai[i].vardas
+                << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysVid
+                << setw(10) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysMed << endl;
         }
     }
     else if (duomenuIvedimoBudas == 1) {
-        galvociai << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+        galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
-        galvociai << "-------------------------------------------------" << endl;
+        galvociu << "-------------------------------------------------" << endl;
 
-        nuskriaustukai << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+        for (int i = 0; i < galvociai.size(); i++) {
+            galvociu << setw(15) << left << galvociai[i].pavarde << setw(15) << left << galvociai[i].vardas
+                << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymys << endl;
+        }
+
+
+        nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
-        nuskriaustukai << "-------------------------------------------------" << endl;
+        nuskriaustuku << "-------------------------------------------------" << endl;
 
-        for (int i = 0; i < studentuSkaicius; i++) {
-            if (Vec1[i].galutinisPazymys >= 5.0) {
-                galvociai << setw(15) << left << Vec1[i].pavarde << setw(15) << left << Vec1[i].vardas
-                    << setw(20) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymys << endl;
-            }
-            else {
-                nuskriaustukai << setw(15) << left << Vec1[i].pavarde << setw(15) << left << Vec1[i].vardas
-                    << setw(20) << left << fixed << setprecision(2) << Vec1[i].galutinisPazymys << endl;
-            }
+        for (int i = 0; i < nuskriaustukai.size(); i++) {
+            nuskriaustuku << setw(15) << left << nuskriaustukai[i].pavarde << setw(15) << left << nuskriaustukai[i].vardas
+                << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymys << endl;
         }
     }
 
-
-    galvociai.close();
-    nuskriaustukai.close();
+    galvociu.close();
+    nuskriaustuku.close();
 
     cout << "Failai \"galvociai.txt\" ir \"nuskriaustukai.txt\" sugeneruoti." << endl;
 }
