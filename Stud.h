@@ -9,7 +9,6 @@ struct Studentas {
     double galutinisPazymys;
     double galutinisPazymysVid;
     double galutinisPazymysMed;
-    string kategorija;
 };
 
 void ivestis(Studentas& Lok, bool generavimas);

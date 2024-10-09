@@ -155,29 +155,44 @@ bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
 {
+    vector<Studentas> studentas(studentuSkaicius);
+
+    srand(time(nullptr));
+
+    for (int i = 0; i < studentuSkaicius; i++) {
+        studentas[i].vardas = "Vardas" + to_string(i + 1);
+        studentas[i].pavarde = "Pavarde" + to_string(i + 1);
+
+        for (int j = 0; j < 5; j++) {
+            studentas[i].nd.push_back(rand() % 10 + 1);
+        }
+        studentas[i].egzaminas = rand() % 10 + 1;
+    }
+
     ofstream out(failoPavadinimas);
     if (!out) {
         throw runtime_error("Nepavyko sukurti failo.");
     }
 
-    out << "Vardas " << "Pavarde " << "ND1 " << "ND2 " << "ND3 " << "ND4 " << "ND5 " << "Egz." << endl;
+    auto pradzia = high_resolution_clock::now();
 
-    srand(time(nullptr));
+    out << "Vardas " << "Pavarde " << "ND1 " << "ND2 " << "ND3 " << "ND4 " << "ND5 " << "Egz." << endl;  
 
-    for (int i = 1; i <= studentuSkaicius; i++) {
-        out << "Vardas" << i << " Pavarde" << i;
+    for (int i = 0; i < studentuSkaicius; i++) {
+        out << studentas[i].vardas << " " << studentas[i].pavarde;
 
         for (int j = 0; j < 5; j++) {
-            int ndPazymys = rand() % 10 + 1;
-            out << " " << ndPazymys;
+            out << " " << studentas[i].nd[j];
         }
-
-        int egzaminas = rand() % 10 + 1;
-        out << " " << egzaminas << endl;
+        out << " " << studentas[i].egzaminas << endl;
     }
 
     out.close();
-    cout << "Failas " << failoPavadinimas << " sugeneruotas." << endl;
+
+    auto pabaiga = high_resolution_clock::now();
+
+    duration<double> trukme = pabaiga - pradzia;
+    cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << endl;
 }
 
 void isvestisIFaila(int studentuSkaicius, const vector<Studentas>& Vec1, int duomenuIvedimoBudas, string pazymioTipas)

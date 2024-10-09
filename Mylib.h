@@ -10,6 +10,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdexcept>
+#include <chrono>
 
 using std::cout;
 using std::cin;
@@ -33,3 +34,5 @@ using std::runtime_error;
 using std::cerr;
 using std::exception;
 using std::to_string;
+using std::chrono::high_resolution_clock;
+using std::chrono::duration;
