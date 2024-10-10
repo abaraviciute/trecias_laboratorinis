@@ -19,7 +19,7 @@ int main() {
     duration<double> trukmeRusiavimo;
     duration<double> trukmeGalvociu;
     duration<double> trukmeNuskriaustuku;
-    int rezultataiArTyrimas;
+    int rezultataiArTyrimas  = 0;
 
     while (true) {
         try {
@@ -42,25 +42,28 @@ int main() {
         }
     }
 
-    while (true) {
-        try {
-            cout << "Iveskite, ka daryti su duomenimis: \n";
-            cout << "\"1\" Skaiciuoti galutini bala\n";
-            cout << "\"2\" Vykdyti programos spartos analize\n";
+    if (duomenuIvedimoBudas != 3) {
+        while (true) {
+            try {
+                cout << "Iveskite, ka daryti su duomenimis: \n";
+                cout << "\"1\" Skaiciuoti galutini bala\n";
+                cout << "\"2\" Vykdyti programos spartos analize\n";
 
-            cin >> rezultataiArTyrimas;
+                cin >> rezultataiArTyrimas;
 
-            if ((rezultataiArTyrimas != 1 && rezultataiArTyrimas != 2) || cin.fail()) {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+                if ((rezultataiArTyrimas != 1 && rezultataiArTyrimas != 2) || cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+                }
+                break;
             }
-            break;
-        }
-        catch (const invalid_argument& e) {
-            cout << e.what();
+            catch (const invalid_argument& e) {
+                cout << e.what();
+            }
         }
     }
+
 
     if (duomenuIvedimoBudas == 1) {
 
@@ -247,7 +250,7 @@ int main() {
                 isvestis(Vec1.at(i), duomenuIvedimoBudas);
         }
     }
-    else {
+    else if (rezultataiArTyrimas == 2) {
         cout << "Failo nuskaitymo laikas: " << trukmeNuskaitymo.count() << endl;
         cout << "Irasu dalijimo i dvi grupes laikas: " << trukmeRusiavimo.count() << endl;
         cout << "Irasu irasymo i faila galvociai.txt laikas: " << trukmeGalvociu.count() << endl;
