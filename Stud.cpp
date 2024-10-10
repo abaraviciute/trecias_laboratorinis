@@ -63,7 +63,7 @@ void ivestis(Studentas& Lok, bool generavimas)
     }
 }
 
-double rezultatai(Studentas Lok, string pasirinkimas)
+double rezultatai(const Studentas& Lok, const string& pasirinkimas)
 {
     if (pasirinkimas == "Vid") {
         double vidurkis = 0.0;
@@ -150,18 +150,18 @@ bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
 {
-    vector<Studentas> studentas(studentuSkaicius);
+    vector<Studentas> studentai(studentuSkaicius);
 
     srand(time(nullptr));
 
     for (int i = 0; i < studentuSkaicius; i++) {
-        studentas[i].vardas = "Vardas" + to_string(i + 1);
-        studentas[i].pavarde = "Pavarde" + to_string(i + 1);
+        studentai[i].vardas = "Vardas" + to_string(i + 1);
+        studentai[i].pavarde = "Pavarde" + to_string(i + 1);
 
         for (int j = 0; j < 5; j++) {
-            studentas[i].nd.push_back(rand() % 10 + 1);
+            studentai[i].nd.push_back(rand() % 10 + 1);
         }
-        studentas[i].egzaminas = rand() % 10 + 1;
+        studentai[i].egzaminas = rand() % 10 + 1;
     }
 
     ofstream out(failoPavadinimas);
@@ -173,14 +173,17 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 
     out << "Vardas " << "Pavarde " << "ND1 " << "ND2 " << "ND3 " << "ND4 " << "ND5 " << "Egz." << endl;  
 
-    for (int i = 0; i < studentuSkaicius; i++) {
-        out << studentas[i].vardas << " " << studentas[i].pavarde;
+    ostringstream oss;
+    for (const auto& studentas : studentai) {
+        oss << studentas.vardas << " " << studentas.pavarde;
 
         for (int j = 0; j < 5; j++) {
-            out << " " << studentas[i].nd[j];
+            oss << " " << studentas.nd[j];
         }
-        out << " " << studentas[i].egzaminas << endl;
+        oss << " " << studentas.egzaminas << endl;
     }
+
+    out << oss.str();
 
     out.close();
 

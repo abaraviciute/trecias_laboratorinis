@@ -13,7 +13,7 @@ struct Studentas {
 
 void ivestis(Studentas& Lok, bool generavimas);
 void isvestis(Studentas Lok, int ivestiesPasirinkimas);
-double rezultatai(Studentas Lok, string pasirinkimas);
+double rezultatai(const Studentas& Lok, const string& pasirinkimas);
 int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2);
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas);

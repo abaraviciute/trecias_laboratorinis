@@ -36,3 +36,4 @@ using std::exception;
 using std::to_string;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
+using std::ostringstream;
