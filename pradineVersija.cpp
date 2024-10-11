@@ -1,6 +1,8 @@
 #include "Mylib.h"
 #include "Stud.h"
 
+int rikiavimoSalyga = 0;
+
 int main() {
     vector<Studentas> Vec1;
     Studentas Temporary;
@@ -37,6 +39,26 @@ int main() {
     }
 
     if (duomenuIvedimoBudas == 2) {
+        while (true) {
+            try {
+                cout << "Iveskite, kokia tvarka rikiuoti pazymius: \n";
+                cout << "\"1\" Didejancia\n";
+                cout << "\"2\" Mazejancia\n";
+
+                cin >> rikiavimoSalyga;
+
+                if ((rikiavimoSalyga != 1 && rikiavimoSalyga != 2) || cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+                }
+                break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
+            }
+        }
+
         while (true) {
             try {
                 cout << "Iveskite, ka daryti su duomenimis: \n";
@@ -243,6 +265,8 @@ int main() {
         cout << "Irasu dalijimo i dvi grupes laikas: " << trukmeRusiavimo.count() << endl;
         cout << "Irasu irasymo i faila galvociai.txt laikas: " << trukmeGalvociu.count() << endl;
         cout << "Iraso irasymo i faila nuskriaustukai.txt laikas: " << trukmeNuskriaustuku.count() << endl;
+        cout << "\n";
+        cout << "Bendras programos veikimo laikas: " << trukmeNuskaitymo.count() + trukmeRusiavimo.count() + trukmeGalvociu.count() + trukmeNuskriaustuku.count() << endl;
     }
     return 0;
 }

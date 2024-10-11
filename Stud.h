@@ -11,6 +11,8 @@ struct Studentas {
     double galutinisPazymysMed;
 };
 
+extern int rikiavimoSalyga;
+
 void ivestis(Studentas& Lok, bool generavimas);
 void isvestis(Studentas Lok, int ivestiesPasirinkimas);
 double rezultatai(const Studentas& Lok, const string& pasirinkimas);

@@ -149,7 +149,21 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
 
 bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 {
-    return Lok1.pavarde < Lok2.pavarde;
+    if (rikiavimoSalyga == 1) {
+        if (Lok1.galutinisPazymysVid == Lok2.galutinisPazymysVid) {
+            return Lok1.pavarde < Lok2.pavarde;
+        }
+        return Lok1.galutinisPazymysVid < Lok2.galutinisPazymysVid;
+    }
+    else if (rikiavimoSalyga == 2) {
+        if (Lok1.galutinisPazymysVid == Lok2.galutinisPazymysVid) {
+            return Lok1.pavarde < Lok2.pavarde;
+        }
+        return Lok1.galutinisPazymysVid > Lok2.galutinisPazymysVid;
+    }
+    else {
+        return Lok1.pavarde < Lok2.pavarde;
+    }
 }
 
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
