@@ -11,6 +11,8 @@
 #include <ctime>
 #include <stdexcept>
 #include <chrono>
+#include <random>
+#include <limits>
 
 using std::cout;
 using std::cin;
@@ -37,3 +39,6 @@ using std::to_string;
 using std::chrono::high_resolution_clock;
 using std::chrono::duration;
 using std::ostringstream;
+using std::random_device;
+using std::mt19937;
+using std::uniform_int_distribution;

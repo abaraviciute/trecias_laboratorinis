@@ -2,6 +2,10 @@
 
 void ivestis(Studentas& Lok, bool generavimas)
 {
+    random_device rd;
+    mt19937 mt(rd());
+    uniform_int_distribution<int> dist(1, 10);
+
     cout << "Iveskite varda: ";
     cin >> Lok.vardas;
 
@@ -12,10 +16,10 @@ void ivestis(Studentas& Lok, bool generavimas)
         int ndSkaicius = 5;
         Lok.nd.clear();
         for (int i = 0; i < ndSkaicius; i++) {
-            int pazymys = rand() % 10 + 1;
+            int pazymys = dist(mt);
             Lok.nd.push_back(pazymys);
         }
-        Lok.egzaminas = rand() % 10 + 1;
+        Lok.egzaminas = dist(mt);
     }
     else {
             Lok.nd.clear();
@@ -152,16 +156,18 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 {
     vector<Studentas> studentai(studentuSkaicius);
 
-    srand(time(nullptr));
+    random_device rd;
+    mt19937 mt(rd());
+    uniform_int_distribution<int> dist(1, 10);
 
     for (int i = 0; i < studentuSkaicius; i++) {
         studentai[i].vardas = "Vardas" + to_string(i + 1);
         studentai[i].pavarde = "Pavarde" + to_string(i + 1);
 
         for (int j = 0; j < 5; j++) {
-            studentai[i].nd.push_back(rand() % 10 + 1);
+            studentai[i].nd.push_back(dist(mt));
         }
-        studentai[i].egzaminas = rand() % 10 + 1;
+        studentai[i].egzaminas = dist(mt);
     }
 
     ofstream out(failoPavadinimas);
@@ -260,7 +266,6 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
         trukmeNuskriaustuku = pabaigaNuskriaustuku - pradziaNuskriaustuku;
     }
     else if (duomenuIvedimoBudas == 1) {
-        auto pradziaGalvociu = high_resolution_clock::now();
         galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
         galvociu << "-------------------------------------------------" << endl;
@@ -271,11 +276,6 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
         }
         galvociu.close();
 
-        auto pabaigaGalvociu = high_resolution_clock::now();
-
-        trukmeGalvociu = pabaigaGalvociu - pradziaGalvociu;
-
-        auto pradziaNuskriaustuku = high_resolution_clock::now();
         nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
         nuskriaustuku << "-------------------------------------------------" << endl;
@@ -285,10 +285,6 @@ void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>&
                 << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymys << endl;
         }
         nuskriaustuku.close();
-
-        auto pabaigaNuskriaustuku = high_resolution_clock::now();
-
-        trukmeNuskriaustuku = pabaigaNuskriaustuku - pradziaNuskriaustuku;
     }
 
     cout << "Failai \"galvociai.txt\" ir \"nuskriaustukai.txt\" sugeneruoti." << endl;

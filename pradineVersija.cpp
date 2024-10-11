@@ -2,9 +2,6 @@
 #include "Stud.h"
 
 int main() {
-
-    srand(static_cast<unsigned>(std::time(0)));
-
     vector<Studentas> Vec1;
     Studentas Temporary;
     int n = 0; //studentu skaicius
@@ -39,7 +36,7 @@ int main() {
         }
     }
 
-    if (duomenuIvedimoBudas != 3) {
+    if (duomenuIvedimoBudas == 2) {
         while (true) {
             try {
                 cout << "Iveskite, ka daryti su duomenimis: \n";
@@ -222,7 +219,7 @@ int main() {
 
     cout << "\n";
 
-    if (rezultataiArTyrimas == 1) {
+    if (rezultataiArTyrimas == 1 || duomenuIvedimoBudas == 1) {
         if (duomenuIvedimoBudas == 1) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
                 << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
