@@ -24,6 +24,7 @@ using std::streamsize;
 using std::setprecision;
 using std::setw;
 using std::left;
+using std::right;
 using std::fixed;
 using std::sort;
 using std::ifstream;

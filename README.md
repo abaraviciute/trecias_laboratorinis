@@ -31,38 +31,43 @@ Studentų galutinio pažymio skaičiavimo programa.
 ## Spartos analizė:
 Pateiktas testavimų vidurkis:
 
-1000 įrašų įrašymo į failą laikas: 0.00756 s  
-10000 įrašų įrašymo į failą laikas: 0.05991 s  
-100000 įrašų įrašymo į failą laikas: 0.56480 s  
-1000000 įrašų įrašymo į failą laikas: 5.64466 s  
-10000000 įrašų įrašymo į failą laikas: 58.82430 s  
+1000 įrašų įrašymo į failą laikas: 0.0183877 s  
+10000 įrašų įrašymo į failą laikas: 0.1003 s  
+100000 įrašų įrašymo į failą laikas: 0.8448273 s  
+1000000 įrašų įrašymo į failą laikas: 8.14784 s  
+10000000 įrašų įrašymo į failą laikas: 80.41363 s  
   
 1000 įrašų failas:  
-Failo nuskaitymo laikas:  0.01379 s  
-Įrašų dalijimo į dvi grupes laikas: 0.00048 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.00705 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.00469 s  
+Failo nuskaitymo laikas:  0.02131653 s  
+Įrašų dalijimo į dvi grupes laikas: 0.00059168 s  
+Įrašų įrašymo į failą galvociai.txt laikas: 0.00992062 s  
+Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.00620507 s  
+Bendras testo vykdymo laikas: 0.03803327 s  
   
 10000 įrašų failas:  
-Failo nuskaitymo laikas: 0.10443 s  
-Įrašų dalijimo į dvi grupes laikas: 0.00383 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.04805 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.03432 s  
+Failo nuskaitymo laikas: 0.144208 s  
+Įrašų dalijimo į dvi grupes laikas: 0.00439836 s  
+Įrašų įrašymo į failą galvociai.txt laikas: 0.0588816 s  
+Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.04473393 s  
+Bendras testo vykdymo laikas: 0.25155567 s  
   
 100000 įrašų failas:  
-Failo nuskaitymo laikas: 0.87280 s  
-Įrašų dalijimo į dvi grupes laikas: 0.03935 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.48109 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.33130 s  
+Failo nuskaitymo laikas: 1.36194 s  
+Įrašų dalijimo į dvi grupes laikas: 0.03765913 s  
+Įrašų įrašymo į failą galvociai.txt laikas: 0.5736883 s  
+Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.4084937 s  
+Bendras testo vykdymo laikas: 2.38045 s  
    
 1000000 įrašų failas:    
-Failo nuskaitymo laikas: 8.85528 s   
-Įrašų dalijimo į dvi grupes laikas: 0.38581 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 4.61546 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas:  3.24841 s  
+Failo nuskaitymo laikas: 13.5593 s   
+Įrašų dalijimo į dvi grupes laikas: 0.4072613 s  
+Įrašų įrašymo į failą galvociai.txt laikas: 5.66804 s  
+Įrašų įrašymo į failą nuskriaustukai.txt laikas:  4.02833 s  
+Bendras testo vykdymo laikas: 23.6636 s  
   
 10000000 įrašų failas:  
-Failo nuskaitymo laikas:  89.4631 s  
-Įrašų dalijimo į dvi grupes laikas: 5.86115 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 47.19767 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 32.88093 s  
+Failo nuskaitymo laikas:  137.6157 s  
+Įrašų dalijimo į dvi grupes laikas: 6.3477 s  
+Įrašų įrašymo į failą galvociai.txt laikas: 55.94437 s  
+Įrašų įrašymo į failą nuskriaustukai.txt laikas: 39.38567 s  
+Bendras testo vykdymo laikas: 239.293 s  

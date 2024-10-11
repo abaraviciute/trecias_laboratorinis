@@ -168,21 +168,9 @@ bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
 {
-    vector<Studentas> studentai(studentuSkaicius);
-
     random_device rd;
     mt19937 mt(rd());
     uniform_int_distribution<int> dist(1, 10);
-
-    for (int i = 0; i < studentuSkaicius; i++) {
-        studentai[i].vardas = "Vardas" + to_string(i + 1);
-        studentai[i].pavarde = "Pavarde" + to_string(i + 1);
-
-        for (int j = 0; j < 5; j++) {
-            studentai[i].nd.push_back(dist(mt));
-        }
-        studentai[i].egzaminas = dist(mt);
-    }
 
     ofstream out(failoPavadinimas);
     if (!out) {
@@ -191,26 +179,33 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 
     auto pradzia = high_resolution_clock::now();
 
-    out << "Vardas " << "Pavarde " << "ND1 " << "ND2 " << "ND3 " << "ND4 " << "ND5 " << "Egz." << endl;  
+    out << left << setw(15) << "Vardas"
+        << left << setw(15) << "Pavarde"
+        << right << setw(5) << "ND1"
+        << right << setw(5) << "ND2"
+        << right << setw(5) << "ND3"
+        << right << setw(5) << "ND4"
+        << right << setw(5) << "ND5"
+        << right << setw(5) << "Egz." << '\n';
 
-    ostringstream oss;
-    for (const auto& studentas : studentai) {
-        oss << studentas.vardas << " " << studentas.pavarde;
+    for (int i = 0; i < studentuSkaicius; i++) {
+        string vardas = "Vardas" + to_string(i + 1);
+        string pavarde = "Pavarde" + to_string(i + 1);
+
+        out << left << setw(15) << vardas << left << setw(15) << pavarde;
 
         for (int j = 0; j < 5; j++) {
-            oss << " " << studentas.nd[j];
+            out << right << setw(5) << dist(mt);
         }
-        oss << " " << studentas.egzaminas << endl;
-    }
 
-    out << oss.str();
+        out << right << setw(5) << dist(mt) << '\n';
+    }
 
     out.close();
 
     auto pabaiga = high_resolution_clock::now();
-
     duration<double> trukme = pabaiga - pradzia;
-    cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << endl;
+    cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << "\n";
 }
 
 void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai)
