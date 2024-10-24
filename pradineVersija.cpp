@@ -4,29 +4,6 @@
 int rikiavimoSalyga = 0;
 
 int main() {
-    int konteineris;
-
-    while (true) {
-        try {
-            cout << "Pasirinkite duomenu konteinerio tipa (\"1\" vector arba \"2\" list): ";
-            cin >> konteineris;
-            if ((konteineris != 1 && konteineris != 2) || cin.fail()) {
-                cin.clear();
-                cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"1\" arba \"2\".\n");
-            }
-            break;
-        }
-        catch (const invalid_argument& e) {
-            cout << e.what();
-        }
-    }
-
-    vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
-    list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
-
-    bool naudotiVektoriu = (konteineris == 1);
-
     Studentas Temporary;
     int n = 0; //studentu skaicius
     string pasirinkimas;
@@ -37,6 +14,7 @@ int main() {
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
     int rezultataiArTyrimas  = 0;
+    int konteineris;
 
     while (true) {
         try {
@@ -58,6 +36,29 @@ int main() {
             cout << e.what();
         }
     }
+
+    if (duomenuIvedimoBudas != 3) {
+        while (true) {
+            try {
+                cout << "Pasirinkite duomenu konteinerio tipa \"1\" vector arba \"2\" list: ";
+                cin >> konteineris;
+                if ((konteineris != 1 && konteineris != 2) || cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"1\" arba \"2\".\n");
+                }
+                break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
+            }
+        }
+    }
+        vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
+        list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
+
+        bool naudotiVektoriu = (konteineris == 1);
+    
 
     if (duomenuIvedimoBudas == 2) {
         while (true) {
