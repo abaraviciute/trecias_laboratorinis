@@ -224,69 +224,45 @@ void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, 
     }
 }
 
-void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku)
-{
-    ofstream galvociu("galvociai.txt");
-    ofstream nuskriaustuku("nuskriaustukai.txt");
-
-    if (!galvociu || !nuskriaustuku) {
-        throw runtime_error("Nepavyko sukurti failo.");
+void iFaila(const string& failas, const vector<Studentas>& students, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
+    ofstream ived(failas);
+    if (!ived) {
+        throw runtime_error("Nepavyko sukurti failo: " + failas);
     }
+
+    auto pradzia = high_resolution_clock::now();
 
     if (duomenuIvedimoBudas == 2) {
-        auto pradziaGalvociu = high_resolution_clock::now();
-        galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+        ived << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
-        galvociu << "-------------------------------------------------------------" << endl;
-
-        for (int i = 0; i < galvociai.size(); i++) {
-            galvociu << setw(15) << left << galvociai[i].pavarde << setw(15) << left << galvociai[i].vardas
-                << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysVid
-                << setw(10) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymysMed << endl;
-        }
-        galvociu.close();
-
-        auto pabaigaGalvociu = high_resolution_clock::now();
-
-        trukmeGalvociu = pabaigaGalvociu - pradziaGalvociu;
-
-        auto pradziaNuskriaustuku = high_resolution_clock::now();
-        nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
-            << setw(20) << left << "Galutinis (Vid.)" << setw(10) << left << "Galutinis (Med.)" << endl;
-        nuskriaustuku << "-------------------------------------------------------------" << endl;
-
-        for (int i = 0; i < nuskriaustukai.size(); i++) {
-            nuskriaustuku << setw(15) << left << nuskriaustukai[i].pavarde << setw(15) << left << nuskriaustukai[i].vardas
-                << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysVid
-                << setw(10) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymysMed << endl;
-        }
-        nuskriaustuku.close();
-
-        auto pabaigaNuskriaustuku = high_resolution_clock::now();
-
-        trukmeNuskriaustuku = pabaigaNuskriaustuku - pradziaNuskriaustuku;
+        ived << "-------------------------------------------------------------" << endl;
     }
-    else if (duomenuIvedimoBudas == 1) {
-        galvociu << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
+    else {
+        ived << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
             << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
-        galvociu << "-------------------------------------------------" << endl;
-
-        for (int i = 0; i < galvociai.size(); i++) {
-            galvociu << setw(15) << left << galvociai[i].pavarde << setw(15) << left << galvociai[i].vardas
-                << setw(20) << left << fixed << setprecision(2) << galvociai[i].galutinisPazymys << endl;
-        }
-        galvociu.close();
-
-        nuskriaustuku << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
-            << setw(3) << left << "Galutinis (" << pazymioTipas << ".)" << endl;
-        nuskriaustuku << "-------------------------------------------------" << endl;
-
-        for (int i = 0; i < nuskriaustukai.size(); i++) {
-            nuskriaustuku << setw(15) << left << nuskriaustukai[i].pavarde << setw(15) << left << nuskriaustukai[i].vardas
-                << setw(20) << left << fixed << setprecision(2) << nuskriaustukai[i].galutinisPazymys << endl;
-        }
-        nuskriaustuku.close();
+        ived << "-------------------------------------------------" << endl;
     }
+
+    for (const auto& studentas : students) {
+        ived << setw(15) << left << studentas.pavarde << setw(15) << left << studentas.vardas;
+        if (duomenuIvedimoBudas == 2) {
+            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
+                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
+        }
+        else {
+            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys;
+        }
+        ived << endl;
+    }
+
+    auto pabaiga = high_resolution_clock::now();
+    trukme = pabaiga - pradzia;
+}
+
+void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
+    iFaila("galvociai.txt", galvociai, duomenuIvedimoBudas, pazymioTipas, trukmeGalvociu);
+
+    iFaila("nuskriaustukai.txt", nuskriaustukai, duomenuIvedimoBudas, pazymioTipas, trukmeNuskriaustuku);
 
     cout << "Failai \"galvociai.txt\" ir \"nuskriaustukai.txt\" sugeneruoti." << endl;
 }
