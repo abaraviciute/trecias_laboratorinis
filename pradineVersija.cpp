@@ -5,11 +5,21 @@ int rikiavimoSalyga = 0;
 
 int main() {
     int konteineris;
-    cout << "Pasirinkite duomenu konteinerio tipa (\"1\" vector arba \"2\" list): ";
-    cin >> konteineris;
 
-    if (konteineris != 1 && konteineris != 2) {
-        throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"1\" arba \"2\".");
+    while (true) {
+        try {
+            cout << "Pasirinkite duomenu konteinerio tipa (\"1\" vector arba \"2\" list): ";
+            cin >> konteineris;
+            if ((konteineris != 1 && konteineris != 2) || cin.fail()) {
+                cin.clear();
+                cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"1\" arba \"2\".\n");
+            }
+            break;
+        }
+        catch (const invalid_argument& e) {
+            cout << e.what();
+        }
     }
 
     vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
