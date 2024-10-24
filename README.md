@@ -39,6 +39,9 @@ Studentų galutinio pažymio skaičiavimo programa.
 |Saugykla            | Virtualus diskas SSD                 | 512 GB SSD                      |
 |VMware Version      | VMware Fusion 13                     | -                               |  
 
+
+![Failų generavimo laikai](pradineVersija/generavimas.png)
+
 Pateiktas testavimų vidurkis:
 
 1000 įrašų įrašymo į failą laikas: 0.00891588 s  
@@ -73,4 +76,9 @@ Pateiktas testavimų vidurkis:
 |               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |
 |               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |
 |               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |
-|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |
+|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |  
+
+Išvados:
+- vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+- list konteineriai greičiau dalijami į dvi grupes kai dirbama su mažesniais failais;
+- bendru atveju spartos skirtumas tarp vector ir list konteinerių nėra didelis.
