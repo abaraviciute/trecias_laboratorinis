@@ -4,7 +4,19 @@
 int rikiavimoSalyga = 0;
 
 int main() {
-    vector<Studentas> Vec1;
+    int konteineris;
+    cout << "Pasirinkite duomenu konteinerio tipa (\"1\" vector arba \"2\" list): ";
+    cin >> konteineris;
+
+    if (konteineris != 1 && konteineris != 2) {
+        throw invalid_argument("Neteisingas pasirinkimas. Iveskite \"1\" arba \"2\".");
+    }
+
+    vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
+    list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
+
+    bool naudotiVektoriu = (konteineris == 1);
+
     Studentas Temporary;
     int n = 0; //studentu skaicius
     string pasirinkimas;
@@ -13,7 +25,6 @@ int main() {
     int duomenuIvedimoBudas;
     int failoNr;
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
-    vector<Studentas> galvociai, nuskriaustukai;
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
     int rezultataiArTyrimas  = 0;
 
@@ -136,7 +147,13 @@ int main() {
             ivestis(Temporary, generavimas);
 
             Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
-            Vec1.push_back(Temporary);
+
+            if (naudotiVektoriu) {
+                studentaiVector.push_back(Temporary);
+            }
+            else {
+                studentaiList.push_back(Temporary);
+            }
         }
     }
     else if (duomenuIvedimoBudas == 2) {
@@ -184,7 +201,13 @@ int main() {
             };
 
             if (failoNr >= 1 && failoNr <= failai.size()) {
-                ivestisIsFailo(failai[failoNr - 1], Vec1);
+                if (naudotiVektoriu) {
+                    ivestisIsFailo(failai[failoNr - 1], studentaiVector);
+                }
+                else {
+                    ivestisIsFailo(failai[failoNr - 1], studentaiList);
+                }
+                
             }
         }
         catch (const runtime_error& e) {
@@ -192,7 +215,6 @@ int main() {
         }
 
         auto pabaiga = high_resolution_clock::now();
-
         trukmeNuskaitymo = pabaiga - pradzia;
     }
     else if (duomenuIvedimoBudas == 3) {
@@ -208,23 +230,29 @@ int main() {
         return (0);
     }
 
-    string pazymiotipas;
-    if (pasirinkimas == "Med") {
-        pazymiotipas = "Med";
-    }
-    else {
-        pazymiotipas = "Vid";
-    }
-
     if (duomenuIvedimoBudas != 3) {
-        sort(Vec1.begin(), Vec1.end(), rusiavimas);
+        if (naudotiVektoriu) {
+            sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
-        auto pradzia = high_resolution_clock::now();
-        studentoKategorija(Vec1, duomenuIvedimoBudas, galvociai, nuskriaustukai);
-        auto pabaiga = high_resolution_clock::now();
-        trukmeRusiavimo = pabaiga - pradzia;
+            auto pradzia = high_resolution_clock::now();
+            studentoKategorija(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
+            auto pabaiga = high_resolution_clock::now();
+            trukmeRusiavimo = pabaiga - pradzia;
 
-        isvestisIFaila(galvociai, nuskriaustukai, duomenuIvedimoBudas, pazymiotipas, trukmeGalvociu, trukmeNuskriaustuku);
+            isvestisIFaila(galvociaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+        }
+        else {
+            studentaiList.sort(rusiavimas);
+
+            auto pradzia = high_resolution_clock::now();
+            studentoKategorija(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
+            auto pabaiga = high_resolution_clock::now();
+            trukmeRusiavimo = pabaiga - pradzia;
+
+            isvestisIFaila(galvociaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+        }
+        
+
     }
 
     cout << "\n";
@@ -232,18 +260,31 @@ int main() {
     if (rezultataiArTyrimas == 1 || duomenuIvedimoBudas == 1) {
         if (duomenuIvedimoBudas == 1) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-                << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
+                << setw(3) << left << "Galutinis (" << pasirinkimas << ".)" << endl;
             cout << "-------------------------------------------------" << endl;
-            for (int i = 0; i < Vec1.size(); i++)
-                isvestis(Vec1.at(i), duomenuIvedimoBudas);
+            if (naudotiVektoriu) {
+                for (const auto& studentas : studentaiVector)
+                    isvestis(studentas, duomenuIvedimoBudas);
+            }
+            else {
+                for (const auto& studentas : studentaiList)
+                    isvestis(studentas, duomenuIvedimoBudas);
+            }
+
         }
         else if (duomenuIvedimoBudas == 2) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
                 << setw(20) << left << "Galutinis (Vid.)" 
                 << setw(10) << left << "Galutinis (Med.)" << endl;
             cout << "-------------------------------------------------------------" << endl;
-            for (int i = 0; i < Vec1.size(); i++)
-                isvestis(Vec1.at(i), duomenuIvedimoBudas);
+            if (naudotiVektoriu) {
+                for (const auto& studentas : studentaiVector)
+                    isvestis(studentas, duomenuIvedimoBudas);
+            }
+            else {
+                for (const auto& studentas : studentaiList)
+                    isvestis(studentas, duomenuIvedimoBudas);
+            }
         }
     }
     else if (rezultataiArTyrimas == 2) {

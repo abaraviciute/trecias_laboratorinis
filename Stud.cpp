@@ -111,7 +111,8 @@ void isvestis(Studentas Lok, int ivestiesPasirinkimas)
     }
 }
 
-int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
+template <typename Struktura>
+int ivestisIsFailo(const string& failas, Struktura& struktura)
 {
     ifstream inFile(failas);
 
@@ -141,7 +142,7 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
         Temp.galutinisPazymysVid = rezultatai(Temp, "Vid");
         Temp.galutinisPazymysMed = rezultatai(Temp, "Med");
 
-        Vec1.push_back(Temp);
+        struktura.push_back(Temp);
     }
 
     inFile.close();
@@ -211,9 +212,10 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
     cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << "\n";
 }
 
-void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai)
+template <typename Struktura>
+void studentoKategorija(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
 {
-    for (const auto& studentas : Vec1) {
+    for (const auto& studentas : struktura) {
         if ((duomenuIvedimoBudas == 2 && studentas.galutinisPazymysVid >= 5) ||
             (duomenuIvedimoBudas != 2 && studentas.galutinisPazymys >= 5)) {
             galvociai.push_back(studentas);
@@ -224,7 +226,8 @@ void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, 
     }
 }
 
-void iFaila(const string& failas, const vector<Studentas>& students, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
+template <typename Struktura>
+void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
     ofstream ived(failas);
     if (!ived) {
         throw runtime_error("Nepavyko sukurti failo: " + failas);
@@ -243,7 +246,7 @@ void iFaila(const string& failas, const vector<Studentas>& students, int duomenu
         ived << "-------------------------------------------------" << endl;
     }
 
-    for (const auto& studentas : students) {
+    for (const auto& studentas : studentai) {
         ived << setw(15) << left << studentas.pavarde << setw(15) << left << studentas.vardas;
         if (duomenuIvedimoBudas == 2) {
             ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
@@ -259,10 +262,18 @@ void iFaila(const string& failas, const vector<Studentas>& students, int duomenu
     trukme = pabaiga - pradzia;
 }
 
-void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
+template <typename Struktura>
+void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
     iFaila("galvociai.txt", galvociai, duomenuIvedimoBudas, pazymioTipas, trukmeGalvociu);
 
     iFaila("nuskriaustukai.txt", nuskriaustukai, duomenuIvedimoBudas, pazymioTipas, trukmeNuskriaustuku);
 
     cout << "Failai \"galvociai.txt\" ir \"nuskriaustukai.txt\" sugeneruoti." << endl;
 }
+
+template int ivestisIsFailo<vector<Studentas>>(const string& failas, vector<Studentas>& struktura);
+template int ivestisIsFailo<list<Studentas>>(const string& failas, list<Studentas>& struktura);
+template void studentoKategorija<vector<Studentas>>(const vector<Studentas> &struktura, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai);
+template void studentoKategorija<list<Studentas>>(const list<Studentas>& struktura, int duomenuIvedimoBudas, list<Studentas>& galvociai, list<Studentas>& nuskriaustukai);
+template void isvestisIFaila<vector<Studentas>>(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
+template void isvestisIFaila<list<Studentas>>(const list<Studentas>& galvociai, const list<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);

@@ -13,6 +13,7 @@
 #include <chrono>
 #include <random>
 #include <limits>
+#include <list>
 
 using std::cout;
 using std::cin;
@@ -44,3 +45,5 @@ using std::random_device;
 using std::mt19937;
 using std::uniform_int_distribution;
 using std::exit;
+using std::list;
+using std::conditional_t;

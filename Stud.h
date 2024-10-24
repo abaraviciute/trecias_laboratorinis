@@ -16,8 +16,11 @@ extern int rikiavimoSalyga;
 void ivestis(Studentas& Lok, bool generavimas);
 void isvestis(Studentas Lok, int ivestiesPasirinkimas);
 double rezultatai(const Studentas& Lok, const string& pasirinkimas);
-int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1);
+template <typename Struktura>
+int ivestisIsFailo(const string& failas, Struktura& struktura);
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2);
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas);
-void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai);
-void isvestisIFaila(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
+template <typename Struktura>
+void studentoKategorija(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai);
+template <typename Struktura>
+void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
