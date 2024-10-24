@@ -270,8 +270,9 @@ int main() {
     if (rezultataiArTyrimas == 1 || duomenuIvedimoBudas == 1) {
         if (duomenuIvedimoBudas == 1) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
-                << setw(3) << left << "Galutinis (" << pasirinkimas << ".)" << endl;
-            cout << "-------------------------------------------------" << endl;
+                << setw(3) << left << "Galutinis (" << pasirinkimas << ".)" 
+                << setw(17) << left << "Adresas" << endl;
+            cout << "-------------------------------------------------------------" << endl;
             if (naudotiVektoriu) {
                 for (const auto& studentas : studentaiVector)
                     isvestis(studentas, duomenuIvedimoBudas);
@@ -285,7 +286,7 @@ int main() {
         else if (duomenuIvedimoBudas == 2) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
                 << setw(20) << left << "Galutinis (Vid.)" 
-                << setw(10) << left << "Galutinis (Med.)" << endl;
+                << setw(20) << left << "Galutinis (Med.)" << endl;
             cout << "-------------------------------------------------------------" << endl;
             if (naudotiVektoriu) {
                 for (const auto& studentas : studentaiVector)

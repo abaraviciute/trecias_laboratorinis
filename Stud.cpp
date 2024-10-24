@@ -102,7 +102,8 @@ void isvestis(Studentas Lok, int ivestiesPasirinkimas)
 {
     if (ivestiesPasirinkimas == 1) {
         cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas
-            << setw(10) << left << fixed << setprecision(2) << Lok.galutinisPazymys << endl;
+            << setw(16) << left << fixed << setprecision(2) << Lok.galutinisPazymys
+            << setw(17) << left << &Lok << endl;
     }
     else if (ivestiesPasirinkimas == 2) {
         cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas
