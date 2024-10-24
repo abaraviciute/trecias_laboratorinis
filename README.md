@@ -1,4 +1,4 @@
-# v0.2 release
+# v0.3 release
 
 Studentų galutinio pažymio skaičiavimo programa.
 
@@ -26,48 +26,42 @@ Studentų galutinio pažymio skaičiavimo programa.
 - pranešimai apie įvesties klaidas ir galimybė įvesti paskutinį vestą rodmenį naujai (exception handling);
 - galimybė generuoti 5 skirtingo dydžio .txt failus su atsitiktiniais studentų duomenimis;
 - studentų padalijimas į dvi grupes pagal galutinį pažymį, jų išvedimas į atskirus .txt failus;
-- programos veikimo spartos analizė.
+- programos veikimo spartos analizė;
+- galimybė pasirinkti konteinerį duomenims saugoti (list/vector).
 
 ## Spartos analizė:
 Pateiktas testavimų vidurkis:
 
-1000 įrašų įrašymo į failą laikas: 0.0183877 s  
-10000 įrašų įrašymo į failą laikas: 0.1003 s  
-100000 įrašų įrašymo į failą laikas: 0.8448273 s  
-1000000 įrašų įrašymo į failą laikas: 8.14784 s  
-10000000 įrašų įrašymo į failą laikas: 80.41363 s  
-  
-1000 įrašų failas:  
-Failo nuskaitymo laikas:  0.02131653 s  
-Įrašų dalijimo į dvi grupes laikas: 0.00059168 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.00992062 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.00620507 s  
-Bendras testo vykdymo laikas: 0.03803327 s  
-  
-10000 įrašų failas:  
-Failo nuskaitymo laikas: 0.144208 s  
-Įrašų dalijimo į dvi grupes laikas: 0.00439836 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.0588816 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.04473393 s  
-Bendras testo vykdymo laikas: 0.25155567 s  
-  
-100000 įrašų failas:  
-Failo nuskaitymo laikas: 1.36194 s  
-Įrašų dalijimo į dvi grupes laikas: 0.03765913 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 0.5736883 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 0.4084937 s  
-Bendras testo vykdymo laikas: 2.38045 s  
-   
-1000000 įrašų failas:    
-Failo nuskaitymo laikas: 13.5593 s   
-Įrašų dalijimo į dvi grupes laikas: 0.4072613 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 5.66804 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas:  4.02833 s  
-Bendras testo vykdymo laikas: 23.6636 s  
-  
-10000000 įrašų failas:  
-Failo nuskaitymo laikas:  137.6157 s  
-Įrašų dalijimo į dvi grupes laikas: 6.3477 s  
-Įrašų įrašymo į failą galvociai.txt laikas: 55.94437 s  
-Įrašų įrašymo į failą nuskriaustukai.txt laikas: 39.38567 s  
-Bendras testo vykdymo laikas: 239.293 s  
+1000 įrašų įrašymo į failą laikas: 0.00891588 s  
+10000 įrašų įrašymo į failą laikas: 0.0606197 s  
+100000 įrašų įrašymo į failą laikas: 0.529976 s  
+1000000 įrašų įrašymo į failą laikas: 5.06744 s  
+10000000 įrašų įrašymo į failą laikas: 50.9319 s  
+
+|Failo eilučių  |Kriterijus                 |Vector laikas    |List laikas     |
+|---------------|---------------------------|-----------------|----------------|
+|1000           |Nuskaitymas                |0.0113095 s      |0.0138963 s     |
+|               |Dalijimas į dvi grupes     |0.00056075 s     |0.000387625 s   |
+|               |Įrašymas galvociai.txt     |0.00555825 s     |0.00592483 s    |
+|               |Įrašymas nuskriaustukai.txt|0.00374054 s     |0.00366213 s    |
+|               |Bendras veikimo laikas     |0.021169 s       |0.0238708 s     |
+|10000          |Nuskaitymas                |0.10496 s        |0.125007 s      |
+|               |Dalijimas į dvi grupes     |0.00449438 s     |0.00265867 s    |
+|               |Įrašymas galvociai.txt     |0.0474353 s      |0.0482639 s     |
+|               |Įrašymas nuskriaustukai.txt|0.0379377 s      |0.0340268 s     |
+|               |Bendras veikimo laikas     |0.194827 s       |0.209956 s      |
+|100000         |Nuskaitymas                |0.962287 s       |0.960303 s      |
+|               |Dalijimas į dvi grupes     |0.0254281 s      |0.0367531 s     |
+|               |Įrašymas galvociai.txt     |0.496531 s       |0.510438 s      |
+|               |Įrašymas nuskriaustukai.txt|0.344024 s       |0.342789 s      |
+|               |Bendras veikimo laikas     |1.82827 s        |1.85028 s       |
+|1000000        |Nuskaitymas                |9.57618 s        |9.45731 s       |
+|               |Dalijimas į dvi grupes     |0.498318 s       |0.396237 s      |
+|               |Įrašymas galvociai.txt     |4.64819 s        |4.82819 s       |
+|               |Įrašymas nuskriaustukai.txt|3.29679 s        |3.35625 s       |
+|               |Bendras veikimo laikas     |18.0195 s        |18.038 s        |
+|10000000       |Nuskaitymas                |101.191 s        |99.2413 s       |
+|               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |
+|               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |
+|               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |
+|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |
