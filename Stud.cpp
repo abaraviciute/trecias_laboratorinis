@@ -149,24 +149,21 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
 
 bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
 {
+    double pazymys1 = Lok1.galutinisPazymysVid;
+    double pazymys2 = Lok2.galutinisPazymysVid;
+
     if (rikiavimoSalyga == 1) {
-        if (Lok1.galutinisPazymysVid == Lok2.galutinisPazymysVid) {
-            return Lok1.pavarde < Lok2.pavarde;
-        }
-        return Lok1.galutinisPazymysVid < Lok2.galutinisPazymysVid;
+        return (pazymys1 == pazymys2) ? (Lok1.pavarde < Lok2.pavarde) : (pazymys1 < pazymys2);
     }
     else if (rikiavimoSalyga == 2) {
-        if (Lok1.galutinisPazymysVid == Lok2.galutinisPazymysVid) {
-            return Lok1.pavarde < Lok2.pavarde;
-        }
-        return Lok1.galutinisPazymysVid > Lok2.galutinisPazymysVid;
+        return (pazymys1 == pazymys2) ? (Lok1.pavarde < Lok2.pavarde) : (pazymys1 > pazymys2);
     }
     else {
         return Lok1.pavarde < Lok2.pavarde;
     }
 }
 
-void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas) 
+void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 {
     random_device rd;
     mt19937 mt(rd());
@@ -188,17 +185,23 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
         << right << setw(5) << "ND5"
         << right << setw(5) << "Egz." << '\n';
 
+    ostringstream studentoDuomenys;
+
     for (int i = 0; i < studentuSkaicius; i++) {
-        string vardas = "Vardas" + to_string(i + 1);
-        string pavarde = "Pavarde" + to_string(i + 1);
+        studentoDuomenys << left << setw(15) << "Vardas" + to_string(i + 1)
+            << left << setw(15) << "Pavarde" + to_string(i + 1);
 
-        out << left << setw(15) << vardas << left << setw(15) << pavarde;
-
-        for (int j = 0; j < 5; j++) {
-            out << right << setw(5) << dist(mt);
+        for (int j = 0; j < 6; j++) {
+            studentoDuomenys << right << setw(5) << dist(mt);
         }
 
-        out << right << setw(5) << dist(mt) << '\n';
+        studentoDuomenys << '\n';
+
+        if ((i + 1) % 100 == 0 || i + 1 == studentuSkaicius) {
+            out << studentoDuomenys.str();
+            studentoDuomenys.str("");
+            studentoDuomenys.clear();
+        }
     }
 
     out.close();
