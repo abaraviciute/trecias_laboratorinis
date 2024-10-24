@@ -117,7 +117,7 @@ int ivestisIsFailo(const string& failas, vector<Studentas>& Vec1)
 
     if (!inFile) {
         cout << "Nepavyko atidaryti failo: " << failas << endl;
-        return 0;
+        exit(EXIT_FAILURE);
     }
 
     string line;
@@ -213,24 +213,13 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 
 void studentoKategorija(const vector<Studentas>& Vec1, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai)
 {
-    if (duomenuIvedimoBudas == 2) {
-        for (int i = 0; i < Vec1.size(); i++) {
-            if (Vec1[i].galutinisPazymysVid >= 5) {
-                galvociai.push_back(Vec1[i]);
-            }
-            else {
-                nuskriaustukai.push_back(Vec1[i]);
-            }
+    for (const auto& studentas : Vec1) {
+        if ((duomenuIvedimoBudas == 2 && studentas.galutinisPazymysVid >= 5) ||
+            (duomenuIvedimoBudas != 2 && studentas.galutinisPazymys >= 5)) {
+            galvociai.push_back(studentas);
         }
-    }
-    else {
-        for (int i = 0; i < Vec1.size(); i++) {
-            if (Vec1[i].galutinisPazymys >= 5) {
-                galvociai.push_back(Vec1[i]);
-            }
-            else {
-                nuskriaustukai.push_back(Vec1[i]);
-            }
+        else {
+            nuskriaustukai.push_back(studentas);
         }
     }
 }
