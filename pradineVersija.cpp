@@ -171,32 +171,20 @@ int main() {
         auto pradzia = high_resolution_clock::now();
 
         try {
-            if (failoNr == 1) {
-                ivestisIsFailo("kursiokai.txt", Vec1);
-            }
-            else if (failoNr == 2) {
-                ivestisIsFailo("studentai10000.txt", Vec1);
-            }
-            else if (failoNr == 3) {
-                ivestisIsFailo("studentai100000.txt", Vec1);
-            }
-            else if (failoNr == 4) {
-                ivestisIsFailo("studentai1000000.txt", Vec1);
-            }
-            else if (failoNr == 5) {
-                ivestisIsFailo("studentai_1000.txt", Vec1);
-            }
-            else if (failoNr == 6) {
-                ivestisIsFailo("studentai_10000.txt", Vec1);
-            }
-            else if (failoNr == 7) {
-                ivestisIsFailo("studentai_100000.txt", Vec1);
-            }
-            else if (failoNr == 8) {
-                ivestisIsFailo("studentai_1000000.txt", Vec1);
-            }
-            else if (failoNr == 9) {
-                ivestisIsFailo("studentai_10000000.txt", Vec1);
+            vector<string> failai = {
+                "kursiokai.txt",
+                "studentai10000.txt",
+                "studentai100000.txt",
+                "studentai1000000.txt",
+                "studentai_1000.txt",
+                "studentai_10000.txt",
+                "studentai_100000.txt",
+                "studentai_1000000.txt",
+                "studentai_10000000.txt"
+            };
+
+            if (failoNr >= 1 && failoNr <= failai.size()) {
+                ivestisIsFailo(failai[failoNr - 1], Vec1);
             }
         }
         catch (const runtime_error& e) {
