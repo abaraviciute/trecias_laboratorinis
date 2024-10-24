@@ -1,4 +1,4 @@
-#include "Mylib.h"
+﻿#include "Mylib.h"
 #include "Stud.h"
 
 int rikiavimoSalyga = 0;
@@ -12,10 +12,10 @@ int main() {
     bool generavimas;
     int duomenuIvedimoBudas;
     int failoNr;
-    vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
+    vector<int> dydziai = { 1000, 10000, 100000, 1000000, 10000000 };
     vector<Studentas> galvociai, nuskriaustukai;
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
-    int rezultataiArTyrimas  = 0;
+    int rezultataiArTyrimas = 0;
 
     while (true) {
         try {
@@ -23,7 +23,7 @@ int main() {
             cout << "\"1\" Rankiniu budu\n";
             cout << "\"2\" Skaityti is failo\n";
             cout << "\"3\" Generuoti failus\n";
-        
+
             cin >> duomenuIvedimoBudas;
 
             if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2 && duomenuIvedimoBudas != 3) || cin.fail()) {
@@ -243,7 +243,7 @@ int main() {
 
     if (rezultataiArTyrimas == 1 || duomenuIvedimoBudas == 1) {
         if (duomenuIvedimoBudas == 1) {
-            cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
+            cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
                 << setw(3) << left << "Galutinis (" << pazymiotipas << ".)" << endl;
             cout << "-------------------------------------------------" << endl;
             for (int i = 0; i < Vec1.size(); i++)
@@ -251,7 +251,7 @@ int main() {
         }
         else if (duomenuIvedimoBudas == 2) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas"
-                << setw(20) << left << "Galutinis (Vid.)" 
+                << setw(20) << left << "Galutinis (Vid.)"
                 << setw(10) << left << "Galutinis (Med.)" << endl;
             cout << "-------------------------------------------------------------" << endl;
             for (int i = 0; i < Vec1.size(); i++)
