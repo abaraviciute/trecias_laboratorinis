@@ -38,9 +38,10 @@ Studentų galutinio pažymio skaičiavimo programa.
 |RAM                 | 8 GB                                 | 16 GB                           |
 |Saugykla            | Virtualus diskas SSD                 | 512 GB SSD                      |
 |VMware Version      | VMware Fusion 13                     | -                               |  
+  
 
-
-![Failų generavimo laikai](pradineVersija/generavimas.png)
+  
+![Failų generavimo laikai](generavimas.png)
 
 Pateiktas testavimų vidurkis:
 
