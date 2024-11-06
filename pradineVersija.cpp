@@ -246,7 +246,7 @@ int main() {
             sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
             auto pradzia = high_resolution_clock::now();
-            studentoKategorija(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
+            studentoKategorija1(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
             auto pabaiga = high_resolution_clock::now();
             trukmeRusiavimo = pabaiga - pradzia;
 
@@ -256,7 +256,7 @@ int main() {
             studentaiList.sort(rusiavimas);
 
             auto pradzia = high_resolution_clock::now();
-            studentoKategorija(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
+            studentoKategorija1(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
             auto pabaiga = high_resolution_clock::now();
             trukmeRusiavimo = pabaiga - pradzia;
 

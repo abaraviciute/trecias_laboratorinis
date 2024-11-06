@@ -98,7 +98,7 @@ double rezultatai(const Studentas& Lok, const string& pasirinkimas)
     return 0;
 }
 
-void isvestis(Studentas Lok, int ivestiesPasirinkimas)
+void isvestis(const Studentas& Lok, int ivestiesPasirinkimas)
 {
     if (ivestiesPasirinkimas == 1) {
         cout << setw(15) << left << Lok.pavarde << setw(15) << left << Lok.vardas
@@ -214,7 +214,7 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 }
 
 template <typename Struktura>
-void studentoKategorija(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
+void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
 {
     for (const auto& studentas : struktura) {
         if ((duomenuIvedimoBudas == 2 && studentas.galutinisPazymysVid >= 5) ||
@@ -274,7 +274,7 @@ void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai,
 
 template int ivestisIsFailo<vector<Studentas>>(const string& failas, vector<Studentas>& struktura);
 template int ivestisIsFailo<list<Studentas>>(const string& failas, list<Studentas>& struktura);
-template void studentoKategorija<vector<Studentas>>(const vector<Studentas> &struktura, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai);
-template void studentoKategorija<list<Studentas>>(const list<Studentas>& struktura, int duomenuIvedimoBudas, list<Studentas>& galvociai, list<Studentas>& nuskriaustukai);
+template void studentoKategorija1<vector<Studentas>>(const vector<Studentas> &struktura, int duomenuIvedimoBudas, vector<Studentas>& galvociai, vector<Studentas>& nuskriaustukai);
+template void studentoKategorija1<list<Studentas>>(const list<Studentas>& struktura, int duomenuIvedimoBudas, list<Studentas>& galvociai, list<Studentas>& nuskriaustukai);
 template void isvestisIFaila<vector<Studentas>>(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
 template void isvestisIFaila<list<Studentas>>(const list<Studentas>& galvociai, const list<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
