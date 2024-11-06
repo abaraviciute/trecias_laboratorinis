@@ -15,6 +15,7 @@ int main() {
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
     int rezultataiArTyrimas  = 0;
     int konteineris;
+    int strategija = 0;
 
     while (true) {
         try {
@@ -61,6 +62,27 @@ int main() {
     
 
     if (duomenuIvedimoBudas == 2) {
+        while (true) {
+            try {
+                cout << "Iveskite, kokia bus studentu rusiavimo strategija: \n";
+                cout << "\"1\" 1 strategija (nuskriaustukai ir galvociai)\n";
+                cout << "\"2\" 2 strategija (nuskriaustukai ir studentu failas tik su galvociais)\n";
+                cout << "\"3\" 3 strategija (efektyviausia strategija)\n";
+
+                cin >> strategija;
+
+                if ((strategija != 1 && strategija != 2 && strategija != 3) || cin.fail()) {
+                    cin.clear();
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                    throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\", arba \"3\".\n");
+                }
+                break;
+            }
+            catch (const invalid_argument& e) {
+                cout << e.what();
+            }
+        }
+
         while (true) {
             try {
                 cout << "Iveskite, kokia tvarka rikiuoti pazymius: \n";
@@ -245,24 +267,27 @@ int main() {
         if (naudotiVektoriu) {
             sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
-            auto pradzia = high_resolution_clock::now();
-            studentoKategorija1(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
-            auto pabaiga = high_resolution_clock::now();
-            trukmeRusiavimo = pabaiga - pradzia;
+            if (strategija == 1) {
+                auto pradzia = high_resolution_clock::now();
+                studentoKategorija1(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
+                auto pabaiga = high_resolution_clock::now();
+                trukmeRusiavimo = pabaiga - pradzia;
+            }
 
             isvestisIFaila(galvociaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
         }
         else {
             studentaiList.sort(rusiavimas);
 
-            auto pradzia = high_resolution_clock::now();
-            studentoKategorija1(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
-            auto pabaiga = high_resolution_clock::now();
-            trukmeRusiavimo = pabaiga - pradzia;
+            if (strategija == 1) {
+                auto pradzia = high_resolution_clock::now();
+                studentoKategorija1(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
+                auto pabaiga = high_resolution_clock::now();
+                trukmeRusiavimo = pabaiga - pradzia;
+            }
 
             isvestisIFaila(galvociaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
         }
-        
 
     }
 
