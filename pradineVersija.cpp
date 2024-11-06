@@ -16,6 +16,7 @@ int main() {
     int rezultataiArTyrimas  = 0;
     int konteineris;
     int strategija = 0;
+    vector<string> failai;
 
     while (true) {
         try {
@@ -221,7 +222,7 @@ int main() {
         auto pradzia = high_resolution_clock::now();
 
         try {
-            vector<string> failai = {
+            failai = {
                 "kursiokai.txt",
                 "studentai10000.txt",
                 "studentai100000.txt",
@@ -275,7 +276,7 @@ int main() {
             }
             else if (strategija == 2) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija2(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
+                studentoKategorija2(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector, galvociaiVector);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
             }
@@ -293,7 +294,7 @@ int main() {
             }
             else if (strategija == 2) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList);
+                studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList, galvociaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
             }
