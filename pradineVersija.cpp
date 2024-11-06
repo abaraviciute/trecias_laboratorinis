@@ -54,14 +54,7 @@ int main() {
                 cout << e.what();
             }
         }
-    }
-        vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
-        list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
 
-        bool naudotiVektoriu = (konteineris == 1);
-    
-
-    if (duomenuIvedimoBudas == 2) {
         while (true) {
             try {
                 cout << "Iveskite, kokia bus studentu rusiavimo strategija: \n";
@@ -82,7 +75,14 @@ int main() {
                 cout << e.what();
             }
         }
+    }
+        vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
+        list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
 
+        bool naudotiVektoriu = (konteineris == 1);
+    
+
+    if (duomenuIvedimoBudas == 2) {
         while (true) {
             try {
                 cout << "Iveskite, kokia tvarka rikiuoti pazymius: \n";
