@@ -273,6 +273,12 @@ int main() {
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
             }
+            else if (strategija == 2) {
+                auto pradzia = high_resolution_clock::now();
+                studentoKategorija2(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
+                auto pabaiga = high_resolution_clock::now();
+                trukmeRusiavimo = pabaiga - pradzia;
+            }
 
             isvestisIFaila(galvociaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
         }
@@ -282,6 +288,12 @@ int main() {
             if (strategija == 1) {
                 auto pradzia = high_resolution_clock::now();
                 studentoKategorija1(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
+                auto pabaiga = high_resolution_clock::now();
+                trukmeRusiavimo = pabaiga - pradzia;
+            }
+            else if (strategija == 2) {
+                auto pradzia = high_resolution_clock::now();
+                studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
             }
