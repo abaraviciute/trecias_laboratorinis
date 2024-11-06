@@ -231,7 +231,8 @@ template <typename Struktura>
 void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai, Struktura& galvociai) 
 {
     for (auto it = struktura.begin(); it != struktura.end();) {
-        if (it->galutinisPazymysVid < 5) {
+        if ((duomenuIvedimoBudas == 2 && it->galutinisPazymysVid < 5) ||
+            (duomenuIvedimoBudas != 2 && it->galutinisPazymys < 5)) {
             nuskriaustukai.push_back(*it);
             it = struktura.erase(it);
         }
