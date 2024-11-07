@@ -243,6 +243,18 @@ void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktur
 }
 
 template <typename Struktura>
+void studentoKategorija3(Struktura& struktura, Struktura& nuskriaustukai) 
+{
+    auto it = remove_if(struktura.begin(), struktura.end(), [](const Studentas& studentas) {
+        return studentas.galutinisPazymysVid < 5;
+        });
+
+    nuskriaustukai.insert(nuskriaustukai.end(), it, struktura.end());
+
+    struktura.erase(it, struktura.end());
+}
+
+template <typename Struktura>
 void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
     ofstream ived(failas);
     if (!ived) {
@@ -293,6 +305,8 @@ template void studentoKategorija1<vector<Studentas>>(const vector<Studentas> &st
 template void studentoKategorija1<list<Studentas>>(const list<Studentas>& struktura, int duomenuIvedimoBudas, list<Studentas>& galvociai, list<Studentas>& nuskriaustukai);
 template void studentoKategorija2<vector<Studentas>>(vector<Studentas>& struktura, int duomenuIvedimoBudas, vector<Studentas>& nuskriaustukai);
 template void studentoKategorija2<list<Studentas>>(list<Studentas>& struktura, int duomenuIvedimoBudas, list<Studentas>& nuskriaustukai);
+template void studentoKategorija3<vector<Studentas>>(vector<Studentas>& struktura, vector<Studentas>& nuskriaustukai);
+template void studentoKategorija3<list<Studentas>>(list<Studentas>& struktura, list<Studentas>& nuskriaustukai);
 template void isvestisIFaila<vector<Studentas>>(const vector<Studentas>& galvociai, const vector<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
 template void isvestisIFaila<list<Studentas>>(const list<Studentas>& galvociai, const list<Studentas>& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);
 

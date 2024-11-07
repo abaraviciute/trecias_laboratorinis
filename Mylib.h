@@ -47,4 +47,4 @@ using std::uniform_int_distribution;
 using std::exit;
 using std::list;
 using std::conditional_t;
-using std::ios;
+using std::remove_if;

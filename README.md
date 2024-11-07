@@ -72,13 +72,17 @@ S3 - 3 strategija.
 |               |Įrašymas galvociai.txt     |4.64819 s        |4.82819 s       |4.806655 s       |4.9353 s        |     |    |
 |               |Įrašymas nuskriaustukai.txt|3.29679 s        |3.35625 s       |3.346625 s       |3.4494 s        |     |    |
 |               |Bendras veikimo laikas     |18.0195 s        |18.038 s        |117.953 s        |18.2429 s       |     |    |
-|10000000       |Nuskaitymas                |101.191 s        |99.2413 s       |97.0472 s        |95.1244 s       |     |    |
-|               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |1000.948 s       |5.544398 s      |     |    |
-|               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |48.06655 s       |48.1287 s       |     |    |
-|               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |33.46625 s       |33.8456 s       |     |    |
-|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |1179.53 s        |181.577 s       |     |    |  
+|10000000       |Nuskaitymas                |101.191 s        |99.2413 s       |97.0472 s        |98.9798 s       |     |    |
+|               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |1000.948 s       |4.45889 s       |     |    |
+|               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |48.06655 s       |49.1071 s       |     |    |
+|               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |33.46625 s       |33.9666 s       |     |    |
+|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |1179.53 s        |186.512 s       |     |    |  
 
 Išvados:
-- vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+- 1 strategijos atveju vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+- 2 strategijos atveju list konteineriuose talpinami duomenys buvo apdorojami greičiau nei vector (trynimo operacija vector kont. brangi laiko atžvilgiu);
+- list konteinerių dalijimas į dvi grupes 1 strategijos atveju vyksta neženkliai lėčiau nei 2 strategijos atveju;
+- vector konteinerių dalijimas į dvi grupes 1 strategijos atveju vyksta keliskart greičiau nei 2 strategijos atveju;
+- 2 strategijos tobulinimas naudojant std::remove_if algoritmą leido pasiekti efektyviausią rūšiavimą abiems konteineriams (3 strategija);
 - list konteineriai greičiau dalijami į dvi grupes kai dirbama su mažesniais failais;
 - bendru atveju spartos skirtumas tarp vector ir list konteinerių nėra didelis.
