@@ -147,6 +147,7 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
     }
 
     inFile.close();
+    return 0;
 }
 
 bool rusiavimas(const Studentas& Lok1, const Studentas& Lok2)
@@ -263,9 +264,14 @@ void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktur
 
 void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBudas, vector<Studentas>& nuskriaustukai)
 {
-    auto condition = (duomenuIvedimoBudas == 2)
-        ? [](const Studentas& studentas) { return studentas.galutinisPazymysVid < 5; }
-    : [](const Studentas& studentas) { return studentas.galutinisPazymys < 5; };
+    function<bool(const Studentas&)> condition;
+
+    if (duomenuIvedimoBudas == 2) {
+        condition = [](const Studentas& studentas) { return studentas.galutinisPazymysVid < 5; };
+    }
+    else {
+        condition = [](const Studentas& studentas) { return studentas.galutinisPazymys < 5; };
+    }
 
     auto it = partition(struktura.begin(), struktura.end(), [condition](const Studentas& studentas) {
         return !condition(studentas);

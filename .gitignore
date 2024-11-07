@@ -108,3 +108,14 @@ _ReSharper*/
 *.swp
 *.swo
 *.DS_Store
+
+# Ignore txt test files
+src/kursiokai.txt
+src/studentai_1000.txt
+src/studentai_10000.txt
+src/studentai_100000.txt
+src/studentai_1000000.txt
+src/studentai_10000000.txt
+src/studentai10000.txt
+src/studentai100000.txt
+src/studentai1000000.txt
