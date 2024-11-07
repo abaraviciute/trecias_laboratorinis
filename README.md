@@ -13,6 +13,13 @@
 |VMware Version      | VMware Fusion 13                     | -                               |  
  
 
+## Diegimas ir paleidimas
+
+1. Atsisiųsti: Include, src, CMakeLists.txt, run.bat aplankus ir failus.
+2. Atsisiųstus aplankus ir failus sudėti į vieną aplanką.
+3. Paleisti run.bat failą.
+4. Aplanke atsiradusiame Debug aplanke randamas .exe failas Studentu_skaiciuokle.exe paruoštas naudoti.
+
 
 
 # v0.1 release
