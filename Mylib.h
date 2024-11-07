@@ -50,3 +50,6 @@ using std::list;
 using std::conditional_t;
 using std::partition;
 using std::function;
+using std::copy_if;
+using std::remove_if;
+using std::back_inserter;

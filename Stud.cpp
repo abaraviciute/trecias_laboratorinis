@@ -261,6 +261,21 @@ void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktur
     struktura.erase(it, struktura.end());
 }
 
+void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBudas, vector<Studentas>& nuskriaustukai)
+{
+    auto condition = (duomenuIvedimoBudas == 2)
+        ? [](const Studentas& studentas) { return studentas.galutinisPazymysVid < 5; }
+    : [](const Studentas& studentas) { return studentas.galutinisPazymys < 5; };
+
+    auto it = partition(struktura.begin(), struktura.end(), [condition](const Studentas& studentas) {
+        return !condition(studentas);
+        });
+
+    nuskriaustukai.insert(nuskriaustukai.end(), it, struktura.end());
+
+    struktura.erase(it, struktura.end());
+}
+
 template <typename Struktura>
 void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
     ofstream ived(failas);

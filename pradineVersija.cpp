@@ -17,6 +17,7 @@ int main() {
     int konteineris;
     int strategija = 0;
     vector<string> failai;
+    int vektoriausSkirst;
 
     while (true) {
         try {
@@ -59,8 +60,8 @@ int main() {
         while (true) {
             try {
                 cout << "Iveskite, kokia bus studentu rusiavimo strategija: \n";
-                cout << "\"1\" 1 strategija (nuskriaustukai ir galvociai)\n";
-                cout << "\"2\" 2 strategija (nuskriaustukai ir studentu failas tik su galvociais)\n";
+                cout << "\"1\" 1 strategija (du konteineriai)\n";
+                cout << "\"2\" 2 strategija (nuskriaustuku konteineris + studentu konteineris be nuskriaustuku)\n";
                 cout << "\"3\" 3 strategija (efektyviausia strategija)\n";
 
                 cin >> strategija;
@@ -74,6 +75,28 @@ int main() {
             }
             catch (const invalid_argument& e) {
                 cout << e.what();
+            }
+        }
+
+        if (strategija == 3) {
+            while (true) {
+                try {
+                    cout << "Iveskite, kaip skirstyti i dvi grupes: \n";
+                    cout << "\"1\" Fiksuota funkcija vektoriui\n";
+                    cout << "\"2\" Universalia funkcija\n";
+
+                    cin >> vektoriausSkirst;
+
+                    if ((vektoriausSkirst != 1 && vektoriausSkirst != 2 ) || cin.fail()) {
+                        cin.clear();
+                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+                        throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\" arba \"2\".\n");
+                    }
+                    break;
+                }
+                catch (const invalid_argument& e) {
+                    cout << e.what();
+                }
             }
         }
     }
@@ -286,9 +309,17 @@ int main() {
 
                 isvestisIFaila(studentaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
-            else if (strategija == 3) {
+            else if (strategija == 3 && vektoriausSkirst == 2) {
                 auto pradzia = high_resolution_clock::now();
                 studentoKategorija3(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
+                auto pabaiga = high_resolution_clock::now();
+                trukmeRusiavimo = pabaiga - pradzia;
+
+                isvestisIFaila(studentaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+            }
+            else if (strategija == 3 && vektoriausSkirst == 1) {
+                auto pradzia = high_resolution_clock::now();
+                studentoKategorijaVector(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
 
