@@ -273,15 +273,17 @@ int main() {
                 studentoKategorija1(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
+
+                isvestisIFaila(galvociaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
             else if (strategija == 2) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija2(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector, galvociaiVector);
+                studentoKategorija2(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
-            }
 
-            isvestisIFaila(galvociaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+                isvestisIFaila(studentaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+            }
         }
         else {
             studentaiList.sort(rusiavimas);
@@ -291,15 +293,17 @@ int main() {
                 studentoKategorija1(studentaiList, duomenuIvedimoBudas, galvociaiList, nuskriaustukaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
+
+                isvestisIFaila(galvociaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
             else if (strategija == 2) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList, galvociaiList);
+                studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
-            }
 
-            isvestisIFaila(galvociaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+                isvestisIFaila(studentaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
+            }
         }
 
     }

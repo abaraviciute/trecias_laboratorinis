@@ -45,39 +45,38 @@ Studentų galutinio pažymio skaičiavimo programa.
 
 Pateiktas testavimų vidurkis:
 
-1000 įrašų įrašymo į failą laikas: 0.00891588 s  
-10000 įrašų įrašymo į failą laikas: 0.0606197 s  
-100000 įrašų įrašymo į failą laikas: 0.529976 s  
-1000000 įrašų įrašymo į failą laikas: 5.06744 s  
-10000000 įrašų įrašymo į failą laikas: 50.9319 s  
+S1 - 1 strategija,
+S2 - 2 strategija,
+S3 - 3 strategija.
+ 
 
-|Failo eilučių  |Kriterijus                 |Vector laikas    |List laikas     |
-|---------------|---------------------------|-----------------|----------------|
-|1000           |Nuskaitymas                |0.0113095 s      |0.0138963 s     |
-|               |Dalijimas į dvi grupes     |0.00056075 s     |0.000387625 s   |
-|               |Įrašymas galvociai.txt     |0.00555825 s     |0.00592483 s    |
-|               |Įrašymas nuskriaustukai.txt|0.00374054 s     |0.00366213 s    |
-|               |Bendras veikimo laikas     |0.021169 s       |0.0238708 s     |
-|10000          |Nuskaitymas                |0.10496 s        |0.125007 s      |
-|               |Dalijimas į dvi grupes     |0.00449438 s     |0.00265867 s    |
-|               |Įrašymas galvociai.txt     |0.0474353 s      |0.0482639 s     |
-|               |Įrašymas nuskriaustukai.txt|0.0379377 s      |0.0340268 s     |
-|               |Bendras veikimo laikas     |0.194827 s       |0.209956 s      |
-|100000         |Nuskaitymas                |0.962287 s       |0.960303 s      |
-|               |Dalijimas į dvi grupes     |0.0254281 s      |0.0367531 s     |
-|               |Įrašymas galvociai.txt     |0.496531 s       |0.510438 s      |
-|               |Įrašymas nuskriaustukai.txt|0.344024 s       |0.342789 s      |
-|               |Bendras veikimo laikas     |1.82827 s        |1.85028 s       |
-|1000000        |Nuskaitymas                |9.57618 s        |9.45731 s       |
-|               |Dalijimas į dvi grupes     |0.498318 s       |0.396237 s      |
-|               |Įrašymas galvociai.txt     |4.64819 s        |4.82819 s       |
-|               |Įrašymas nuskriaustukai.txt|3.29679 s        |3.35625 s       |
-|               |Bendras veikimo laikas     |18.0195 s        |18.038 s        |
-|10000000       |Nuskaitymas                |101.191 s        |99.2413 s       |
-|               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |
-|               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |
-|               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |
-|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |  
+|Failo eilučių  |Kriterijus                 |S1 Vector laikas |S1 List laikas  |S2 Vector laikas |S2 List laikas  |S3 Vector laikas |S3 List laikas  |
+|---------------|---------------------------|-----------------|----------------|-----------------|----------------|-----------------|----------------|
+|1000           |Nuskaitymas                |0.0113095 s      |0.0138963 s     |0.0128903 s      |0.0114 s        |     |    |
+|               |Dalijimas į dvi grupes     |0.00056075 s     |0.000387625 s   |0.0011806 s      |0.000175 s      |     |    |
+|               |Įrašymas galvociai.txt     |0.00555825 s     |0.00592483 s    |0.0058243 s      |0.0057 s        |     |    |
+|               |Įrašymas nuskriaustukai.txt|0.00374054 s     |0.00366213 s    |0.0040350 s      |0.0040 s        |     |    |
+|               |Bendras veikimo laikas     |0.021169 s       |0.0238708 s     |0.0239302 s      |0.0213 s        |     |    |
+|10000          |Nuskaitymas                |0.10496 s        |0.125007 s      |0.115564 s       |0.1047 s        |     |    |
+|               |Dalijimas į dvi grupes     |0.00449438 s     |0.00265867 s    |0.103454 s       |0.0027 s        |     |    |
+|               |Įrašymas galvociai.txt     |0.0474353 s      |0.0482639 s     |0.0470380 s      |0.0511 s        |     |    |
+|               |Įrašymas nuskriaustukai.txt|0.0379377 s      |0.0340268 s     |0.0360647 s      |0.0351 s        |     |    |
+|               |Bendras veikimo laikas     |0.194827 s       |0.209956 s      |0.302121 s       |0.1936 s        |     |    |
+|100000         |Nuskaitymas                |0.962287 s       |0.960303 s      |0.970482 s       |0.9570 s        |     |    |
+|               |Dalijimas į dvi grupes     |0.0254281 s      |0.0367531 s     |10.00948 s       |0.0182 s        |     |    |
+|               |Įrašymas galvociai.txt     |0.496531 s       |0.510438 s      |0.480666 s       |0.5062 s        |     |    |
+|               |Įrašymas nuskriaustukai.txt|0.344024 s       |0.342789 s      |0.334662 s       |0.3516 s        |     |    |
+|               |Bendras veikimo laikas     |1.82827 s        |1.85028 s       |11.7953 s        |1.8329 s        |     |    |
+|1000000        |Nuskaitymas                |9.57618 s        |9.45731 s       |9.70472 s        |9.5409 s        |     |    |
+|               |Dalijimas į dvi grupes     |0.498318 s       |0.396237 s      |100.0948 s       |0.3173 s        |     |    |
+|               |Įrašymas galvociai.txt     |4.64819 s        |4.82819 s       |4.806655 s       |4.9353 s        |     |    |
+|               |Įrašymas nuskriaustukai.txt|3.29679 s        |3.35625 s       |3.346625 s       |3.4494 s        |     |    |
+|               |Bendras veikimo laikas     |18.0195 s        |18.038 s        |117.953 s        |18.2429 s       |     |    |
+|10000000       |Nuskaitymas                |101.191 s        |99.2413 s       |97.0472 s        |95.1244 s       |     |    |
+|               |Dalijimas į dvi grupes     |4.53757 s        |5.69798 s       |1000.948 s       |5.544398 s      |     |    |
+|               |Įrašymas galvociai.txt     |46.4808 s        |48.4736 s       |48.06655 s       |48.1287 s       |     |    |
+|               |Įrašymas nuskriaustukai.txt|32.7055 s        |33.2447 s       |33.46625 s       |33.8456 s       |     |    |
+|               |Bendras veikimo laikas     |184.915 s        |186.658 s       |1179.53 s        |181.577 s       |     |    |  
 
 Išvados:
 - vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
