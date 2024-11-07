@@ -1,35 +1,8 @@
-# v0.3 release
-
-Studentų galutinio pažymio skaičiavimo programa.
-
 ## Struktūra:
 - pradineVersija.cpp pagrindinis vykdomasis taškas;
 - Mylib.h bibliotekų failas;
 - Stud.h studentų struktūros bei funkcijų deklaracijų failas;
-- Stud.cpp funkcijų failas.
-
-## Sukurtos funkcijos:
-- ivestis() - duomenims įvesti ranka arba generuoti atsitiktinai;
-- isvestisIsFailo() - duomenims nuskaityti iš .txt failo;
-- rusiavimas() - studentų pavardėms rūšiuoti abėcėlės tvarka;
-- rezultatai() - galutiniam pažymiui skaičiuoti;
-- isvestis() - studentų pavardei, vardui bei galutiniam pažymiui išvesti;
-- generuotiFaila() - generuoti atsitiktinių studentų duomenų .txt failą;
-- studentoKategorija() - išskiria studentus į dvi grupes pagal galutinį pažymį;
-- isvestisIFaila() - į dvi grupes padalinti studentai išvedami į .txt failą.
-
-## Funkcionalumas:
-- galima studento duomenų įvestis terminale arba .txt failo nuskaitymas;
-- pasirinkimas tarp keleto galimų nuskaityti failų;
-- galimybė įvesti pažymius ranka arba generuoti atsitiktinai;
-- neapribotas namų darbų pažymių įvedimo skaičius;
-- pranešimai apie įvesties klaidas ir galimybė įvesti paskutinį vestą rodmenį naujai (exception handling);
-- galimybė generuoti 5 skirtingo dydžio .txt failus su atsitiktiniais studentų duomenimis;
-- studentų padalijimas į dvi grupes pagal galutinį pažymį, jų išvedimas į atskirus .txt failus;
-- programos veikimo spartos analizė;
-- galimybė pasirinkti konteinerį duomenims saugoti (list/vector).
-
-## Spartos analizė:
+- Stud.cpp funkcijų failas.  
 
 |Parametras          |Virtual Machine (Windows 11)          |Host Machine (MacBook)           |
 |--------------------|--------------------------------------|---------------------------------|
@@ -38,7 +11,83 @@ Studentų galutinio pažymio skaičiavimo programa.
 |RAM                 | 8 GB                                 | 16 GB                           |
 |Saugykla            | Virtualus diskas SSD                 | 512 GB SSD                      |
 |VMware Version      | VMware Fusion 13                     | -                               |  
-  
+ 
+
+
+
+# v0.1 release
+
+## Sukurtos funkcijos:
+- ivestis() - duomenims įvesti ranka arba generuoti atsitiktinai;
+- isvestisIsFailo() - duomenims nuskaityti iš .txt failo;
+- rusiavimas() - studentų pavardėms rūšiuoti abėcėlės tvarka;
+- rezultatai() - galutiniam pažymiui skaičiuoti;
+- isvestis() - studentų pavardei, vardui bei galutiniam pažymiui išvesti.
+
+## Funkcionalumas:
+- galima studento duomenų įvestis terminale arba .txt failo nuskaitymas;
+- pasirinkimas tarp keleto galimų nuskaityti failų;
+- galimybė įvesti pažymius ranka arba generuoti atsitiktinai;
+- neapribotas namų darbų pažymių įvedimo skaičius;
+- pranešimai apie įvesties klaidas ir galimybė įvesti paskutinį vestą rodmenį naujai (exeption handling).  
+
+# v0.2 release
+
+## Naujos funkcijos:
+- generuotiFaila() - generuoti atsitiktinių studentų duomenų .txt failą;
+- studentoKategorija() - išskiria studentus į dvi grupes pagal galutinį pažymį;
+- isvestisIFaila() - į dvi grupes padalinti studentai išvedami į .txt failą.  
+
+## Naujas funkcionalumas:
+- galimybė generuoti 5 skirtingo dydžio .txt failus su atsitiktiniais studentų duomenimis;
+- studentų padalijimas į dvi grupes pagal galutinį pažymį, jų išvedimas į atskirus .txt failus;
+- programos veikimo spartos analizė.
+
+## Spartos analizė:
+Pateiktas testavimų vidurkis:
+
+|Failo eilučių |Nuskaitymas |Dalijimas į dvi grupes |Įrašymas galvociai.txt |Įrašymas nuskriaustukai.txt |Bendras veikimo laikas |Įrašymas į failą |
+|--------------|------------|-----------------------|-----------------------|----------------------------|-----------------------|-----------------|
+|1000          |0.02131653 s|0.00059168 s           |0.00992062 s           |0.00620507 s                |0.03803327 s           |0.0183877 s      |
+|10000         |0.144208 s  |0.00439836 s           |0.0588816 s            |0.04473393 s                |0.25155567 s           |0.1003 s         |
+|100000        |1.36194 s   |0.03765913 s           |0.5736883 s            |0.4084937 s                 |2.38045 s              |0.8448273 s      |
+|1000000       |13.5593 s   |0.4072613 s            |5.66804 s              |4.02833 s                   |23.6636 s              |8.14784 s        |
+|10000000      |137.6157 s  |6.3477 s               |55.94437 s             |39.38567 s                  |239.293 s              |80.41363 s       |  
+
+
+
+
+# v0.3 release
+
+## Naujas funkcionalumas:
+- galimybė pasirinkti konteinerį duomenims saugoti (list/vector).
+
+## Spartos analizė:
+
+Prie v1.0 release S1 Vector ir S1 List stulpeliai.
+
+Išvados:
+- vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+- list konteineriai greičiau dalijami į dvi grupes kai dirbama su mažesniais failais;
+- bendru atveju spartos skirtumas tarp vector ir list konteinerių nėra didelis.
+
+
+
+
+# v1.0 release
+
+Studentų galutinio pažymio skaičiavimo programa.
+
+## Naujos funkcijos:
+- studentoKategorija1() - išskiria studentus į dvi grupes (du naujus konteinerius galvociai ir nuskriaustukai);
+- studentoKategorija2() - išskiria studentus į dvi grupes (naują konteinerį nuskriaustukai ir studentų konteinerį be nuskriaustukų);
+- studentoKategorija3() - išskiria studentus į dvi grupes (studentoKategorija2() pagreitinta std::partition algoritmu);
+- studentoKategorijaVector() - išskiria studentus į dvi grupes (studentoKategorija2() pagreitinta std::partition algoritmu, skirta tik vector konteineriams).
+
+## Naujas funkcionalumas:
+- galimybė pasirinkti duomenų rūšiavimo į dvi grupes strategiją.
+
+## Spartos analizė: 
 
   
 ![Failų generavimo laikai](generavimas.png)
@@ -86,5 +135,4 @@ Išvados:
 - 2 strategijos tobulinimas naudojant std::partition algoritmą leido pasiekti efektyviausią rūšiavimą abiems konteineriams (3 strategija);
 - 3 strategijos atveju list konteinerių dalijimas į dvi grupes vyksta nežymiai lėčiau nei 2 strategijos atveju, tačiau darbas su vector konteineriais yra keliskart greitesnis, todėl darbas 3 strategijos atveju atliekamas efektyviai;
 - strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei kitos strategijos, tačiau visos programos veikimo laikas yra ilgesnis nei 1 ar 2 strategijų;
-- list konteineriai greičiau dalijami į dvi grupes kai dirbama su mažesniais failais;
 - pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> 3 strategija -> fiksuoto vector (greičiausia).
