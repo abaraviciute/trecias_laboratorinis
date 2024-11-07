@@ -14,6 +14,7 @@
 #include <random>
 #include <limits>
 #include <list>
+#include <functional>
 
 using std::cout;
 using std::cin;
@@ -47,4 +48,5 @@ using std::uniform_int_distribution;
 using std::exit;
 using std::list;
 using std::conditional_t;
-using std::remove_if;
+using std::partition;
+using std::function;

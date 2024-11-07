@@ -25,6 +25,6 @@ void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, St
 template <typename Struktura>
 void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai);
 template <typename Struktura>
-void studentoKategorija3(Struktura& struktura, Struktura& nuskriaustukai);
+void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai);
 template <typename Struktura>
 void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku);

@@ -77,8 +77,8 @@ int main() {
             }
         }
     }
-        vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector;
-        list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList;
+        vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector, studentaiVectorVisas;
+        list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList, studentaiListVisas;
 
         bool naudotiVektoriu = (konteineris == 1);
     
@@ -268,6 +268,8 @@ int main() {
         if (naudotiVektoriu) {
             sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
+            studentaiVectorVisas = studentaiVector;
+
             if (strategija == 1) {
                 auto pradzia = high_resolution_clock::now();
                 studentoKategorija1(studentaiVector, duomenuIvedimoBudas, galvociaiVector, nuskriaustukaiVector);
@@ -286,7 +288,7 @@ int main() {
             }
             else if (strategija == 3) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija3(studentaiVector, nuskriaustukaiVector);
+                studentoKategorija3(studentaiVector, duomenuIvedimoBudas, nuskriaustukaiVector);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
 
@@ -295,6 +297,8 @@ int main() {
         }
         else {
             studentaiList.sort(rusiavimas);
+
+            studentaiListVisas = studentaiList;
 
             if (strategija == 1) {
                 auto pradzia = high_resolution_clock::now();
@@ -314,7 +318,7 @@ int main() {
             }
             else if (strategija == 3) {
                 auto pradzia = high_resolution_clock::now();
-                studentoKategorija3(studentaiList, nuskriaustukaiList);
+                studentoKategorija3(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
 
@@ -333,11 +337,11 @@ int main() {
                 << setw(17) << left << "Adresas" << endl;
             cout << "-------------------------------------------------------------" << endl;
             if (naudotiVektoriu) {
-                for (const auto& studentas : studentaiVector)
+                for (const auto& studentas : studentaiVectorVisas)
                     isvestis(studentas, duomenuIvedimoBudas);
             }
             else {
-                for (const auto& studentas : studentaiList)
+                for (const auto& studentas : studentaiListVisas)
                     isvestis(studentas, duomenuIvedimoBudas);
             }
 
@@ -348,11 +352,11 @@ int main() {
                 << setw(20) << left << "Galutinis (Med.)" << endl;
             cout << "-------------------------------------------------------------" << endl;
             if (naudotiVektoriu) {
-                for (const auto& studentas : studentaiVector)
+                for (const auto& studentas : studentaiVectorVisas)
                     isvestis(studentas, duomenuIvedimoBudas);
             }
             else {
-                for (const auto& studentas : studentaiList)
+                for (const auto& studentas : studentaiListVisas)
                     isvestis(studentas, duomenuIvedimoBudas);
             }
         }
