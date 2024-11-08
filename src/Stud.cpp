@@ -229,17 +229,38 @@ void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, St
 }
 
 template <typename Struktura>
-void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai) 
+void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai)
 {
-    for (auto it = struktura.begin(); it != struktura.end();) {
-        if ((duomenuIvedimoBudas == 2 && it->galutinisPazymysVid < 5) ||
-            (duomenuIvedimoBudas != 2 && it->galutinisPazymys < 5)) {
-            nuskriaustukai.push_back(*it);
-            it = struktura.erase(it);
-        }
-        else {
-            ++it;
-        }
+    if constexpr (is_same_v<Struktura, vector<typename Struktura::value_type>>) {
+
+        sort(struktura.begin(), struktura.end(),
+            [duomenuIvedimoBudas](const auto& a, const auto& b) {
+                if (duomenuIvedimoBudas == 2) {
+                    return a.galutinisPazymysVid > b.galutinisPazymysVid;
+                }
+                else {
+                    return a.galutinisPazymys > b.galutinisPazymys;
+                }
+            });
+    }
+    else if constexpr (is_same_v<Struktura, list<typename Struktura::value_type>>) {
+
+        struktura.sort(
+            [duomenuIvedimoBudas](const auto& a, const auto& b) {
+                if (duomenuIvedimoBudas == 2) {
+                    return a.galutinisPazymysVid > b.galutinisPazymysVid;
+                }
+                else {
+                    return a.galutinisPazymys > b.galutinisPazymys;
+                }
+            });
+    }
+
+    while (!struktura.empty() &&
+        ((duomenuIvedimoBudas == 2 && struktura.back().galutinisPazymysVid < 5) ||
+            (duomenuIvedimoBudas != 2 && struktura.back().galutinisPazymys < 5))) {
+        nuskriaustukai.push_back(struktura.back());
+        struktura.pop_back();
     }
 }
 

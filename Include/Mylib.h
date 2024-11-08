@@ -15,6 +15,8 @@
 #include <limits>
 #include <list>
 #include <functional>
+#include <cstdlib> 
+#include <iterator>
 
 using std::cout;
 using std::cin;
@@ -52,4 +54,8 @@ using std::partition;
 using std::function;
 using std::copy_if;
 using std::remove_if;
+using std::back_inserter;
+using std::is_same_v;
+using std::remove_copy_if;
+using std::find_if;
 using std::back_inserter;

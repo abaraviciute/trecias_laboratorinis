@@ -17,7 +17,7 @@ int main() {
     int konteineris;
     int strategija = 0;
     vector<string> failai;
-    int vektoriausSkirst;
+    int vektoriausSkirst = 0;
 
     while (true) {
         try {
@@ -78,7 +78,7 @@ int main() {
             }
         }
 
-        if (strategija == 3) {
+        if (strategija == 3 && konteineris == 1) {
             while (true) {
                 try {
                     cout << "Iveskite, kaip skirstyti i dvi grupes: \n";
@@ -307,6 +307,9 @@ int main() {
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
 
+                sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
+                sort(nuskriaustukaiVector.begin(), nuskriaustukaiVector.end(), rusiavimas);
+
                 isvestisIFaila(studentaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
             else if (strategija == 3 && vektoriausSkirst == 2) {
@@ -344,6 +347,9 @@ int main() {
                 studentoKategorija2(studentaiList, duomenuIvedimoBudas, nuskriaustukaiList);
                 auto pabaiga = high_resolution_clock::now();
                 trukmeRusiavimo = pabaiga - pradzia;
+
+                studentaiList.sort(rusiavimas);
+                nuskriaustukaiList.sort(rusiavimas);
 
                 isvestisIFaila(studentaiList, nuskriaustukaiList, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
@@ -402,5 +408,8 @@ int main() {
         cout << "\n";
         cout << "Bendras programos veikimo laikas: " << trukmeNuskaitymo.count() + trukmeRusiavimo.count() + trukmeGalvociu.count() + trukmeNuskriaustuku.count() << endl;
     }
+
+    system("pause");
+
     return 0;
 }
