@@ -136,10 +136,10 @@ S3 - 3 strategija.
 
 Išvados:
 - 1 strategijos atveju vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
-- 2 strategijos atveju list konteineriuose talpinami duomenys buvo apdorojami greičiau nei vector (trynimo operacija vector kont. brangi laiko atžvilgiu);
-- list konteinerių dalijimas į dvi grupes 1 strategijos atveju vyksta neženkliai lėčiau nei 2 strategijos atveju;
-- vector konteinerių dalijimas į dvi grupes 1 strategijos atveju vyksta keliskart greičiau nei 2 strategijos atveju;
+- 2 strategijos atveju vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+- list konteinerių dalijimas į dvi grupes 2 strategijos atveju vyksta lėčiau nei 1 strategijos atveju dirbant su didesniais failais;
+- vector konteinerių dalijimas į dvi grupes 2 strategijos atveju vyksta lėčiau nei 1 strategijos atveju dirbant su didesniais failais;
 - 2 strategijos tobulinimas naudojant std::partition algoritmą leido pasiekti efektyviausią rūšiavimą abiems konteineriams (3 strategija);
-- 3 strategijos atveju list konteinerių dalijimas į dvi grupes vyksta nežymiai lėčiau nei 2 strategijos atveju, tačiau darbas su vector konteineriais yra keliskart greitesnis, todėl darbas 3 strategijos atveju atliekamas efektyviai;
-- strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei kitos strategijos, tačiau visos programos veikimo laikas yra ilgesnis nei 1 ar 2 strategijų;
-- pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> 3 strategija -> fiksuoto vector (greičiausia).
+- 3 strategijos atveju konteinerių dalijimas į dvi grupes vyksta greičiau nei 2 strategijos atveju, todėl darbas 3 strategijos atveju atliekamas efektyviausiai;
+- strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei 3 (greičiausia) strategija, kai failai yra mažesni;
+- pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> fiksuoto vector -> 3 strategija (greičiausia).
