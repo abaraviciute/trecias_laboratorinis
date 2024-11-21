@@ -169,16 +169,16 @@ Išvados:
 |        |               |Įrašymas į galvociai.txt      |5.65232 s         |4.762955 s       |
 |        |               |Įrašymas į nuskriaustukai.txt |3.97346 s         |3.46802 s        |
 |        |               |Bendras veikimo laikas        |23.7625 s         |18.97735 s       |
-|O3      |100000         |Nuskaitymas                   |1.35413 s         ||
-|        |               |Dalijimas į dvi grupes        |0.0134315 s       ||
-|        |               |Įrašymas į galvociai.txt      |0.5870425 s       ||
-|        |               |Įrašymas į nuskriaustukai.txt |0.441253 s        ||
-|        |               |Bendras veikimo laikas        |2.395855 s        ||
-|        |1000000        |Nuskaitymas                   |13.8041 s         ||
-|        |               |Dalijimas į dvi grupes        |0.1978815 s       ||
-|        |               |Įrašymas į galvociai.txt      |5.665575 s        ||
-|        |               |Įrašymas į nuskriaustukai.txt |3.91933 s         ||
-|        |               |Bendras veikimo laikas        |23.5869 s         ||  
+|O3      |100000         |Nuskaitymas                   |1.35413 s         |1.057755 s       |
+|        |               |Dalijimas į dvi grupes        |0.0134315 s       |0.01895225 s     |
+|        |               |Įrašymas į galvociai.txt      |0.5870425 s       |0.496599 s       |
+|        |               |Įrašymas į nuskriaustukai.txt |0.441253 s        |0.3546995 s      |
+|        |               |Bendras veikimo laikas        |2.395855 s        |1.928005 s       |
+|        |1000000        |Nuskaitymas                   |13.8041 s         |10.53145 s       |
+|        |               |Dalijimas į dvi grupes        |0.1978815 s       |0.1855985 s      |
+|        |               |Įrašymas į galvociai.txt      |5.665575 s        |4.69908 s        |
+|        |               |Įrašymas į nuskriaustukai.txt |3.91933 s         |3.39186 s        |
+|        |               |Bendras veikimo laikas        |23.5869 s         |18.80795 s       |  
 
 
 .exe failo dydis pagal flag'ą:
