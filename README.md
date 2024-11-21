@@ -185,6 +185,6 @@ Išvados:
 
 |Flag'as |struct  |class  |
 |--------|--------|-------|
-|O1      |504 KB  |505 KB |
-|O2      |504 KB  |505 KB |
-|O3      |504 KB  |505 KB |  
+|O1      |90 KB   |91 KB  |
+|O2      |99 KB   |104 KB |
+|O3      |100 KB  |105 KB |  
