@@ -147,36 +147,36 @@ Išvados:
 
 # v1.1 release
 
-|Flag'as |Failo eilučių  |Kriterijus                    |S3 Vector   |
-|--------|---------------|------------------------------|------------|
-|O1      |100000         |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
-|        |1000000        |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
-|O2      |100000         |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
-|        |1000000        |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
-|O3      |100000         |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
-|        |1000000        |Nuskaitymas                   ||
-|        |               |Dalijimas į dvi grupes        ||
-|        |               |Įrašymas į galvociai.txt      ||
-|        |               |Įrašymas į nuskriaustukai.txt ||
-|        |               |Bendras veikimo laikas        ||
+|Flag'as |Failo eilučių  |Kriterijus                    |S3 Vector struct  |S3 Vector class  |
+|--------|---------------|------------------------------|------------------|-----------------|
+|O1      |100000         |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
+|        |1000000        |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
+|O2      |100000         |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
+|        |1000000        |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
+|O3      |100000         |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
+|        |1000000        |Nuskaitymas                   |||
+|        |               |Dalijimas į dvi grupes        |||
+|        |               |Įrašymas į galvociai.txt      |||
+|        |               |Įrašymas į nuskriaustukai.txt |||
+|        |               |Bendras veikimo laikas        |||
 
