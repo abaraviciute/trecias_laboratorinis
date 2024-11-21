@@ -159,16 +159,16 @@ Išvados:
 |        |               |Įrašymas į galvociai.txt      |5.40397 s         ||
 |        |               |Įrašymas į nuskriaustukai.txt |3.55322 s         ||
 |        |               |Bendras veikimo laikas        |19.34435 s        ||
-|O2      |100000         |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
-|        |1000000        |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
+|O2      |100000         |Nuskaitymas                   |1.34642 s         ||
+|        |               |Dalijimas į dvi grupes        |0.0108586 s       ||
+|        |               |Įrašymas į galvociai.txt      |0.57682 s         ||
+|        |               |Įrašymas į nuskriaustukai.txt |0.405691 s        ||
+|        |               |Bendras veikimo laikas        |2.33979 s         ||
+|        |1000000        |Nuskaitymas                   |14.0048 s         ||
+|        |               |Dalijimas į dvi grupes        |0.131964 s        ||
+|        |               |Įrašymas į galvociai.txt      |5.65232 s         ||
+|        |               |Įrašymas į nuskriaustukai.txt |3.97346 s         ||
+|        |               |Bendras veikimo laikas        |23.7625 s         ||
 |O3      |100000         |Nuskaitymas                   |||
 |        |               |Dalijimas į dvi grupes        |||
 |        |               |Įrašymas į galvociai.txt      |||
@@ -186,5 +186,5 @@ Išvados:
 |Flag'as |struct  |class  |
 |--------|--------|-------|
 |O1      |504 KB  ||
-|O2      |||
-|O3      |||  
+|O2      |504 KB  ||
+|O3      |504 KB  ||  
