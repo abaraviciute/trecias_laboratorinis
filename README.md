@@ -143,3 +143,40 @@ Išvados:
 - 3 strategijos atveju konteinerių dalijimas į dvi grupes vyksta greičiau nei 2 strategijos atveju, todėl darbas 3 strategijos atveju atliekamas efektyviausiai;
 - strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei 3 (greičiausia) strategija, kai failai yra mažesni;
 - pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> fiksuoto vector -> 3 strategija (greičiausia).
+
+
+# v1.1 release
+
+|Flag'as |Failo eilučių  |Kriterijus                    |S3 Vector   |
+|--------|---------------|------------------------------|------------|
+|O1      |100000         |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+|        |1000000        |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+|O2      |100000         |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+|        |1000000        |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+|O3      |100000         |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+|        |1000000        |Nuskaitymas                   ||
+|        |               |Dalijimas į dvi grupes        ||
+|        |               |Įrašymas į galvociai.txt      ||
+|        |               |Įrašymas į nuskriaustukai.txt ||
+|        |               |Bendras veikimo laikas        ||
+
