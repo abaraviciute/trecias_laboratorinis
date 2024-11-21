@@ -36,7 +36,7 @@ void Studentas::ivestis(bool generavimas)
                         break;
                     }
 
-                    if (cin.fail() || pazymys < 1 || pazymys>10) {
+                    if (cin.fail() || pazymys < 1 || pazymys > 10) {
                         cin.clear();
                         cin.ignore(numeric_limits<streamsize>::max(), '\n');
                         throw  invalid_argument("Galima ivestis nuo 1 iki 10!\n");
@@ -143,18 +143,15 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
 
         Temp.setNd(pazymiai);
 
-        // The last grade is the egzaminas score
         if (!pazymiai.empty()) {
-            int egzaminasScore = pazymiai.back();  // Get the exam score
-            Temp.setEgzaminas(egzaminasScore);  // Use the setter to set egzaminas_
-            pazymiai.pop_back();  // Remove it from the grades vector
+            int egzaminasScore = pazymiai.back();
+            Temp.setEgzaminas(egzaminasScore);
+            pazymiai.pop_back();
         }
 
-        // Calculate the final grades
         Temp.galutinisPazymysVid = Temp.rezultatai("Vid");
         Temp.galutinisPazymysMed = Temp.rezultatai("Med");
 
-        // Add the student to the structure (vector or list)
         struktura.push_back(Temp);
     }
 

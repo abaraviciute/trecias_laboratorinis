@@ -29,7 +29,6 @@ public:
     Studentas(const string& vardas, const string& pavarde, const vector<int>& nd, int egzaminas)
         : vardas_(vardas), pavarde_(pavarde), nd_(nd), egzaminas_(egzaminas) {}
 
-    // Destructor
     ~Studentas() {}
 
     void ivestis(bool generavimas);
