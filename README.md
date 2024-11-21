@@ -169,16 +169,16 @@ Išvados:
 |        |               |Įrašymas į galvociai.txt      |5.65232 s         ||
 |        |               |Įrašymas į nuskriaustukai.txt |3.97346 s         ||
 |        |               |Bendras veikimo laikas        |23.7625 s         ||
-|O3      |100000         |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
-|        |1000000        |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||  
+|O3      |100000         |Nuskaitymas                   |1.35413 s         ||
+|        |               |Dalijimas į dvi grupes        |0.0134315 s       ||
+|        |               |Įrašymas į galvociai.txt      |0.5870425 s       ||
+|        |               |Įrašymas į nuskriaustukai.txt |0.441253 s        ||
+|        |               |Bendras veikimo laikas        |2.395855 s        ||
+|        |1000000        |Nuskaitymas                   |13.8041 s         ||
+|        |               |Dalijimas į dvi grupes        |0.1978815 s       ||
+|        |               |Įrašymas į galvociai.txt      |5.665575 s        ||
+|        |               |Įrašymas į nuskriaustukai.txt |3.91933 s         ||
+|        |               |Bendras veikimo laikas        |23.5869 s         ||  
 
 
 .exe failo dydis pagal flag'ą:
