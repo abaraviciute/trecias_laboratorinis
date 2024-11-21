@@ -149,26 +149,26 @@ Išvados:
 
 |Flag'as |Failo eilučių  |Kriterijus                    |S3 Vector struct  |S3 Vector class  |
 |--------|---------------|------------------------------|------------------|-----------------|
-|O1      |100000         |Nuskaitymas                   |1.04574 s         ||
-|        |               |Dalijimas į dvi grupes        |0.01400595 s      ||
-|        |               |Įrašymas į galvociai.txt      |0.4991065 s       ||
-|        |               |Įrašymas į nuskriaustukai.txt |0.365311 s        ||
-|        |               |Bendras veikimo laikas        |1.92416 s         ||
-|        |1000000        |Nuskaitymas                   |10.02568 s        ||
-|        |               |Dalijimas į dvi grupes        |0.361507 s        ||
-|        |               |Įrašymas į galvociai.txt      |5.40397 s         ||
-|        |               |Įrašymas į nuskriaustukai.txt |3.55322 s         ||
-|        |               |Bendras veikimo laikas        |19.34435 s        ||
-|O2      |100000         |Nuskaitymas                   |1.34642 s         ||
-|        |               |Dalijimas į dvi grupes        |0.0108586 s       ||
-|        |               |Įrašymas į galvociai.txt      |0.57682 s         ||
-|        |               |Įrašymas į nuskriaustukai.txt |0.405691 s        ||
-|        |               |Bendras veikimo laikas        |2.33979 s         ||
-|        |1000000        |Nuskaitymas                   |14.0048 s         ||
-|        |               |Dalijimas į dvi grupes        |0.131964 s        ||
-|        |               |Įrašymas į galvociai.txt      |5.65232 s         ||
-|        |               |Įrašymas į nuskriaustukai.txt |3.97346 s         ||
-|        |               |Bendras veikimo laikas        |23.7625 s         ||
+|O1      |100000         |Nuskaitymas                   |1.04574 s         |                 |
+|        |               |Dalijimas į dvi grupes        |0.01400595 s      |                 |
+|        |               |Įrašymas į galvociai.txt      |0.4991065 s       |                 |
+|        |               |Įrašymas į nuskriaustukai.txt |0.365311 s        |                 |
+|        |               |Bendras veikimo laikas        |1.92416 s         |                 |
+|        |1000000        |Nuskaitymas                   |10.02568 s        |                 |
+|        |               |Dalijimas į dvi grupes        |0.361507 s        |                 |
+|        |               |Įrašymas į galvociai.txt      |5.40397 s         |                 |
+|        |               |Įrašymas į nuskriaustukai.txt |3.55322 s         |                 |
+|        |               |Bendras veikimo laikas        |19.34435 s        |                 |
+|O2      |100000         |Nuskaitymas                   |1.34642 s         |1.03305 s        |
+|        |               |Dalijimas į dvi grupes        |0.0108586 s       |0.01878665 s     |
+|        |               |Įrašymas į galvociai.txt      |0.57682 s         |0.506004 s       |
+|        |               |Įrašymas į nuskriaustukai.txt |0.405691 s        |0.3537565 s      |
+|        |               |Bendras veikimo laikas        |2.33979 s         |1.911595 s       |
+|        |1000000        |Nuskaitymas                   |14.0048 s         |10.5644 s        |
+|        |               |Dalijimas į dvi grupes        |0.131964 s        |0.181962 s       |
+|        |               |Įrašymas į galvociai.txt      |5.65232 s         |4.762955 s       |
+|        |               |Įrašymas į nuskriaustukai.txt |3.97346 s         |3.46802 s        |
+|        |               |Bendras veikimo laikas        |23.7625 s         |18.97735 s       |
 |O3      |100000         |Nuskaitymas                   |1.35413 s         ||
 |        |               |Dalijimas į dvi grupes        |0.0134315 s       ||
 |        |               |Įrašymas į galvociai.txt      |0.5870425 s       ||
@@ -186,5 +186,5 @@ Išvados:
 |Flag'as |struct  |class  |
 |--------|--------|-------|
 |O1      |504 KB  ||
-|O2      |504 KB  ||
+|O2      |504 KB  |505 KB |
 |O3      |504 KB  ||  

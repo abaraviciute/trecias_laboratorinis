@@ -201,9 +201,9 @@ int main() {
             generavimas = (pasirinkimasGeneravimo == "A");
 
             cout << "Iveskite studento duomenis: " << endl;
-            ivestis(Temporary, generavimas);
+            Temporary.ivestis(generavimas);
 
-            Temporary.galutinisPazymys = rezultatai(Temporary, pasirinkimas);
+            Temporary.galutinisPazymys = Temporary.rezultatai(pasirinkimas);
 
             if (naudotiVektoriu) {
                 studentaiVector.push_back(Temporary);
