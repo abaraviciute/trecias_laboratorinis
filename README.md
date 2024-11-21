@@ -142,23 +142,23 @@ Išvados:
 - 2 strategijos tobulinimas naudojant std::partition algoritmą leido pasiekti efektyviausią rūšiavimą abiems konteineriams (3 strategija);
 - 3 strategijos atveju konteinerių dalijimas į dvi grupes vyksta greičiau nei 2 strategijos atveju, todėl darbas 3 strategijos atveju atliekamas efektyviausiai;
 - strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei 3 (greičiausia) strategija, kai failai yra mažesni;
-- pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> fiksuoto vector -> 3 strategija (greičiausia).
+- pagal išskirstymo į grupes greitį strategijos išsidėsto: (lėčiausia) 2 strategija -> 1 strategija -> fiksuoto vector -> 3 strategija (greičiausia).  
 
 
-# v1.1 release
+# v1.1 release  
 
 |Flag'as |Failo eilučių  |Kriterijus                    |S3 Vector struct  |S3 Vector class  |
 |--------|---------------|------------------------------|------------------|-----------------|
-|O1      |100000         |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
-|        |1000000        |Nuskaitymas                   |||
-|        |               |Dalijimas į dvi grupes        |||
-|        |               |Įrašymas į galvociai.txt      |||
-|        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
+|O1      |100000         |Nuskaitymas                   |1.04574 s         ||
+|        |               |Dalijimas į dvi grupes        |0.01400595 s      ||
+|        |               |Įrašymas į galvociai.txt      |0.4991065 s       ||
+|        |               |Įrašymas į nuskriaustukai.txt |0.365311 s        ||
+|        |               |Bendras veikimo laikas        |1.92416 s         ||
+|        |1000000        |Nuskaitymas                   |10.02568 s        ||
+|        |               |Dalijimas į dvi grupes        |0.361507 s        ||
+|        |               |Įrašymas į galvociai.txt      |5.40397 s         ||
+|        |               |Įrašymas į nuskriaustukai.txt |3.55322 s         ||
+|        |               |Bendras veikimo laikas        |19.34435 s        ||
 |O2      |100000         |Nuskaitymas                   |||
 |        |               |Dalijimas į dvi grupes        |||
 |        |               |Įrašymas į galvociai.txt      |||
@@ -178,5 +178,13 @@ Išvados:
 |        |               |Dalijimas į dvi grupes        |||
 |        |               |Įrašymas į galvociai.txt      |||
 |        |               |Įrašymas į nuskriaustukai.txt |||
-|        |               |Bendras veikimo laikas        |||
+|        |               |Bendras veikimo laikas        |||  
 
+
+.exe failo dydis pagal flag'ą:
+
+|Flag'as |struct  |class  |
+|--------|--------|-------|
+|O1      |504 KB  ||
+|O2      |||
+|O3      |||  
