@@ -6,7 +6,7 @@
 
 |Parametras          |Virtual Machine (Windows 11)          |Host Machine (MacBook)           |
 |--------------------|--------------------------------------|---------------------------------|
-|Operacinė sistema   | Windows 11                           | macOS Sonoma 14.6.1             |
+|Operacinė sistema   | Windows 11                           | macOS Sequoia 15.1.1            |
 |CPU                 | 4 branduoliai (priskirti)            | 8 branduoliai                   |
 |RAM                 | 8 GB                                 | 16 GB                           |
 |Saugykla            | Virtualus diskas SSD                 | 512 GB SSD                      |
