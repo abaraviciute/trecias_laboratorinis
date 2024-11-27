@@ -38,6 +38,19 @@ public:
         galutinisPazymysVid(other.galutinisPazymysVid),
         galutinisPazymysMed(other.galutinisPazymysMed) {}
 
+    Studentas& operator=(const Studentas& other) {
+        if (this != &other) {
+            vardas_ = other.vardas_;
+            pavarde_ = other.pavarde_;
+            nd_ = other.nd_;
+            egzaminas_ = other.egzaminas_;
+            galutinisPazymys = other.galutinisPazymys;
+            galutinisPazymysVid = other.galutinisPazymysVid;
+            galutinisPazymysMed = other.galutinisPazymysMed;
+        }
+        return *this;
+    }
+
     ~Studentas() { vardas_.clear(); }
 
     void ivestis(bool generavimas);
