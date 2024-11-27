@@ -51,7 +51,11 @@ public:
         return *this;
     }
 
-    ~Studentas() { vardas_.clear(); }
+    ~Studentas() {
+        vardas_.clear();
+        pavarde_.clear();
+        nd_.clear();
+    }
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
