@@ -104,6 +104,12 @@ public:
             out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
                 << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
         }
+        else if (duomenuIvedimoBudas == 4) {
+            for (const auto& nd : studentas.nd_) {
+                out << nd << " ";
+            }
+            out << studentas.egzaminas_ << " ";
+        }
 
         return out;
     }
