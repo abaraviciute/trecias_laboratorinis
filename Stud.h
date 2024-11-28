@@ -23,7 +23,7 @@ public:
     inline void setEgzaminas(int egzaminas) { egzaminas_ = egzaminas; }
 
     Studentas()
-        : vardas_(""), pavarde_(""), egzaminas_(0),
+        : vardas_(""), pavarde_(""),  egzaminas_(0),
         galutinisPazymys(0), galutinisPazymysVid(0), galutinisPazymysMed(0) {}
 
     Studentas(const string& vardas, const string& pavarde, const vector<int>& nd, int egzaminas)
@@ -56,6 +56,40 @@ public:
         pavarde_.clear();
         nd_.clear();
     }
+
+    friend istream& operator>>(istream& in, Studentas& studentas) {
+        string line;
+        getline(in, line);
+        if (line.empty()) return in;
+
+        istringstream iss(line);
+        iss >> studentas.vardas_;
+        if (!(iss >> studentas.pavarde_)) studentas.pavarde_ = "";
+        studentas.nd_.clear();
+
+        int pazymys;
+        while (iss >> pazymys) {
+            studentas.nd_.push_back(pazymys);
+        }
+
+        if (!studentas.nd_.empty()) {
+            studentas.egzaminas_ = studentas.nd_.back();
+            studentas.nd_.pop_back();
+        }
+        else {
+            studentas.egzaminas_ = 0;
+        }
+
+        if (studentas.nd_.empty() && studentas.egzaminas_ != 0) {
+            studentas.nd_.push_back(0);
+        }
+
+        studentas.galutinisPazymysVid = studentas.rezultatai("Vid");
+        studentas.galutinisPazymysMed = studentas.rezultatai("Med");
+
+        return in;
+    }
+
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
