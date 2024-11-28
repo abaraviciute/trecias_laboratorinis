@@ -64,19 +64,10 @@ double Studentas::rezultatai(const string& pasirinkimas)
 }
 
 
-void isvestis(const Studentas& Lok, int ivestiesPasirinkimas)
-{
-    if (ivestiesPasirinkimas == 1) {
-        cout << setw(15) << left << Lok.pavarde_ << setw(15) << left << Lok.vardas_
-            << setw(16) << left << fixed << setprecision(2) << Lok.galutinisPazymys
-            << setw(17) << left << &Lok << endl;
-    }
-    else if (ivestiesPasirinkimas == 2) {
-        cout << setw(15) << left << Lok.pavarde_ << setw(15) << left << Lok.vardas_
-            << setw(20) << left << fixed << setprecision(2) << Lok.galutinisPazymysVid
-            << setw(10) << left << fixed << setprecision(2) << Lok.galutinisPazymysMed << endl;
-    }
+void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
+    cout << Lok << &Lok << endl;
 }
+
 
 template <typename Struktura>
 int ivestisIsFailo(const string& failas, Struktura& struktura)
@@ -276,20 +267,13 @@ void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimo
     }
 
     for (const auto& studentas : studentai) {
-        ived << setw(15) << left << studentas.pavarde() << setw(15) << left << studentas.vardas();
-        if (duomenuIvedimoBudas == 2) {
-            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
-                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
-        }
-        else {
-            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys;
-        }
-        ived << endl;
+        ived << studentas << endl;
     }
 
     auto pabaiga = high_resolution_clock::now();
     trukme = pabaiga - pradzia;
 }
+
 
 template <typename Struktura>
 void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {

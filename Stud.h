@@ -1,6 +1,9 @@
 #pragma once
 #include "Mylib.h"
 
+extern int rikiavimoSalyga;
+extern int duomenuIvedimoBudas;
+
 class Studentas {
 private:
     string vardas_;
@@ -90,6 +93,20 @@ public:
         return in;
     }
 
+    friend ostream& operator<<(ostream& out, const Studentas& studentas) {
+        out << setw(15) << left << studentas.pavarde_
+            << setw(15) << left << studentas.vardas_;
+
+        if (duomenuIvedimoBudas == 1) {
+            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys;
+        }
+        else if (duomenuIvedimoBudas == 2) {
+            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
+                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
+        }
+
+        return out;
+    }
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
@@ -98,11 +115,6 @@ public:
 
 };
 
-extern int rikiavimoSalyga;
-
-//void ivestis(Studentas& Lok, bool generavimas);
-//void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
-//double rezultatai(const Studentas& Lok, const string& pasirinkimas);
 template <typename Struktura>
 int ivestisIsFailo(const string& failas, Struktura& struktura);
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2);

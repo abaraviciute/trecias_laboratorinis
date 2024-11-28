@@ -2,6 +2,7 @@
 #include "Stud.h"
 
 int rikiavimoSalyga = 0;
+int duomenuIvedimoBudas = 0;
 
 int main() {
     Studentas Temporary;
@@ -9,7 +10,6 @@ int main() {
     string pasirinkimas;
     string pasirinkimasGeneravimo;
     bool generavimas;
-    int duomenuIvedimoBudas;
     int failoNr;
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
