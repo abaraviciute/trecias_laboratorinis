@@ -2,6 +2,7 @@
 #include "Stud.h"
 
 int rikiavimoSalyga = 0;
+int duomenuIvedimoBudas = 0;
 
 int main() {
     Studentas Temporary;
@@ -9,7 +10,6 @@ int main() {
     string pasirinkimas;
     string pasirinkimasGeneravimo;
     bool generavimas;
-    int duomenuIvedimoBudas;
     int failoNr;
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
@@ -21,14 +21,15 @@ int main() {
 
     while (true) {
         try {
-            cout << "Pasirinkite duomenu ivedimo buda:\n";
-            cout << "\"1\" Rankiniu budu\n";
-            cout << "\"2\" Skaityti is failo\n";
+            cout << "Pasirinkite veiksma:\n";
+            cout << "\"1\" Duomenu ivedimas rankiniu budu\n";
+            cout << "\"2\" Duomenu skaitymas is failo\n";
             cout << "\"3\" Generuoti failus\n";
+            cout << "\"4\" \"Rule of Three\" demonstracija\n";
         
             cin >> duomenuIvedimoBudas;
 
-            if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2 && duomenuIvedimoBudas != 3) || cin.fail()) {
+            if ((duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 2 && duomenuIvedimoBudas != 3 && duomenuIvedimoBudas != 4) || cin.fail()) {
                 cin.clear();
                 cin.ignore(numeric_limits<streamsize>::max(), '\n');
                 throw invalid_argument("Neteisingas pasirinkimas.Iveskite \"1\", \"2\" arba \"3\".\n");
@@ -40,7 +41,7 @@ int main() {
         }
     }
 
-    if (duomenuIvedimoBudas != 3) {
+    if (duomenuIvedimoBudas != 3 && duomenuIvedimoBudas != 4) {
         while (true) {
             try {
                 cout << "Pasirinkite duomenu konteinerio tipa \"1\" vector arba \"2\" list: ";
@@ -286,8 +287,26 @@ int main() {
         }
         return (0);
     }
+    else if (duomenuIvedimoBudas == 4) {
+        Studentas studentas1("Jonas", "Jonauskas", {3, 4, 5, 6, 3, 4, 5}, 10);
+        cout << left << setw(40) << "Studentas1: " << studentas1 << endl;
 
-    if (duomenuIvedimoBudas != 3) {
+        Studentas studentas2 = studentas1;
+        cout << left << setw(40) << "Studentas2 (nukopijuotas Studentas1): " << studentas2 << endl;
+
+        Studentas studentas3("Vakare", "Vakaryte", {10, 9}, 8);
+        studentas3 = studentas1;
+        cout << left << setw(40) << "Studentas3 (priskirtas nuo Studentas1): " << studentas3 << endl;
+
+        studentas1.~Studentas();
+        cout << "Studentas1 po destruktoriaus panaudojimo: " << studentas1 << endl;
+        cout << "Studentas2 po destruktoriaus panaudojimo: " << studentas2 << endl;
+        cout << "Studentas3 po destruktoriaus panaudojimo: " << studentas3 << endl;
+
+        return 0;
+    }
+
+    if (duomenuIvedimoBudas != 3 && duomenuIvedimoBudas != 4) {
         if (naudotiVektoriu) {
             sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
@@ -399,7 +418,7 @@ int main() {
         }
     }
     else if (rezultataiArTyrimas == 2) {
-        if (duomenuIvedimoBudas != 1) {
+        if (duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 4) {
             cout << "Failo nuskaitymo laikas: " << trukmeNuskaitymo.count() << endl;
         }
         cout << "Irasu dalijimo i dvi grupes laikas: " << trukmeRusiavimo.count() << endl;

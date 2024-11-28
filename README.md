@@ -188,3 +188,67 @@ Išvados:
 |O1      |90 KB   |91 KB  |
 |O2      |99 KB   |104 KB |
 |O3      |100 KB  |105 KB |  
+
+
+# v1.2 release
+
+## Perdengti metodai  
+
+Duomenų įvestis:  
+
+1. Rankiniu būdu: atskiriant tarpais vedamas vardas, pavardė, pasirinktas skaičius namų darbų įvertinimų (skalėje nuo 1 iki 10), egzamino įvertinimas (skalėje nuo 1 iki 10).  
+2. Automatiniu būdu: rankiniu būdu įvedamas vardas ir pavardė, o automatiškai sugeneruojami penkių namų darbų įvertinimai ir egzamino įvertinimas.  
+3. Nuskaitymas iš failo: iš pasirinkto failo nuskaitomas vardas, pavardė ir visi įvertinimai. Paskutinis įvertinimas priskiriamas egzaminui.  
+
+
+Duomenų išvestis:  
+
+1. Į ekraną:
+- jei duomenys vesti rankiniu/automatiniu būdu, pateikiama lentelė su pavarde, vardu, galutiniu įvertinimu (įvertinimas skaičiuotas pagal pasirinktą rodiklį - vidurkį arba medianą);  
+- jei duomenys vesti nuskaitant iš failo, pateikiama lentelė su pavarde, vardu, galutiniu įvertinimu pagal vidurkį, galutiniu įvertinimu pagal medianą.  
+
+2. Į failą: duomenys grupuojami į nuskriaustukai.txt (studentai, kurių galutinis įvertinimas < 5), ir galvociai.txt (studentai, kurių galutinis įvertinimas >= 5). Duomenys failuose vaizduojami taip pat, kaip išvedimo į ekraną metu. 
+
+
+ ## Operatoriai  
+
+Įvesties operatorius:  
+
+- nuskaitant failą pirmoji eilutė ignoruojama (antraštinė eilutė);  
+- nuskaitomas vardas;
+- nuskaitoma pavardė, jei jos nėra, imama default reikšmė (tuščia vieta);
+- nuskaitomi visi įvertinimai, jei tokių nėra, namų darbų ir egzamino įvertinimui priskiriamas 0;
+- jei yra nors vienas įvertinimas, paskutinis jų priskiriamas egzamino įvertinimui;
+- suskaičiuojamos galutinių įvertinimų reikšmės.  
+
+Išvesties operatorius:  
+
+- išveda pavardę, vardą;  
+- duomenys išvedami tais pačiais duomenų išvesties principais;  
+- jei buvo pasirinktas Rule of Three testavimas, išvedami pradiniai studento duomenys, demonstruojamas kopijavimas ir priskyrimas, studentas po destruktoriaus panaudojimo.  
+
+
+## Programos spartos analizė
+
+O2 flag'as, trečia strategija, testai atlikti su vektoriais.
+
+|Failo eilučių  |Kriterijus                    |Be perdengimo    |Su perdengimu    |
+|---------------|------------------------------|-----------------|-----------------|
+|100000         |Nuskaitymas                   |1.03305 s        |0.984773 s       |
+|               |Dalijimas į dvi grupes        |0.01878665 s     |0.011197 s       |
+|               |Įrašymas į galvociai.txt      |0.506004 s       |0.488464 s       |
+|               |Įrašymas į nuskriaustukai.txt |0.3537565 s      |0.34143 s        |
+|               |Bendras veikimo laikas        |1.911595 s       |1.82586 s        |
+|1000000        |Nuskaitymas                   |10.5644 s        |9.82788 s        |
+|               |Dalijimas į dvi grupes        |0.181962 s       |0.100198 s       |
+|               |Įrašymas į galvociai.txt      |4.762955 s       |4.70759 s        |
+|               |Įrašymas į nuskriaustukai.txt |3.46802 s        |3.32145 s        |
+|               |Bendras veikimo laikas        |18.97735 s       |17.9571 s        |
+ 
+
+
+Išvados:
+
+- programa su perdengtais metodais greičiau nuskaito duomenis;
+- programa su perdengtais metodais greičiau įrašo duomenis į failus;
+- programa su perdengtais metodais bendru atveju veikia greičiau ir sklandžiau.

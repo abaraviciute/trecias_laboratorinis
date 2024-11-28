@@ -60,3 +60,5 @@ using std::remove_copy_if;
 using std::find_if;
 using std::back_inserter;
 using std::is_same;
+using std::istream;
+using std::ostream;

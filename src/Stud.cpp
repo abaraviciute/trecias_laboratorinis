@@ -2,73 +2,38 @@
 
 void Studentas::ivestis(bool generavimas)
 {
-    random_device rd;
-    mt19937 mt(rd());
-    uniform_int_distribution<int> dist(1, 10);
-
-    cout << "Iveskite varda: ";
-    cin >> vardas_;
-
-    cout << "Iveskite pavarde: ";
-    cin >> pavarde_;
-
     if (generavimas) {
+        random_device rd;
+        mt19937 mt(rd());
+        uniform_int_distribution<int> dist(1, 10);
+
+        cout << "Iveskite varda: ";
+        cin >> vardas_;
+
+        cout << "Iveskite pavarde: ";
+        cin >> pavarde_;
+
         int ndSkaicius = 5;
         nd_.clear();
         for (int i = 0; i < ndSkaicius; i++) {
-            int pazymys = dist(mt);
-            nd_.push_back(pazymys);
+            nd_.push_back(dist(mt));
         }
         egzaminas_ = dist(mt);
     }
     else {
-            nd_.clear();
-            cout << "Iveskite namu darbu pazymius (iveskite -1 noredami baigti): " << endl;
-
-            while (true) {
-            int pazymys;
-
-                try {
-                    cout << "Pazymys " << (nd_.size() + 1) << ": ";
-                    cin >> pazymys;
-
-                    if (pazymys == -1) {
-                        break;
-                    }
-
-                    if (cin.fail() || pazymys < 1 || pazymys > 10) {
-                        cin.clear();
-                        cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                        throw  invalid_argument("Galima ivestis nuo 1 iki 10!\n");
-                    }
-                    nd_.push_back(pazymys);
-                }
-                catch (const invalid_argument& e) {
-                        cout << e.what();
-                } 
-            }
-
-        while (true) {
-            try {
-                cout << "Iveskite egzamino pazymi: ";
-                cin >> egzaminas_;
-
-                if (cin.fail() || egzaminas_ < 1 || egzaminas_ > 10) {
-                    cin.clear();
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n');
-                    throw invalid_argument("Galima ivestis nuo 1 iki 10!\n");
-                }
-                break;
-            }
-            catch (const invalid_argument& e) {
-                cout << e.what();
-            }
-        }
+        cin.clear();
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
+        cout << "Iveskite varda, pavarde, namu darbu pazymius, ir egzamino pazymi (atskirtus tarpu): " << endl;
+        cin >> *this;
     }
 }
 
 double Studentas::rezultatai(const string& pasirinkimas)
 {
+    if (nd_.empty() && egzaminas_ == 0) {
+        return 0.0; 
+    }
+
     if (pasirinkimas == "Vid") {
         double vidurkis = 0.0;
 
@@ -85,11 +50,11 @@ double Studentas::rezultatai(const string& pasirinkimas)
         vector<int> pazymiai = nd_;
         sort(pazymiai.begin(), pazymiai.end());
 
-        if (nd_.size() % 2 == 0) {
-            mediana = (pazymiai[nd_.size() / 2 - 1] + pazymiai[nd_.size() / 2]) / 2.0;
+        if (pazymiai.size() % 2 == 0) {
+            mediana = (pazymiai[pazymiai.size() / 2 - 1] + pazymiai[pazymiai.size() / 2]) / 2.0;
         }
         else {
-            mediana = pazymiai[nd_.size() / 2];
+            mediana = pazymiai[pazymiai.size() / 2];
         }
 
         return 0.4 * mediana + 0.6 * egzaminas_;
@@ -98,19 +63,11 @@ double Studentas::rezultatai(const string& pasirinkimas)
     return 0;
 }
 
-void isvestis(const Studentas& Lok, int ivestiesPasirinkimas)
-{
-    if (ivestiesPasirinkimas == 1) {
-        cout << setw(15) << left << Lok.pavarde_ << setw(15) << left << Lok.vardas_
-            << setw(16) << left << fixed << setprecision(2) << Lok.galutinisPazymys
-            << setw(17) << left << &Lok << endl;
-    }
-    else if (ivestiesPasirinkimas == 2) {
-        cout << setw(15) << left << Lok.pavarde_ << setw(15) << left << Lok.vardas_
-            << setw(20) << left << fixed << setprecision(2) << Lok.galutinisPazymysVid
-            << setw(10) << left << fixed << setprecision(2) << Lok.galutinisPazymysMed << endl;
-    }
+
+void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
+    cout << Lok << &Lok << endl;
 }
+
 
 template <typename Struktura>
 int ivestisIsFailo(const string& failas, Struktura& struktura)
@@ -119,40 +76,15 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
 
     if (!inFile) {
         cout << "Nepavyko atidaryti failo: " << failas << endl;
-        exit(EXIT_FAILURE);
+        return -1;
     }
 
     string line;
     getline(inFile, line);
 
-    while (getline(inFile, line)) {
-        istringstream iss(line);
-        Studentas Temp;
-
-        string vardas, pavarde;
-        iss >> vardas >> pavarde;
-
-        Temp.setVardas(vardas);
-        Temp.setPavarde(pavarde);
-
-        int pazymys;
-        vector<int> pazymiai;
-        while (iss >> pazymys) {
-            pazymiai.push_back(pazymys);
-        }
-
-        Temp.setNd(pazymiai);
-
-        if (!pazymiai.empty()) {
-            int egzaminasScore = pazymiai.back();
-            Temp.setEgzaminas(egzaminasScore);
-            pazymiai.pop_back();
-        }
-
-        Temp.galutinisPazymysVid = Temp.rezultatai("Vid");
-        Temp.galutinisPazymysMed = Temp.rezultatai("Med");
-
-        struktura.push_back(Temp);
+    Studentas temp;
+    while (inFile >> temp) {
+        struktura.push_back(temp);
     }
 
     inFile.close();
@@ -335,20 +267,13 @@ void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimo
     }
 
     for (const auto& studentas : studentai) {
-        ived << setw(15) << left << studentas.pavarde() << setw(15) << left << studentas.vardas();
-        if (duomenuIvedimoBudas == 2) {
-            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
-                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
-        }
-        else {
-            ived << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys;
-        }
-        ived << endl;
+        ived << studentas << endl;
     }
 
     auto pabaiga = high_resolution_clock::now();
     trukme = pabaiga - pradzia;
 }
+
 
 template <typename Struktura>
 void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
