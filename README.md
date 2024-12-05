@@ -273,3 +273,7 @@ Studentas:
 - naudojami get/set metodai;
 - implementuota trijų metodų taisyklė;
 - išvesties/įvesties operatoriai.  
+
+Kadang klasė Zmogus yra abstrakti, jos objektų kurti negalima:  
+
+![Klaida, rodoma bandant sukurti klasės Zmogus objektą](zmogus.png)
