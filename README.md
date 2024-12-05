@@ -96,8 +96,7 @@ Studentų galutinio pažymio skaičiavimo programa.
 
 ## Spartos analizė: 
 
-  
-![Failų generavimo laikai](generavimas.png)
+![Failų generavimo laikai](https://github.com/user-attachments/assets/5eb276d1-6a0a-4cbc-b890-77a46f304bff)
 
 Pateiktas testavimų vidurkis:
 
@@ -274,6 +273,6 @@ Studentas:
 - implementuota trijų metodų taisyklė;
 - išvesties/įvesties operatoriai.  
 
-Kadang klasė Zmogus yra abstrakti, jos objektų kurti negalima:  
+Kadang klasė Zmogus yra abstrakti, jos objektų kurti negalima: 
 
-![Klaida, rodoma bandant sukurti klasės Zmogus objektą](zmogus.png)
+![Klaida, rodoma bandant sukurti klasės Zmogus objektą](https://github.com/user-attachments/assets/8b9f443b-1b88-47fd-9469-cabc5d186283)
