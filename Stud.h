@@ -25,10 +25,8 @@ public:
     virtual void printInfo() const = 0;
 };
 
-class Studentas {
+class Studentas : public Zmogus {
 private:
-    string vardas_;
-    string pavarde_;
     vector<int> nd_;
     int egzaminas_;
     double galutinisPazymys_;
@@ -37,16 +35,13 @@ private:
 
 public:
 
-    inline string vardas() const { return vardas_; }
-    inline string pavarde() const { return pavarde_; }
+
     inline vector<int> nd() const { return nd_; }
     inline int egzaminas() const { return egzaminas_; }
     inline double galutinisPazymys() const { return galutinisPazymys_; }
     inline double galutinisPazymysVid() const { return galutinisPazymysVid_; }
     inline double galutinisPazymysMed() const { return galutinisPazymysMed_; }
 
-    inline void setVardas(const string& vardas) { vardas_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
     inline void setNd(const vector<int>& nd) { nd_ = nd; }
     inline void setEgzaminas(int egzaminas) { egzaminas_ = egzaminas; }
     inline void setGalutinisPazymys(double galutinisPazymys) { galutinisPazymys_ = galutinisPazymys; }
@@ -54,17 +49,17 @@ public:
     inline void setGalutinisPazymysMed(double galutinisPazymysMed) { galutinisPazymysMed_ = galutinisPazymysMed; }
 
     Studentas()
-        : vardas_(""), pavarde_(""),  egzaminas_(0),
+        : Zmogus("", ""), egzaminas_(0),
         galutinisPazymys_(0), galutinisPazymysVid_(0), galutinisPazymysMed_(0) {}
 
     Studentas(const string& vardas, const string& pavarde, const vector<int>& nd, int egzaminas)
-        : vardas_(vardas), pavarde_(pavarde), nd_(nd), egzaminas_(egzaminas) {
+        : Zmogus(vardas, pavarde), nd_(nd), egzaminas_(egzaminas) {
         galutinisPazymysVid_ = rezultatai("Vid");
         galutinisPazymysMed_ = rezultatai("Med");
     }
 
     Studentas(const Studentas& other)
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), nd_(other.nd_), egzaminas_(other.egzaminas_),
+        : Zmogus(other), nd_(other.nd_), egzaminas_(other.egzaminas_),
         galutinisPazymys_(other.galutinisPazymys_),
         galutinisPazymysVid_(other.galutinisPazymysVid_),
         galutinisPazymysMed_(other.galutinisPazymysMed_) {}
@@ -83,8 +78,6 @@ public:
     }
 
     ~Studentas() {
-        vardas_.clear();
-        pavarde_.clear();
         nd_.clear();
         egzaminas_ = 0;
     }
@@ -142,6 +135,8 @@ public:
 
         return out;
     }
+
+    void printInfo() const override { cout << "Studentas klase\n"; }
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
