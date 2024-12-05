@@ -22,7 +22,7 @@ public:
     void setVardas(const string& vardas) { vardas_ = vardas; }
     void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
 
-    virtual void printInfo() const = 0;
+    virtual void klase() const = 0;
 };
 
 class Studentas : public Zmogus {
@@ -136,7 +136,7 @@ public:
         return out;
     }
 
-    void printInfo() const override { cout << "Studentas klase\n"; }
+    void klase() const override { cout << "Studentas klase\n"; }
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);
