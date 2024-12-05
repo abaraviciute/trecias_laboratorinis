@@ -4,42 +4,65 @@
 extern int rikiavimoSalyga;
 extern int duomenuIvedimoBudas;
 
-class Studentas {
-private:
+class Zmogus {
+protected:
     string vardas_;
     string pavarde_;
+
+public:
+    Zmogus(const string& vardas = "", const string& pavarde = "")
+        : vardas_(vardas), pavarde_(pavarde) {
+    }
+
+    virtual ~Zmogus() = default;
+
+    string vardas() const { return vardas_; }
+    string pavarde() const { return pavarde_; }
+
+    void setVardas(const string& vardas) { vardas_ = vardas; }
+    void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
+
+    virtual void klase() const = 0;
+};
+
+class Studentas : public Zmogus {
+private:
     vector<int> nd_;
     int egzaminas_;
-public:
-    double galutinisPazymys;
-    double galutinisPazymysVid;
-    double galutinisPazymysMed;
+    double galutinisPazymys_;
+    double galutinisPazymysVid_;
+    double galutinisPazymysMed_;
 
-    inline string vardas() const { return vardas_; }
-    inline string pavarde() const { return pavarde_; }
+public:
+
+
     inline vector<int> nd() const { return nd_; }
     inline int egzaminas() const { return egzaminas_; }
+    inline double galutinisPazymys() const { return galutinisPazymys_; }
+    inline double galutinisPazymysVid() const { return galutinisPazymysVid_; }
+    inline double galutinisPazymysMed() const { return galutinisPazymysMed_; }
 
-    inline void setVardas(const string& vardas) { vardas_ = vardas; }
-    inline void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
     inline void setNd(const vector<int>& nd) { nd_ = nd; }
     inline void setEgzaminas(int egzaminas) { egzaminas_ = egzaminas; }
+    inline void setGalutinisPazymys(double galutinisPazymys) { galutinisPazymys_ = galutinisPazymys; }
+    inline void setGalutinisPazymysVid(double galutinisPazymysVid) { galutinisPazymysVid_ = galutinisPazymysVid; }
+    inline void setGalutinisPazymysMed(double galutinisPazymysMed) { galutinisPazymysMed_ = galutinisPazymysMed; }
 
     Studentas()
-        : vardas_(""), pavarde_(""),  egzaminas_(0),
-        galutinisPazymys(0), galutinisPazymysVid(0), galutinisPazymysMed(0) {}
+        : Zmogus("", ""), egzaminas_(0),
+        galutinisPazymys_(0), galutinisPazymysVid_(0), galutinisPazymysMed_(0) {}
 
     Studentas(const string& vardas, const string& pavarde, const vector<int>& nd, int egzaminas)
-        : vardas_(vardas), pavarde_(pavarde), nd_(nd), egzaminas_(egzaminas) {
-        galutinisPazymysVid = rezultatai("Vid");
-        galutinisPazymysMed = rezultatai("Med");
+        : Zmogus(vardas, pavarde), nd_(nd), egzaminas_(egzaminas) {
+        galutinisPazymysVid_ = rezultatai("Vid");
+        galutinisPazymysMed_ = rezultatai("Med");
     }
 
     Studentas(const Studentas& other)
-        : vardas_(other.vardas_), pavarde_(other.pavarde_), nd_(other.nd_), egzaminas_(other.egzaminas_),
-        galutinisPazymys(other.galutinisPazymys),
-        galutinisPazymysVid(other.galutinisPazymysVid),
-        galutinisPazymysMed(other.galutinisPazymysMed) {}
+        : Zmogus(other), nd_(other.nd_), egzaminas_(other.egzaminas_),
+        galutinisPazymys_(other.galutinisPazymys_),
+        galutinisPazymysVid_(other.galutinisPazymysVid_),
+        galutinisPazymysMed_(other.galutinisPazymysMed_) {}
 
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
@@ -47,16 +70,14 @@ public:
             pavarde_ = other.pavarde_;
             nd_ = other.nd_;
             egzaminas_ = other.egzaminas_;
-            galutinisPazymys = other.galutinisPazymys;
-            galutinisPazymysVid = other.galutinisPazymysVid;
-            galutinisPazymysMed = other.galutinisPazymysMed;
+            galutinisPazymys_ = other.galutinisPazymys_; 
+            galutinisPazymysVid_ = other.galutinisPazymysVid_;
+            galutinisPazymysMed_ = other.galutinisPazymysMed_;
         }
         return *this;
     }
 
     ~Studentas() {
-        vardas_.clear();
-        pavarde_.clear();
         nd_.clear();
         egzaminas_ = 0;
     }
@@ -88,8 +109,8 @@ public:
             studentas.nd_.push_back(0);
         }
 
-        studentas.galutinisPazymysVid = studentas.rezultatai("Vid");
-        studentas.galutinisPazymysMed = studentas.rezultatai("Med");
+        studentas.galutinisPazymysVid_ = studentas.rezultatai("Vid");
+        studentas.galutinisPazymysMed_ = studentas.rezultatai("Med");
 
         return in;
     }
@@ -99,11 +120,11 @@ public:
             << setw(15) << left << studentas.vardas_;
 
         if (duomenuIvedimoBudas == 1) {
-            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys;
+            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymys_;
         }
         else if (duomenuIvedimoBudas == 2) {
-            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid
-                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed;
+            out << setw(20) << left << fixed << setprecision(2) << studentas.galutinisPazymysVid_
+                << setw(10) << left << fixed << setprecision(2) << studentas.galutinisPazymysMed_;
         }
         else if (duomenuIvedimoBudas == 4) {
             for (const auto& nd : studentas.nd_) {
@@ -114,6 +135,8 @@ public:
 
         return out;
     }
+
+    void klase() const override { cout << "Studentas klase\n"; }
 
     void ivestis(bool generavimas);
     friend void isvestis(const Studentas& Lok, int ivestiesPasirinkimas);

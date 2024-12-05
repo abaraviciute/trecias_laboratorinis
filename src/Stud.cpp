@@ -93,8 +93,8 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
 
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2)
 {
-    double pazymys1 = pavarde1.galutinisPazymysVid;
-    double pazymys2 = pavarde2.galutinisPazymysVid;
+    double pazymys1 = pavarde1.galutinisPazymysVid();
+    double pazymys2 = pavarde2.galutinisPazymysVid();
 
     if (rikiavimoSalyga == 1) {
         return (pazymys1 == pazymys2) ? (pavarde1.pavarde_ < pavarde2.pavarde_) : (pazymys1 < pazymys2);
@@ -159,8 +159,8 @@ template <typename Struktura>
 void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
 {
     for (const auto& studentas : struktura) {
-        if ((duomenuIvedimoBudas == 2 && studentas.galutinisPazymysVid >= 5) ||
-            (duomenuIvedimoBudas != 2 && studentas.galutinisPazymys >= 5)) {
+        if ((duomenuIvedimoBudas == 2 && studentas.galutinisPazymysVid() >= 5) ||
+            (duomenuIvedimoBudas != 2 && studentas.galutinisPazymys() >= 5)) {
             galvociai.push_back(studentas);
         }
         else {
@@ -177,10 +177,10 @@ void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktur
         sort(struktura.begin(), struktura.end(),
             [duomenuIvedimoBudas](const auto& a, const auto& b) {
                 if (duomenuIvedimoBudas == 2) {
-                    return a.galutinisPazymysVid > b.galutinisPazymysVid;
+                    return a.galutinisPazymysVid() > b.galutinisPazymysVid();
                 }
                 else {
-                    return a.galutinisPazymys > b.galutinisPazymys;
+                    return a.galutinisPazymys() > b.galutinisPazymys();
                 }
             });
     }
@@ -189,17 +189,17 @@ void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktur
         struktura.sort(
             [duomenuIvedimoBudas](const auto& a, const auto& b) {
                 if (duomenuIvedimoBudas == 2) {
-                    return a.galutinisPazymysVid > b.galutinisPazymysVid;
+                    return a.galutinisPazymysVid() > b.galutinisPazymysVid();
                 }
                 else {
-                    return a.galutinisPazymys > b.galutinisPazymys;
+                    return a.galutinisPazymys() > b.galutinisPazymys();
                 }
             });
     }
 
     while (!struktura.empty() &&
-        ((duomenuIvedimoBudas == 2 && struktura.back().galutinisPazymysVid < 5) ||
-            (duomenuIvedimoBudas != 2 && struktura.back().galutinisPazymys < 5))) {
+        ((duomenuIvedimoBudas == 2 && struktura.back().galutinisPazymysVid() < 5) ||
+            (duomenuIvedimoBudas != 2 && struktura.back().galutinisPazymys() < 5))) {
         nuskriaustukai.push_back(struktura.back());
         struktura.pop_back();
     }
@@ -213,10 +213,10 @@ void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktur
     function<bool(const typename Struktura::value_type&)> condition;
 
     if (duomenuIvedimoBudas == 2) {
-        condition = [](const auto& studentas) { return studentas.galutinisPazymysVid >= 5; };
+        condition = [](const auto& studentas) { return studentas.galutinisPazymysVid() >= 5; };
     }
     else {
-        condition = [](const auto& studentas) { return studentas.galutinisPazymys >= 5; };
+        condition = [](const auto& studentas) { return studentas.galutinisPazymys() >= 5; };
     }
 
     auto it = partition(struktura.begin(), struktura.end(), condition);
@@ -231,10 +231,10 @@ void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBu
     function<bool(const Studentas&)> condition;
 
     if (duomenuIvedimoBudas == 2) {
-        condition = [](const Studentas& studentas) { return studentas.galutinisPazymysVid < 5; };
+        condition = [](const Studentas& studentas) { return studentas.galutinisPazymysVid() < 5; };
     }
     else {
-        condition = [](const Studentas& studentas) { return studentas.galutinisPazymys < 5; };
+        condition = [](const Studentas& studentas) { return studentas.galutinisPazymys() < 5; };
     }
 
     auto it = partition(struktura.begin(), struktura.end(), [condition](const Studentas& studentas) {

@@ -25,7 +25,7 @@ int main() {
             cout << "\"1\" Duomenu ivedimas rankiniu budu\n";
             cout << "\"2\" Duomenu skaitymas is failo\n";
             cout << "\"3\" Generuoti failus\n";
-            cout << "\"4\" \"Rule of Three\" demonstracija\n";
+            cout << "\"4\" \"Rule of Three\" ir Studentas klases demonstracija\n";
         
             cin >> duomenuIvedimoBudas;
 
@@ -204,7 +204,7 @@ int main() {
             cout << "Iveskite studento duomenis: " << endl;
             Temporary.ivestis(generavimas);
 
-            Temporary.galutinisPazymys = Temporary.rezultatai(pasirinkimas);
+            Temporary.setGalutinisPazymys(Temporary.rezultatai(pasirinkimas));
 
             if (naudotiVektoriu) {
                 studentaiVector.push_back(Temporary);
@@ -288,15 +288,22 @@ int main() {
         return (0);
     }
     else if (duomenuIvedimoBudas == 4) {
+     //   Zmogus zmogus1("Vidas", "Vidauskas");
+        
         Studentas studentas1("Jonas", "Jonauskas", {3, 4, 5, 6, 3, 4, 5}, 10);
+        studentas1.klase();
         cout << left << setw(40) << "Studentas1: " << studentas1 << endl;
 
-        Studentas studentas2 = studentas1;
+        Studentas studentas2;
+        studentas2 = studentas1;
+        studentas2.klase();
         cout << left << setw(40) << "Studentas2 (nukopijuotas Studentas1): " << studentas2 << endl;
 
-        Studentas studentas3("Vakare", "Vakaryte", {10, 9}, 8);
-        studentas3 = studentas1;
+        Studentas studentas3(studentas1);
+        studentas3.klase();
         cout << left << setw(40) << "Studentas3 (priskirtas nuo Studentas1): " << studentas3 << endl;
+
+        cout << endl;
 
         studentas1.~Studentas();
         cout << "Studentas1 po destruktoriaus panaudojimo: " << studentas1 << endl;
