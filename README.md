@@ -251,4 +251,15 @@ Išvados:
 
 - programa su perdengtais metodais greičiau nuskaito duomenis;
 - programa su perdengtais metodais greičiau įrašo duomenis į failus;
-- programa su perdengtais metodais bendru atveju veikia greičiau ir sklandžiau.
+- programa su perdengtais metodais bendru atveju veikia greičiau ir sklandžiau.  
+
+
+# v1.5 release
+
+## Klasių atnaujinimai:  
+
+Zmogus:  
+- abstrakti bazinė klasė. Aprašomas vardas ir pavardė;
+- naudojamas konstruktorius;
+- naudojami get/set metodai;
+- virtuali funkcija klase().  
