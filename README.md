@@ -259,7 +259,17 @@ Išvados:
 ## Klasių atnaujinimai:  
 
 Zmogus:  
-- abstrakti bazinė klasė. Aprašomas vardas ir pavardė;
+- abstrakti bazinė klasė;
+- aprašomas vardas ir pavardė;
 - naudojamas konstruktorius;
 - naudojami get/set metodai;
 - virtuali funkcija klase().  
+
+Studentas:
+- išvestinė klasė iš Zmogus klasės;
+- aprašomi namų darbai, egzaminas, galutiniai pažymiai;  
+- demonstruojamas polimorfizmas su funkcija klase();
+- naudojami konstruktoriai;
+- naudojami get/set metodai;
+- implementuota trijų metodų taisyklė;
+- išvesties/įvesties operatoriai.  
