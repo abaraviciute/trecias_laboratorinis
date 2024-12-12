@@ -146,6 +146,19 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
     return 0;
 }
 
+
+/**
+ * @brief Lygina du Studentas objektus pagal galutinį pažymį ir pavardę.
+ *
+ * Funkcija palygina du klasės Studentas objektus pagal jų galutinį pažymį. Jei pažymiai vienodi, tuomet lyginamos pavardės
+ * pagal abėcėlę. Palyginimo sąlygą galima nustatyti pagal kintamąjį
+ * `rikiavimoSalyga` (pažymiai bus rikiuojami didėjimo/mažėjimo tvarka).
+ *
+ * @param pavarde1 Pirmas Studentas objektas, su kuriuo lyginamas antras.
+ * @param pavarde2 Antras Studentas objektas, su kuriuo lyginamas pirmas.
+ * @return `true`, jei pirmo objekto pažymys yra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą);
+ *         `false`, jei pirmo objekto pažymys nėra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą).
+ */
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2)
 {
     double pazymys1 = pavarde1.galutinisPazymysVid();
@@ -162,6 +175,17 @@ bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2)
     }
 }
 
+
+/**
+ * @brief Generuoja studentų duomenų failą su atsitiktiniais namų darbų ir egzamino įvertinimais.
+ *
+ * Ši funkcija sukuria failą su studentų vardais, pavardėmis, atsitiktiniais 5 namų darbų įvertinimais ir egzamino įvertinimu.
+ *
+ * @param studentuSkaicius Kiek studentų bus generuojama.
+ * @param failoPavadinimas Failo pavadinimas, kuriame bus saugomi sugeneruotų studentų duomenys.
+ *
+ * @throws runtime_error Jei failo nepavyksta sukurti.
+ */
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 {
     random_device rd;
