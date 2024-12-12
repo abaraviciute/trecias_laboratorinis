@@ -1,9 +1,33 @@
+﻿/**
+ * @file pradineVersija.cpp
+ * @brief Pagrindinis vykdomasis failas.
+ *
+ * Vartotojui leidžiama pasirinkti, kaip bus įvedami studentų duomenys, kokiuose konteineriuose jie bus saugomi, 
+ * kokia tvarka rikiuojami duomenys, kokia strategija rūšiuojami į failus, pasirenkama išvestis.
+ * Taip pat programa atlieka veikimo spartos analizę.
+ */
+
 #include "Mylib.h"
 #include "Stud.h"
 
+
+/// Globalus kintamasis naudojamas nustatyti, kokia tvarka bus rikiuojami išvadami duomenys (pagal galutinį pažymį): didėjančia ar mažėjančia.
 int rikiavimoSalyga = 0;
+
+/// Globalus kintamasis naudojamas nustatyti, kokiu būdu bus įvesti duomenys ar kaip jais bus manipuliuojama: įvestis ranka, nuskaitymas iš failo, failų generavimas, Rule of Three demonstracija.
 int duomenuIvedimoBudas = 0;
 
+/**
+ * @brief Programos pagrindinė vykdomoji funkcija.
+ *
+ * Funkcija apdoroja vartotojo pasirinkimus, tokius kaip duomenų įvedimo būdas, konteinerio tipas,
+ * rikiavimo/rūšiavimo strategija, išvedimas.
+ *
+ * Programos struktūra priklauso nuo vartotojo pasirinkimų, todėl gali būti atliekami įvairūs veiksmai:
+ * - Duomenų įvedimas rankiniu būdu arba iš failo;
+ * - Generavimas ir studentų rūšiavimas pagal strategijas;
+ * - Programos spartos analizė arba duomenų išvestis į ekraną.
+ */
 int main() {
     Studentas Temporary;
     int n = 0; //studentu skaicius
