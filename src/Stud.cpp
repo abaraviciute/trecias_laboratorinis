@@ -65,7 +65,13 @@ double Studentas::rezultatai(const string& pasirinkimas)
 
 
 void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
-    cout << Lok << &Lok << endl;
+    if (ivestiesPasirinkimas == 1) {
+        cout << Lok << &Lok << endl;
+    }
+    else if (ivestiesPasirinkimas == 2) {
+        cout << Lok << endl;
+    }
+    
 }
 
 

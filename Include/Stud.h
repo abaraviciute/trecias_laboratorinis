@@ -1,41 +1,91 @@
+﻿/**
+ * @file
+ * @brief Header failas su apibrėžtomis Zmogus ir Studentas klasėmis bei funkcijų deklaracijomis.
+ *
+ * Faile implementuotas "Mylib.h" bibliotekų failas, apibrėžti globalieji kintamieji, abstrakti klasė Zmogus ir jos išvestinė klasė Studentas.
+ * Taip pat yra funckijų deklaracija.
+ */
 #pragma once
 #include "Mylib.h"
 
+/**
+* @brief Rikiavimo sąlyga.
+*
+* Kintamasis naudojamas nustatyti, kokia tvarka bus rikiuojami išvadami duomenys (pagal galutinį pažymį): didėjančia ar mažėjančia.
+*/
 extern int rikiavimoSalyga;
+
+/**
+* @brief Duomenų įvedimo būdas.
+*
+* Kintamasis naudojamas nustatyti, kokiu būdu bus įvesti duomenys ar kaip jais bus manipuliuojama:
+* Įvestis ranka, nuskaitymas iš failo, failų generavimas, Rule of Three demonstracija.
+*/
 extern int duomenuIvedimoBudas;
 
+/**
+* @class Zmogus
+* @brief Abstrakti klasė žmogui aprašyti.
+*/
 class Zmogus {
 protected:
-    string vardas_;
-    string pavarde_;
+    string vardas_; ///< Žmogaus vardas
+    string pavarde_; ///< Žmogaus pavardė
 
 public:
+    /**
+    * @brief Konstruktorius su parametrais.
+    * @param vardas Žmogaus vardas. Numatytasis parametras - tuščias string.
+    * @param pavarde Žmogaus pavardė. Numatytasis parametras - tuščias string.
+    */
     Zmogus(const string& vardas = "", const string& pavarde = "")
         : vardas_(vardas), pavarde_(pavarde) {
     }
 
+    /// Virtualus destruktorius.
     virtual ~Zmogus() = default;
 
+    /**
+    * @brief Žmogaus vardo ir pavardės Getter'iai.
+    * @return Grąžina string tipo žmogaus vardą/pavardę.
+    */
     string vardas() const { return vardas_; }
     string pavarde() const { return pavarde_; }
 
+    /**
+    * @brief Žmogaus vardo ir pavardės Setter'iai.
+    * @param vardas Naujas nustatytas žmogaus vardas.
+    * @param pavarde Nauja nustatyta žmogaus pavardė.
+    */
     void setVardas(const string& vardas) { vardas_ = vardas; }
     void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
 
+    /**
+    * @brief Abstrakti funkcija, skirta klasei identifikuoti.
+    *
+    * Funkcija turi būti realizuota išvestinėse klasėse objekto klasės tipui nustatyti.
+    */
     virtual void klase() const = 0;
 };
 
+/**
+* @class Studentas
+* @brief Išvestinė klasė iš klasės Zmogus studentui aprašyti.
+*/
 class Studentas : public Zmogus {
 private:
-    vector<int> nd_;
-    int egzaminas_;
-    double galutinisPazymys_;
-    double galutinisPazymysVid_;
-    double galutinisPazymysMed_;
+    vector<int> nd_; ///< Namų darbų įvertinimai (1-10)
+    int egzaminas_; ///< Egzamino įvertinimas (1-10)
+    double galutinisPazymys_; ///< Galutinis pažymys duomenų įvesties ranka atveju (pagal vidurkį arba medianą)
+    double galutinisPazymysVid_; ///< Galutinis pažymys pagal vidurkį
+    double galutinisPazymysMed_; ///< Galutinis pažymys pagal medianą
 
 public:
 
-
+    /**
+    * @brief Studento namų darbų įvertinimų, egzamino įvertinimo, galutinių pažymių Getter'iai.
+    * @return Grąžina vector tipo namų darbų konteinerį, int tipo egzaminą, double tipo galutinius pažymius.
+    */
     inline vector<int> nd() const { return nd_; }
     inline int egzaminas() const { return egzaminas_; }
     inline double galutinisPazymys() const { return galutinisPazymys_; }
