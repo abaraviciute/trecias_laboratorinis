@@ -1,5 +1,22 @@
+﻿/**
+ * @file
+ * @brief Failas su funkcijomis.
+ * Faile implementuotas "Stud.h" header failas, kuriame yra funkcijų deklaracijos ir reikalingos klasės.
+ */
+
 #include "Stud.h"
 
+/**
+ * @brief Įveda studento duomenis rankinio įvedimo atveju.
+ *
+ * Funkcija leidžia įvesti studento vardą, pavardę, namų darbų ir egzamino įvertinimus.
+ * Jei pasirinktas automatinis duomenų generavimas (generavimas == true), tada funkcija sugeneruoja 4 
+ * atsitiktinius namų darbų ir egzamino pažymius. Jei generavimas yra false, funkcija leidžia vartotojui
+ * įvesti duomenis rankiniu būdu.
+ *
+ * @param generavimas Jei  `true`, sugeneruojami atsitiktiniai namų darbų ir egzamino pažymiai.
+ *                    Jei `false`, prašoma vartotojo įvesti duomenis rankiniu būdu.
+ */
 void Studentas::ivestis(bool generavimas)
 {
     if (generavimas) {
@@ -28,6 +45,21 @@ void Studentas::ivestis(bool generavimas)
     }
 }
 
+
+/**
+ * @brief Apskaičiuoja galutinį studento pažymį pagal pasirinktą rodiklį.
+ *
+ * Rodikliai: vidurkis ("Vid") ir mediana ("Med"). Abu rodikliai skaičiuojami pagal namų darbus.
+ *
+ * @param pasirinkimas Pasirinktas metodas pažymio apskaičiavimui:
+ *        - "Vid" – vidurkis.
+ *        - "Med" – mediana.
+ *
+ * @return Apskaičiuotas galutinis pažymys, atsižvelgiant į pasirinkimą:
+ *         - 0.4 * namų darbų vidurkis + 0.6 * egzaminas (jei pasirinktas "Vid").
+ *         - 0.4 * namų darbų medianą + 0.6 * egzaminas (jei pasirinktas "Med").
+ *         - 0, jei nėra namų darbų ir egzaminas neįvestas.
+ */
 double Studentas::rezultatai(const string& pasirinkimas)
 {
     if (nd_.empty() && egzaminas_ == 0) {
@@ -64,6 +96,15 @@ double Studentas::rezultatai(const string& pasirinkimas)
 }
 
 
+/**
+ * @brief Išveda studento duomenis į ekraną.
+ * Priklausomai nuo duomenų įvesties, išvedami duomenys apie studentą su arba be objekto saugojimo adreso.
+ *
+ * @param Lok Studentas, kurio duomenys bus išvedami.
+ * @param ivestiesPasirinkimas Pasirinkimas, nurodantis, kokius duomenis išvesti:
+ *        - 1: Išveda studento duomenis ir objekto saugojimo adresą.
+ *        - 2: Išveda tik studento duomenis.
+ */
 void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
     if (ivestiesPasirinkimas == 1) {
         cout << Lok << &Lok << endl;
@@ -75,6 +116,14 @@ void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
 }
 
 
+/**
+ * @brief Nuskaito duomenis iš .txt failo į struktūrą (vector/list).
+ *
+ * @param failas Failo pavadinimas, iš kurio bus nuskaitomi duomenys.
+ * @param struktura Struktūra, į kurią bus įrašyti duomenys (vector/list).
+ * 
+ * @return Grąžina 0, jei duomenys sėkmingai įrašyti į struktūrą, arba -1 kitu atveju.
+ */
 template <typename Struktura>
 int ivestisIsFailo(const string& failas, Struktura& struktura)
 {
@@ -97,6 +146,19 @@ int ivestisIsFailo(const string& failas, Struktura& struktura)
     return 0;
 }
 
+
+/**
+ * @brief Lygina du Studentas objektus pagal galutinį pažymį ir pavardę.
+ *
+ * Funkcija palygina du klasės Studentas objektus pagal jų galutinį pažymį. Jei pažymiai vienodi, tuomet lyginamos pavardės
+ * pagal abėcėlę. Palyginimo sąlygą galima nustatyti pagal kintamąjį
+ * `rikiavimoSalyga` (pažymiai bus rikiuojami didėjimo/mažėjimo tvarka).
+ *
+ * @param pavarde1 Pirmas Studentas objektas, su kuriuo lyginamas antras.
+ * @param pavarde2 Antras Studentas objektas, su kuriuo lyginamas pirmas.
+ * @return `true`, jei pirmo objekto pažymys yra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą);
+ *         `false`, jei pirmo objekto pažymys nėra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą).
+ */
 bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2)
 {
     double pazymys1 = pavarde1.galutinisPazymysVid();
@@ -113,6 +175,17 @@ bool rusiavimas(const Studentas& pavarde1, const Studentas& pavarde2)
     }
 }
 
+
+/**
+ * @brief Generuoja studentų duomenų failą su atsitiktiniais namų darbų ir egzamino įvertinimais.
+ *
+ * Ši funkcija sukuria failą su studentų vardais, pavardėmis, atsitiktiniais 5 namų darbų įvertinimais ir egzamino įvertinimu.
+ *
+ * @param studentuSkaicius Kiek studentų bus generuojama.
+ * @param failoPavadinimas Failo pavadinimas, kuriame bus saugomi sugeneruotų studentų duomenys.
+ *
+ * @throws runtime_error Jei failo nepavyksta sukurti.
+ */
 void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
 {
     random_device rd;
@@ -161,6 +234,17 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
     cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << "\n";
 }
 
+
+/**
+ * @brief Padalina studentus į du konteinerius: 'galvociai' (galutinis įvertinimas >= 5) ir 'nuskriaustukai' (galutinis įvertinimas < 5).
+ *
+ * Funkcija padalina studentus į du konteinerius (vector/list) pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param galvociai Konteineris, kuriame bus laikomi geriausi studentai.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
 {
@@ -175,6 +259,17 @@ void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, St
     }
 }
 
+
+/**
+ * @brief Rūšiuoja studentus pagal jų pažymius ir perkelia blogus studentus į 'nuskriaustukai' konteinerį (vector/list).
+ *
+ * Funkcija rūšiuoja studentus pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro.
+ * Po rūšiavimo studentai su mažesniu nei 5 pažymiu perkeliami į 'nuskriaustukai' konteinerį ir pašalinami iš bendro 'struktura' konteinerio.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai)
 {
@@ -212,7 +307,16 @@ void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktur
 }
 
 
-
+/**
+ * @brief Padalina studentus į dvi kategorijas pagal studentoKategorija2() funkciją, naudojant partition metodą.
+ *
+ * Funkcija padalina studentus į dvi grupes: tuos, kurie atitinka galutinio įvertinimo sąlygą (>= 5) ir tuos, kurie ne.
+ * Blogi studentai (su pažymiu < 5) perkeliami į 'nuskriaustukai' konteinerį ir ištrinami iš bendro 'struktura' konteinerio.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai)
 {
@@ -232,6 +336,14 @@ void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktur
     struktura.erase(it, struktura.end());
 }
 
+
+/**
+ * @brief studentoKategorija3() funkcija, pritaikyta išskirtinai tik vector tipo konteineriams.
+ * 
+ * @param struktura Studentų vektorius, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai vektorius, kuriame bus laikomi blogiausi studentai.
+ */
 void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBudas, vector<Studentas>& nuskriaustukai)
 {
     function<bool(const Studentas&)> condition;
@@ -252,6 +364,21 @@ void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBu
     struktura.erase(it, struktura.end());
 }
 
+
+/**
+ * @brief Įrašo studentų duomenis į failą.
+ *
+ * Funkcija išveda studentų duomenis į nurodytą failą (galvociai.txt/nuskriaustukai.txt).
+ * Funkcija taip pat matuoja duomenų įrašymo į failą trukmę.
+ *
+ * @param failas Failo pavadinimas, į kurį bus įrašyti duomenys.
+ * @param studentai Studentų struktūra, kurios duomenis norima įrašyti.
+ * @param duomenuIvedimoBudas Nurodo, kaip bus išvedami duoemys (priklausomai jei buvo įvesti ranka ar nuskaityti iš failo).
+ * @param pazymioTipas Galutinio pažymio tipas ("Vid."/"Med.").
+ * @param trukme Laikas, per kurį buvo atliktas įrašymas į failą.
+ *
+ * @throw runtime_error Jei failo nepavyko sukurti.
+ */
 template <typename Struktura>
 void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
     ofstream ived(failas);
@@ -281,6 +408,16 @@ void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimo
 }
 
 
+/**
+ * @brief Pagalbinė duomenų išvedimo į failus (galvociai.txt/nuskriaustukai.txt) funkcija.
+ *
+ * @param galvociai Konteineris studentų, kurių galutiniai pažymiai yra >= 5.
+ * @param nuskriaustukai Konteineris studentų, kurių galutiniai pažymiai yra < 5.
+ * @param duomenuIvedimoBudas Nurodo, kaip bus išvedami duoemys (priklausomai jei buvo įvesti ranka ar nuskaityti iš failo).
+ * @param pazymioTipas Galutinio pažymio tipas ("Vid."/"Med.").
+ * @param trukmeGalvociu Laikas, per kurį duomenys buvo įrašyti į "galvociai.txt" failą.
+ * @param trukmeNuskriaustuku Laikas, per kurį duomenys buvo įrašyti į "nuskriaustukai.txt" failą.
+ */
 template <typename Struktura>
 void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
     iFaila("galvociai.txt", galvociai, duomenuIvedimoBudas, pazymioTipas, trukmeGalvociu);

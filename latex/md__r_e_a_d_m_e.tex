@@ -1,0 +1,350 @@
+\chapter{Struktūra\+:}
+\hypertarget{md__r_e_a_d_m_e}{}\label{md__r_e_a_d_m_e}\index{Struktūra:@{Struktūra:}}
+\label{md__r_e_a_d_m_e_autotoc_md0}%
+\Hypertarget{md__r_e_a_d_m_e_autotoc_md0}%
+
+
+
+\begin{DoxyItemize}
+\item \doxylink{pradine_versija_8cpp}{pradine\+Versija.\+cpp} pagrindinis vykdomasis taškas;
+\item \doxylink{_mylib_8h}{Mylib.\+h} bibliotekų failas;
+\item \doxylink{_stud_8h}{Stud.\+h} studentų struktūros bei funkcijų deklaracijų failas;
+\item \doxylink{_stud_8cpp}{Stud.\+cpp} funkcijų failas. ~\newline
+
+\end{DoxyItemize}
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parametras   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Virtual Machine (Windows 11)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Host Machine (Mac\+Book)    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Parametras   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Virtual Machine (Windows 11)   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Host Machine (Mac\+Book)    }\\\cline{1-3}
+\endhead
+Operacinė sistema   &Windows 11   &mac\+OS Sequoia 15.\+1.\+1    \\\cline{1-3}
+CPU   &4 branduoliai (priskirti)   &8 branduoliai    \\\cline{1-3}
+RAM   &8 GB   &16 GB    \\\cline{1-3}
+Saugykla   &Virtualus diskas SSD   &512 GB SSD    \\\cline{1-3}
+VMware Version   &VMware Fusion 13   &-\/   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md1}{}\doxysection{\texorpdfstring{Diegimas ir paleidimas}{Diegimas ir paleidimas}}\label{md__r_e_a_d_m_e_autotoc_md1}
+
+\begin{DoxyEnumerate}
+\item Atsisiųsti\+: Include, src, CMake\+Lists.\+txt, run.\+bat aplankus ir failus.
+\item Atsisiųstus aplankus ir failus sudėti į vieną aplanką.
+\item Paleisti run.\+bat failą.
+\item Aplanke atsiradusiame Debug aplanke randamas .exe failas Studentu\+\_\+skaiciuokle.\+exe paruoštas naudoti.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md2}{}\doxysection{\texorpdfstring{v0.\+1 release}{v0.\+1 release}}\label{md__r_e_a_d_m_e_autotoc_md2}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md3}{}\doxysubsection{\texorpdfstring{Sukurtos funkcijos\+:}{Sukurtos funkcijos\+:}}\label{md__r_e_a_d_m_e_autotoc_md3}
+
+\begin{DoxyItemize}
+\item ivestis() -\/ duomenims įvesti ranka arba generuoti atsitiktinai;
+\item isvestis\+Is\+Failo() -\/ duomenims nuskaityti iš .txt failo;
+\item \doxylink{_stud_8h_ab06e91f1c3019ac1c74ce76c66cd8f33}{rusiavimas()} -\/ studentų pavardėms rūšiuoti abėcėlės tvarka;
+\item rezultatai() -\/ galutiniam pažymiui skaičiuoti;
+\item \doxylink{_stud_8cpp_abf20faf98524bdb25da495ca469bcada}{isvestis()} -\/ studentų pavardei, vardui bei galutiniam pažymiui išvesti.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md4}{}\doxysubsection{\texorpdfstring{Funkcionalumas\+:}{Funkcionalumas\+:}}\label{md__r_e_a_d_m_e_autotoc_md4}
+
+\begin{DoxyItemize}
+\item galima studento duomenų įvestis terminale arba .txt failo nuskaitymas;
+\item pasirinkimas tarp keleto galimų nuskaityti failų;
+\item galimybė įvesti pažymius ranka arba generuoti atsitiktinai;
+\item neapribotas namų darbų pažymių įvedimo skaičius;
+\item pranešimai apie įvesties klaidas ir galimybė įvesti paskutinį vestą rodmenį naujai (exeption handling). ~\newline
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md5}{}\doxysection{\texorpdfstring{v0.\+2 release}{v0.\+2 release}}\label{md__r_e_a_d_m_e_autotoc_md5}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md6}{}\doxysubsection{\texorpdfstring{Naujos funkcijos\+:}{Naujos funkcijos\+:}}\label{md__r_e_a_d_m_e_autotoc_md6}
+
+\begin{DoxyItemize}
+\item \doxylink{_stud_8h_a2d89e0db9d8e16b6c1e14d262ff52a96}{generuoti\+Faila()} -\/ generuoti atsitiktinių studentų duomenų .txt failą;
+\item studento\+Kategorija() -\/ išskiria studentus į dvi grupes pagal galutinį pažymį;
+\item \doxylink{_stud_8h_ae82727b018a5544f4668c2cfcad1dd93}{isvestis\+IFaila()} -\/ į dvi grupes padalinti studentai išvedami į .txt failą. ~\newline
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md7}{}\doxysubsection{\texorpdfstring{Naujas funkcionalumas\+:}{Naujas funkcionalumas\+:}}\label{md__r_e_a_d_m_e_autotoc_md7}
+
+\begin{DoxyItemize}
+\item galimybė generuoti 5 skirtingo dydžio .txt failus su atsitiktiniais studentų duomenimis;
+\item studentų padalijimas į dvi grupes pagal galutinį pažymį, jų išvedimas į atskirus .txt failus;
+\item programos veikimo spartos analizė.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md8}{}\doxysubsection{\texorpdfstring{Spartos analizė\+:}{Spartos analizė\+:}}\label{md__r_e_a_d_m_e_autotoc_md8}
+Pateiktas testavimų vidurkis\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{7}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dalijimas į dvi grupes   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas galvociai.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas nuskriaustukai.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras veikimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas į failą    }\\\cline{1-7}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Nuskaitymas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Dalijimas į dvi grupes   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas galvociai.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas nuskriaustukai.\+txt   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Bendras veikimo laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Įrašymas į failą    }\\\cline{1-7}
+\endhead
+1000   &0.\+02131653 s   &0.\+00059168 s   &0.\+00992062 s   &0.\+00620507 s   &0.\+03803327 s   &0.\+0183877 s    \\\cline{1-7}
+10000   &0.\+144208 s   &0.\+00439836 s   &0.\+0588816 s   &0.\+04473393 s   &0.\+25155567 s   &0.\+1003 s    \\\cline{1-7}
+100000   &1.\+36194 s   &0.\+03765913 s   &0.\+5736883 s   &0.\+4084937 s   &2.\+38045 s   &0.\+8448273 s    \\\cline{1-7}
+1000000   &13.\+5593 s   &0.\+4072613 s   &5.\+66804 s   &4.\+02833 s   &23.\+6636 s   &8.\+14784 s    \\\cline{1-7}
+10000000   &137.\+6157 s   &6.\+3477 s   &55.\+94437 s   &39.\+38567 s   &239.\+293 s   &80.\+41363 s   \\\cline{1-7}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md9}{}\doxysection{\texorpdfstring{v0.\+3 release}{v0.\+3 release}}\label{md__r_e_a_d_m_e_autotoc_md9}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md10}{}\doxysubsection{\texorpdfstring{Naujas funkcionalumas\+:}{Naujas funkcionalumas\+:}}\label{md__r_e_a_d_m_e_autotoc_md10}
+
+\begin{DoxyItemize}
+\item galimybė pasirinkti konteinerį duomenims saugoti (list/vector).
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md11}{}\doxysubsection{\texorpdfstring{Spartos analizė\+:}{Spartos analizė\+:}}\label{md__r_e_a_d_m_e_autotoc_md11}
+Prie v1.\+0 release S1 Vector ir S1 List stulpeliai.
+
+Išvados\+:
+\begin{DoxyItemize}
+\item vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+\item list konteineriai greičiau dalijami į dvi grupes kai dirbama su mažesniais failais;
+\item bendru atveju spartos skirtumas tarp vector ir list konteinerių nėra didelis.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md12}{}\doxysection{\texorpdfstring{v1.\+0 release}{v1.\+0 release}}\label{md__r_e_a_d_m_e_autotoc_md12}
+Studentų galutinio pažymio skaičiavimo programa.\hypertarget{md__r_e_a_d_m_e_autotoc_md13}{}\doxysubsection{\texorpdfstring{Naujos funkcijos\+:}{Naujos funkcijos\+:}}\label{md__r_e_a_d_m_e_autotoc_md13}
+
+\begin{DoxyItemize}
+\item \doxylink{_stud_8h_a3d96900d1238001c63aa5fcedc5e0067}{studento\+Kategorija1()} -\/ išskiria studentus į dvi grupes (du naujus konteinerius galvociai ir nuskriaustukai);
+\item \doxylink{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2()} -\/ išskiria studentus į dvi grupes (naują konteinerį nuskriaustukai ir studentų konteinerį be nuskriaustukų);
+\item \doxylink{_stud_8h_a700324f96195385ead3a15c1a07d6256}{studento\+Kategorija3()} -\/ išskiria studentus į dvi grupes (\doxylink{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2()} pagreitinta std\+::partition algoritmu);
+\item \doxylink{_stud_8h_a82fab0cbb5fbfb51f243cb9dff21bf3e}{studento\+Kategorija\+Vector()} -\/ išskiria studentus į dvi grupes (\doxylink{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2()} pagreitinta std\+::partition algoritmu, skirta tik vector konteineriams).
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md14}{}\doxysubsection{\texorpdfstring{Naujas funkcionalumas\+:}{Naujas funkcionalumas\+:}}\label{md__r_e_a_d_m_e_autotoc_md14}
+
+\begin{DoxyItemize}
+\item galimybė pasirinkti duomenų rūšiavimo į dvi grupes strategiją.
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md15}{}\doxysubsection{\texorpdfstring{Spartos analizė\+:}{Spartos analizė\+:}}\label{md__r_e_a_d_m_e_autotoc_md15}
+
+
+Pateiktas testavimų vidurkis\+:
+
+S1 -\/ 1 strategija, S2 -\/ 2 strategija, S3 -\/ 3 strategija.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{9}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S1 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S1 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S2 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S2 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fiksuoto Vector laikas    }\\\cline{1-9}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S1 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S1 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S2 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S2 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 List laikas   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Fiksuoto Vector laikas    }\\\cline{1-9}
+\endhead
+1000   &Nuskaitymas   &0.\+0113095 s   &0.\+0138963 s   &0.\+0167558 s   &0.\+01712995 s   &0.\+01120315 s   &0.\+0107881 s   &0.\+0149814 s    \\\cline{1-9}
+&Dalijimas į dvi grupes   &0.\+00056075 s   &0.\+000387625 s   &0.\+0004033955 s   &0.\+000227021 s   &0.\+000259104 s   &0.\+0003652295 s   &0.\+000222041 s    \\\cline{1-9}
+&Įrašymas galvociai.\+txt   &0.\+00555825 s   &0.\+00592483 s   &0.\+007075 s   &0.\+008406995 s   &0.\+005477375 s   &0.\+005456125 s   &0.\+00677679 s    \\\cline{1-9}
+&Įrašymas nuskriaustukai.\+txt   &0.\+00374054 s   &0.\+00366213 s   &0.\+004650525 s   &0.\+00543275 s   &0.\+003665085 s   &0.\+00384277 s   &0.\+00511758 s    \\\cline{1-9}
+&Bendras veikimo laikas   &0.\+021169 s   &0.\+0238708 s   &0.\+02888475 s   &0.\+0311967 s   &0.\+0206047 s   &0.\+02045225 s   &0.\+0270978 s    \\\cline{1-9}
+10000   &Nuskaitymas   &0.\+10496 s   &0.\+125007 s   &0.\+140005 s   &0.\+10597165 s   &0.\+1018986 s   &0.\+09736675 s   &0.\+154275 s    \\\cline{1-9}
+&Dalijimas į dvi grupes   &0.\+00449438 s   &0.\+00265867 s   &0.\+00214002 s   &0.\+002315975 s   &0.\+001532895 s   &0.\+002043 s   &0.\+00102333 s    \\\cline{1-9}
+&Įrašymas galvociai.\+txt   &0.\+0474353 s   &0.\+0482639 s   &0.\+0602062 s   &0.\+05024755 s   &0.\+0498332 s   &0.\+05652305 s   &0.\+0581072 s    \\\cline{1-9}
+&Įrašymas nuskriaustukai.\+txt   &0.\+0379377 s   &0.\+0340268 s   &0.\+04542225 s   &0.\+04073535 s   &0.\+0382545 s   &0.\+03880095 s   &0.\+0428352 s    \\\cline{1-9}
+&Bendras veikimo laikas   &0.\+194827 s   &0.\+209956 s   &0.\+247773 s   &0.\+1992705 s   &0.\+1915195 s   &0.\+1947335 s   &0.\+25624 s    \\\cline{1-9}
+100000   &Nuskaitymas   &0.\+962287 s   &0.\+960303 s   &1.\+35193 s   &0.\+977143 s   &0.\+957694 s   &0.\+94800 s   &1.\+34642 s    \\\cline{1-9}
+&Dalijimas į dvi grupes   &0.\+0254281 s   &0.\+0367531 s   &0.\+0208332 s   &0.\+03807255 s   &0.\+01054007 s   &0.\+03119035 s   &0.\+0108586 s    \\\cline{1-9}
+&Įrašymas galvociai.\+txt   &0.\+496531 s   &0.\+510438 s   &0.\+5936945 s   &0.\+5196565 s   &0.\+489088 s   &0.\+506586 s   &0.\+57682 s    \\\cline{1-9}
+&Įrašymas nuskriaustukai.\+txt   &0.\+344024 s   &0.\+342789 s   &0.\+4169465 s   &0.\+360138 s   &0.\+344018 s   &0.\+3397615 s   &0.\+405691 s    \\\cline{1-9}
+&Bendras veikimo laikas   &1.\+82827 s   &1.\+85028 s   &2.\+383405 s   &1.\+89501 s   &1.\+80134 s   &1.\+82554 s   &2.\+33979 s    \\\cline{1-9}
+1000000   &Nuskaitymas   &9.\+57618 s   &9.\+45731 s   &14.\+28015 s   &9.\+69733 s   &9.\+75898 s   &9.\+637725 s   &14.\+0048 s    \\\cline{1-9}
+&Dalijimas į dvi grupes   &0.\+498318 s   &0.\+396237 s   &0.\+4309075 s   &1.\+09168 s   &0.\+1412185 s   &0.\+4371245 s   &0.\+131964 s    \\\cline{1-9}
+&Įrašymas galvociai.\+txt   &4.\+64819 s   &4.\+82819 s   &5.\+72546 s   &5.\+000735 s   &4.\+78187 s   &4.\+85823 s   &5.\+65232 s    \\\cline{1-9}
+&Įrašymas nuskriaustukai.\+txt   &3.\+29679 s   &3.\+35625 s   &4.\+00987 s   &3.\+469655 s   &3.\+39245 s   &3.\+324935 s   &3.\+97346 s    \\\cline{1-9}
+&Bendras veikimo laikas   &18.\+0195 s   &18.\+038 s   &24.\+4464 s   &19.\+2594 s   &18.\+0745 s   &18.\+25805 s   &23.\+7625 s    \\\cline{1-9}
+10000000   &Nuskaitymas   &101.\+191 s   &99.\+2413 s   &147.\+491 s   &107.\+877 s   &99.\+15715 s   &96.\+1321 s   &103.\+119 s    \\\cline{1-9}
+&Dalijimas į dvi grupes   &4.\+53757 s   &5.\+69798 s   &7.\+85074 s   &17.\+3161 s   &1.\+757185 s   &5.\+74999 s   &4.\+40295 s    \\\cline{1-9}
+&Įrašymas galvociai.\+txt   &46.\+4808 s   &48.\+4736 s   &59.\+9728 s   &50.\+7344 s   &48.\+2283 s   &49.\+0712 s   &48.\+4059 s    \\\cline{1-9}
+&Įrašymas nuskriaustukai.\+txt   &32.\+7055 s   &33.\+2447 s   &40.\+1789 s   &34.\+7553 s   &33.\+4136 s   &32.\+9665 s   &33.\+6266 s    \\\cline{1-9}
+&Bendras veikimo laikas   &184.\+915 s   &186.\+658 s   &255.\+494 s   &210.\+683 s   &182.\+556 s   &183.\+92 s   &189.\+554 s   \\\cline{1-9}
+\end{longtabu}
+
+
+Išvados\+:
+\begin{DoxyItemize}
+\item 1 strategijos atveju vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+\item 2 strategijos atveju vector konteineriuose talpinami duomenys buvo apdorojami greičiau nei list;
+\item list konteinerių dalijimas į dvi grupes 2 strategijos atveju vyksta lėčiau nei 1 strategijos atveju dirbant su didesniais failais;
+\item vector konteinerių dalijimas į dvi grupes 2 strategijos atveju vyksta lėčiau nei 1 strategijos atveju dirbant su didesniais failais;
+\item 2 strategijos tobulinimas naudojant std\+::partition algoritmą leido pasiekti efektyviausią rūšiavimą abiems konteineriams (3 strategija);
+\item 3 strategijos atveju konteinerių dalijimas į dvi grupes vyksta greičiau nei 2 strategijos atveju, todėl darbas 3 strategijos atveju atliekamas efektyviausiai;
+\item strategija, skirta tik vektorių apdorojimui, vektorių išskirsto į dvi grupes greičiau nei 3 (greičiausia) strategija, kai failai yra mažesni;
+\item pagal išskirstymo į grupes greitį strategijos išsidėsto\+: (lėčiausia) 2 strategija -\/\texorpdfstring{$>$}{>} 1 strategija -\/\texorpdfstring{$>$}{>} fiksuoto vector -\/\texorpdfstring{$>$}{>} 3 strategija (greičiausia). ~\newline
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md16}{}\doxysection{\texorpdfstring{v1.\+1 release}{v1.\+1 release}}\label{md__r_e_a_d_m_e_autotoc_md16}
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{5}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag\textquotesingle{}as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector struct   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector class    }\\\cline{1-5}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag\textquotesingle{}as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector struct   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ S3 Vector class    }\\\cline{1-5}
+\endhead
+O1   &100000   &Nuskaitymas   &1.\+04574 s   &1.\+05816 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+01400595 s   &0.\+02035045 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &0.\+4991065 s   &0.\+507221 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &0.\+365311 s   &0.\+369626 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &1.\+92416 s   &1.\+955355 s    \\\cline{1-5}
+&1000000   &Nuskaitymas   &10.\+02568 s   &10.\+8941 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+361507 s   &0.\+1799375 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &5.\+40397 s   &4.\+856025 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &3.\+55322 s   &3.\+51353 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &19.\+34435 s   &19.\+4436 s    \\\cline{1-5}
+O2   &100000   &Nuskaitymas   &1.\+34642 s   &1.\+03305 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+0108586 s   &0.\+01878665 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &0.\+57682 s   &0.\+506004 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &0.\+405691 s   &0.\+3537565 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &2.\+33979 s   &1.\+911595 s    \\\cline{1-5}
+&1000000   &Nuskaitymas   &14.\+0048 s   &10.\+5644 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+131964 s   &0.\+181962 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &5.\+65232 s   &4.\+762955 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &3.\+97346 s   &3.\+46802 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &23.\+7625 s   &18.\+97735 s    \\\cline{1-5}
+O3   &100000   &Nuskaitymas   &1.\+35413 s   &1.\+057755 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+0134315 s   &0.\+01895225 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &0.\+5870425 s   &0.\+496599 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &0.\+441253 s   &0.\+3546995 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &2.\+395855 s   &1.\+928005 s    \\\cline{1-5}
+&1000000   &Nuskaitymas   &13.\+8041 s   &10.\+53145 s    \\\cline{1-5}
+&&Dalijimas į dvi grupes   &0.\+1978815 s   &0.\+1855985 s    \\\cline{1-5}
+&&Įrašymas į galvociai.\+txt   &5.\+665575 s   &4.\+69908 s    \\\cline{1-5}
+&&Įrašymas į nuskriaustukai.\+txt   &3.\+91933 s   &3.\+39186 s    \\\cline{1-5}
+&&Bendras veikimo laikas   &23.\+5869 s   &18.\+80795 s   \\\cline{1-5}
+\end{longtabu}
+
+
+.exe failo dydis pagal flag\textquotesingle{}ą\+:
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{3}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag\textquotesingle{}as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ struct   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ class    }\\\cline{1-3}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Flag\textquotesingle{}as   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ struct   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ class    }\\\cline{1-3}
+\endhead
+O1   &90 KB   &91 KB    \\\cline{1-3}
+O2   &99 KB   &104 KB    \\\cline{1-3}
+O3   &100 KB   &105 KB   \\\cline{1-3}
+\end{longtabu}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md17}{}\doxysection{\texorpdfstring{v1.\+2 release}{v1.\+2 release}}\label{md__r_e_a_d_m_e_autotoc_md17}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md18}{}\doxysubsection{\texorpdfstring{Perdengti metodai}{Perdengti metodai}}\label{md__r_e_a_d_m_e_autotoc_md18}
+Duomenų įvestis\+: ~\newline
+
+
+
+\begin{DoxyEnumerate}
+\item Rankiniu būdu\+: atskiriant tarpais vedamas vardas, pavardė, pasirinktas skaičius namų darbų įvertinimų (skalėje nuo 1 iki 10), egzamino įvertinimas (skalėje nuo 1 iki 10). ~\newline
+
+\item Automatiniu būdu\+: rankiniu būdu įvedamas vardas ir pavardė, o automatiškai sugeneruojami penkių namų darbų įvertinimai ir egzamino įvertinimas. ~\newline
+
+\item Nuskaitymas iš failo\+: iš pasirinkto failo nuskaitomas vardas, pavardė ir visi įvertinimai. Paskutinis įvertinimas priskiriamas egzaminui. ~\newline
+
+\end{DoxyEnumerate}
+
+Duomenų išvestis\+: ~\newline
+
+
+
+\begin{DoxyEnumerate}
+\item Į ekraną\+:
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item jei duomenys vesti rankiniu/automatiniu būdu, pateikiama lentelė su pavarde, vardu, galutiniu įvertinimu (įvertinimas skaičiuotas pagal pasirinktą rodiklį -\/ vidurkį arba medianą); ~\newline
+
+\item jei duomenys vesti nuskaitant iš failo, pateikiama lentelė su pavarde, vardu, galutiniu įvertinimu pagal vidurkį, galutiniu įvertinimu pagal medianą. ~\newline
+
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Į failą\+: duomenys grupuojami į nuskriaustukai.\+txt (studentai, kurių galutinis įvertinimas \texorpdfstring{$<$}{<} 5), ir galvociai.\+txt (studentai, kurių galutinis įvertinimas \texorpdfstring{$>$}{>}= 5). Duomenys failuose vaizduojami taip pat, kaip išvedimo į ekraną metu.
+\end{DoxyEnumerate}\hypertarget{md__r_e_a_d_m_e_autotoc_md19}{}\doxysubsection{\texorpdfstring{Operatoriai}{Operatoriai}}\label{md__r_e_a_d_m_e_autotoc_md19}
+Įvesties operatorius\+: ~\newline
+
+
+
+\begin{DoxyItemize}
+\item nuskaitant failą pirmoji eilutė ignoruojama (antraštinė eilutė); ~\newline
+
+\item nuskaitomas vardas;
+\item nuskaitoma pavardė, jei jos nėra, imama default reikšmė (tuščia vieta);
+\item nuskaitomi visi įvertinimai, jei tokių nėra, namų darbų ir egzamino įvertinimui priskiriamas 0;
+\item jei yra nors vienas įvertinimas, paskutinis jų priskiriamas egzamino įvertinimui;
+\item suskaičiuojamos galutinių įvertinimų reikšmės. ~\newline
+
+\end{DoxyItemize}
+
+Išvesties operatorius\+: ~\newline
+
+
+
+\begin{DoxyItemize}
+\item išveda pavardę, vardą; ~\newline
+
+\item duomenys išvedami tais pačiais duomenų išvesties principais; ~\newline
+
+\item jei buvo pasirinktas Rule of Three testavimas, išvedami pradiniai studento duomenys, demonstruojamas kopijavimas ir priskyrimas, studentas po destruktoriaus panaudojimo. ~\newline
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md20}{}\doxysubsection{\texorpdfstring{Programos spartos analizė}{Programos spartos analizė}}\label{md__r_e_a_d_m_e_autotoc_md20}
+O2 flag\textquotesingle{}as, trečia strategija, testai atlikti su vektoriais.
+
+\tabulinesep=1mm
+\begin{longtabu}spread 0pt [c]{*{4}{|X[-1]}|}
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Be perdengimo   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Su perdengimu    }\\\cline{1-4}
+\endfirsthead
+\hline
+\endfoot
+\hline
+\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Failo eilučių   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Kriterijus   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Be perdengimo   }&\PBS\centering \cellcolor{\tableheadbgcolor}\textbf{ Su perdengimu    }\\\cline{1-4}
+\endhead
+100000   &Nuskaitymas   &1.\+03305 s   &0.\+984773 s    \\\cline{1-4}
+&Dalijimas į dvi grupes   &0.\+01878665 s   &0.\+011197 s    \\\cline{1-4}
+&Įrašymas į galvociai.\+txt   &0.\+506004 s   &0.\+488464 s    \\\cline{1-4}
+&Įrašymas į nuskriaustukai.\+txt   &0.\+3537565 s   &0.\+34143 s    \\\cline{1-4}
+&Bendras veikimo laikas   &1.\+911595 s   &1.\+82586 s    \\\cline{1-4}
+1000000   &Nuskaitymas   &10.\+5644 s   &9.\+82788 s    \\\cline{1-4}
+&Dalijimas į dvi grupes   &0.\+181962 s   &0.\+100198 s    \\\cline{1-4}
+&Įrašymas į galvociai.\+txt   &4.\+762955 s   &4.\+70759 s    \\\cline{1-4}
+&Įrašymas į nuskriaustukai.\+txt   &3.\+46802 s   &3.\+32145 s    \\\cline{1-4}
+&Bendras veikimo laikas   &18.\+97735 s   &17.\+9571 s   \\\cline{1-4}
+\end{longtabu}
+
+
+Išvados\+:
+
+
+\begin{DoxyItemize}
+\item programa su perdengtais metodais greičiau nuskaito duomenis;
+\item programa su perdengtais metodais greičiau įrašo duomenis į failus;
+\item programa su perdengtais metodais bendru atveju veikia greičiau ir sklandžiau. ~\newline
+
+\end{DoxyItemize}\hypertarget{md__r_e_a_d_m_e_autotoc_md21}{}\doxysection{\texorpdfstring{v1.\+5 release}{v1.\+5 release}}\label{md__r_e_a_d_m_e_autotoc_md21}
+\hypertarget{md__r_e_a_d_m_e_autotoc_md22}{}\doxysubsection{\texorpdfstring{Klasių atnaujinimai\+:}{Klasių atnaujinimai\+:}}\label{md__r_e_a_d_m_e_autotoc_md22}
+\doxylink{class_zmogus}{Zmogus}\+: ~\newline
+
+\begin{DoxyItemize}
+\item abstrakti bazinė klasė;
+\item aprašomas vardas ir pavardė;
+\item naudojamas konstruktorius;
+\item naudojami get/set metodai;
+\item virtuali funkcija klase(). ~\newline
+
+\end{DoxyItemize}
+
+\doxylink{class_studentas}{Studentas}\+:
+\begin{DoxyItemize}
+\item išvestinė klasė iš \doxylink{class_zmogus}{Zmogus} klasės;
+\item aprašomi namų darbai, egzaminas, galutiniai pažymiai; ~\newline
+
+\item demonstruojamas polimorfizmas su funkcija klase();
+\item naudojami konstruktoriai;
+\item naudojami get/set metodai;
+\item implementuota trijų metodų taisyklė;
+\item išvesties/įvesties operatoriai. ~\newline
+
+\end{DoxyItemize}
+
+Kadang klasė \doxylink{class_zmogus}{Zmogus} yra abstrakti, jos objektų kurti negalima\+:
+
+ 

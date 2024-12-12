@@ -1,0 +1,257 @@
+\doxysection{Include/\+Stud.h File Reference}
+\hypertarget{_stud_8h}{}\label{_stud_8h}\index{Include/Stud.h@{Include/Stud.h}}
+
+
+Header failas su apibrėžtomis \doxylink{class_zmogus}{Zmogus} ir \doxylink{class_studentas}{Studentas} klasėmis bei funkcijų deklaracijomis.  
+
+
+{\ttfamily \#include "{}Mylib.\+h"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_zmogus}{Zmogus}}
+\begin{DoxyCompactList}\small\item\em Abstrakti klasė žmogui aprašyti. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_studentas}{Studentas}}
+\begin{DoxyCompactList}\small\item\em Išvestinė klasė iš klasės \doxylink{class_zmogus}{Zmogus} studentui aprašyti. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Struktura $>$ }\\int \mbox{\hyperlink{_stud_8h_a2f1159f66dec463c82df69a095b814ce}{ivestis\+Is\+Failo}} (const string \&failas, Struktura \&struktura)
+\begin{DoxyCompactList}\small\item\em Nuskaito duomenis iš .txt failo į struktūrą (vector/list). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{_stud_8h_ab06e91f1c3019ac1c74ce76c66cd8f33}{rusiavimas}} (const \mbox{\hyperlink{class_studentas}{Studentas}} \&pavarde1, const \mbox{\hyperlink{class_studentas}{Studentas}} \&pavarde2)
+\begin{DoxyCompactList}\small\item\em Lygina du \doxylink{class_studentas}{Studentas} objektus pagal galutinį pažymį ir pavardę. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_stud_8h_a2d89e0db9d8e16b6c1e14d262ff52a96}{generuoti\+Faila}} (int studentu\+Skaicius, const string \&failo\+Pavadinimas)
+\begin{DoxyCompactList}\small\item\em Generuoja studentų duomenų failą su atsitiktiniais namų darbų ir egzamino įvertinimais. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Struktura $>$ }\\void \mbox{\hyperlink{_stud_8h_a3d96900d1238001c63aa5fcedc5e0067}{studento\+Kategorija1}} (const Struktura \&struktura, int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}, Struktura \&galvociai, Struktura \&nuskriaustukai)
+\begin{DoxyCompactList}\small\item\em Padalina studentus į du konteinerius\+: \textquotesingle{}galvociai\textquotesingle{} (galutinis įvertinimas \texorpdfstring{$>$}{>}= 5) ir \textquotesingle{}nuskriaustukai\textquotesingle{} (galutinis įvertinimas \texorpdfstring{$<$}{<} 5). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Struktura $>$ }\\void \mbox{\hyperlink{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2}} (Struktura \&struktura, int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}, Struktura \&nuskriaustukai)
+\begin{DoxyCompactList}\small\item\em Rūšiuoja studentus pagal jų pažymius ir perkelia blogus studentus į \textquotesingle{}nuskriaustukai\textquotesingle{} konteinerį (vector/list). \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Struktura $>$ }\\void \mbox{\hyperlink{_stud_8h_a700324f96195385ead3a15c1a07d6256}{studento\+Kategorija3}} (Struktura \&struktura, int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}, Struktura \&nuskriaustukai)
+\begin{DoxyCompactList}\small\item\em Padalina studentus į dvi kategorijas pagal \doxylink{_stud_8cpp_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2()} funkciją, naudojant partition metodą. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{_stud_8h_a82fab0cbb5fbfb51f243cb9dff21bf3e}{studento\+Kategorija\+Vector}} (vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&struktura, int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}, vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&nuskriaustukai)
+\begin{DoxyCompactList}\small\item\em \doxylink{_stud_8cpp_a700324f96195385ead3a15c1a07d6256}{studento\+Kategorija3()} funkcija, pritaikyta išskirtinai tik vector tipo konteineriams. \end{DoxyCompactList}\item 
+{\footnotesize template$<$typename Struktura $>$ }\\void \mbox{\hyperlink{_stud_8h_ae82727b018a5544f4668c2cfcad1dd93}{isvestis\+IFaila}} (const Struktura \&galvociai, const Struktura \&nuskriaustukai, int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}, string pazymio\+Tipas, duration$<$ double $>$ \&trukme\+Galvociu, duration$<$ double $>$ \&trukme\+Nuskriaustuku)
+\begin{DoxyCompactList}\small\item\em Pagalbinė duomenų išvedimo į failus (galvociai.\+txt/nuskriaustukai.txt) funkcija. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_stud_8h_a6af4150f09f9f15c9173923584181203}{rikiavimo\+Salyga}}
+\begin{DoxyCompactList}\small\item\em Rikiavimo sąlyga. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_stud_8h_a401b491f56c8c9f9577a63bff033febd}{duomenu\+Ivedimo\+Budas}}
+\begin{DoxyCompactList}\small\item\em Duomenų įvedimo būdas. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Header failas su apibrėžtomis \doxylink{class_zmogus}{Zmogus} ir \doxylink{class_studentas}{Studentas} klasėmis bei funkcijų deklaracijomis. 
+
+Faile implementuotas "{}\+Mylib.\+h"{} bibliotekų failas, apibrėžti globalieji kintamieji, abstrakti klasė \doxylink{class_zmogus}{Zmogus} ir jos išvestinė klasė \doxylink{class_studentas}{Studentas}. Taip pat yra funckijų deklaracija. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_stud_8h_a2d89e0db9d8e16b6c1e14d262ff52a96}\index{Stud.h@{Stud.h}!generuotiFaila@{generuotiFaila}}
+\index{generuotiFaila@{generuotiFaila}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{generuotiFaila()}{generuotiFaila()}}
+{\footnotesize\ttfamily \label{_stud_8h_a2d89e0db9d8e16b6c1e14d262ff52a96} 
+void generuoti\+Faila (\begin{DoxyParamCaption}\item[{int}]{studentu\+Skaicius}{, }\item[{const string \&}]{failo\+Pavadinimas}{}\end{DoxyParamCaption})}
+
+
+
+Generuoja studentų duomenų failą su atsitiktiniais namų darbų ir egzamino įvertinimais. 
+
+Ši funkcija sukuria failą su studentų vardais, pavardėmis, atsitiktiniais 5 namų darbų įvertinimais ir egzamino įvertinimu.
+
+
+\begin{DoxyParams}{Parameters}
+{\em studentu\+Skaicius} & Kiek studentų bus generuojama. \\
+\hline
+{\em failo\+Pavadinimas} & Failo pavadinimas, kuriame bus saugomi sugeneruotų studentų duomenys.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em runtime\+\_\+error} & Jei failo nepavyksta sukurti. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{_stud_8h_ae82727b018a5544f4668c2cfcad1dd93}\index{Stud.h@{Stud.h}!isvestisIFaila@{isvestisIFaila}}
+\index{isvestisIFaila@{isvestisIFaila}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{isvestisIFaila()}{isvestisIFaila()}}
+{\footnotesize\ttfamily \label{_stud_8h_ae82727b018a5544f4668c2cfcad1dd93} 
+template$<$typename Struktura $>$ \\
+void isvestis\+IFaila (\begin{DoxyParamCaption}\item[{const Struktura \&}]{galvociai}{, }\item[{const Struktura \&}]{nuskriaustukai}{, }\item[{int}]{duomenu\+Ivedimo\+Budas}{, }\item[{string}]{pazymio\+Tipas}{, }\item[{duration$<$ double $>$ \&}]{trukme\+Galvociu}{, }\item[{duration$<$ double $>$ \&}]{trukme\+Nuskriaustuku}{}\end{DoxyParamCaption})}
+
+
+
+Pagalbinė duomenų išvedimo į failus (galvociai.\+txt/nuskriaustukai.txt) funkcija. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em galvociai} & Konteineris studentų, kurių galutiniai pažymiai yra \texorpdfstring{$>$}{>}= 5. \\
+\hline
+{\em nuskriaustukai} & Konteineris studentų, kurių galutiniai pažymiai yra \texorpdfstring{$<$}{<} 5. \\
+\hline
+{\em duomenu\+Ivedimo\+Budas} & Nurodo, kaip bus išvedami duoemys (priklausomai jei buvo įvesti ranka ar nuskaityti iš failo). \\
+\hline
+{\em pazymio\+Tipas} & Galutinio pažymio tipas ("{}\+Vid."{}/"{}\+Med."{}). \\
+\hline
+{\em trukme\+Galvociu} & Laikas, per kurį duomenys buvo įrašyti į "{}galvociai.\+txt"{} failą. \\
+\hline
+{\em trukme\+Nuskriaustuku} & Laikas, per kurį duomenys buvo įrašyti į "{}nuskriaustukai.\+txt"{} failą. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_stud_8h_a2f1159f66dec463c82df69a095b814ce}\index{Stud.h@{Stud.h}!ivestisIsFailo@{ivestisIsFailo}}
+\index{ivestisIsFailo@{ivestisIsFailo}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{ivestisIsFailo()}{ivestisIsFailo()}}
+{\footnotesize\ttfamily \label{_stud_8h_a2f1159f66dec463c82df69a095b814ce} 
+template$<$typename Struktura $>$ \\
+int ivestis\+Is\+Failo (\begin{DoxyParamCaption}\item[{const string \&}]{failas}{, }\item[{Struktura \&}]{struktura}{}\end{DoxyParamCaption})}
+
+
+
+Nuskaito duomenis iš .txt failo į struktūrą (vector/list). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em failas} & Failo pavadinimas, iš kurio bus nuskaitomi duomenys. \\
+\hline
+{\em struktura} & Struktūra, į kurią bus įrašyti duomenys (vector/list).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Grąžina 0, jei duomenys sėkmingai įrašyti į struktūrą, arba -\/1 kitu atveju. 
+\end{DoxyReturn}
+\Hypertarget{_stud_8h_ab06e91f1c3019ac1c74ce76c66cd8f33}\index{Stud.h@{Stud.h}!rusiavimas@{rusiavimas}}
+\index{rusiavimas@{rusiavimas}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{rusiavimas()}{rusiavimas()}}
+{\footnotesize\ttfamily \label{_stud_8h_ab06e91f1c3019ac1c74ce76c66cd8f33} 
+bool rusiavimas (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_studentas}{Studentas}} \&}]{pavarde1}{, }\item[{const \mbox{\hyperlink{class_studentas}{Studentas}} \&}]{pavarde2}{}\end{DoxyParamCaption})}
+
+
+
+Lygina du \doxylink{class_studentas}{Studentas} objektus pagal galutinį pažymį ir pavardę. 
+
+Funkcija palygina du klasės \doxylink{class_studentas}{Studentas} objektus pagal jų galutinį pažymį. Jei pažymiai vienodi, tuomet lyginamos pavardės pagal abėcėlę. Palyginimo sąlygą galima nustatyti pagal kintamąjį {\ttfamily rikiavimo\+Salyga} (pažymiai bus rikiuojami didėjimo/mažėjimo tvarka).
+
+
+\begin{DoxyParams}{Parameters}
+{\em pavarde1} & Pirmas \doxylink{class_studentas}{Studentas} objektas, su kuriuo lyginamas antras. \\
+\hline
+{\em pavarde2} & Antras \doxylink{class_studentas}{Studentas} objektas, su kuriuo lyginamas pirmas. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+{\ttfamily true}, jei pirmo objekto pažymys yra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą); {\ttfamily false}, jei pirmo objekto pažymys nėra mažesnis/didesnis (pagal nustatytą rikiavimo sąlygą). 
+\end{DoxyReturn}
+\Hypertarget{_stud_8h_a3d96900d1238001c63aa5fcedc5e0067}\index{Stud.h@{Stud.h}!studentoKategorija1@{studentoKategorija1}}
+\index{studentoKategorija1@{studentoKategorija1}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{studentoKategorija1()}{studentoKategorija1()}}
+{\footnotesize\ttfamily \label{_stud_8h_a3d96900d1238001c63aa5fcedc5e0067} 
+template$<$typename Struktura $>$ \\
+void studento\+Kategorija1 (\begin{DoxyParamCaption}\item[{const Struktura \&}]{struktura}{, }\item[{int}]{duomenu\+Ivedimo\+Budas}{, }\item[{Struktura \&}]{galvociai}{, }\item[{Struktura \&}]{nuskriaustukai}{}\end{DoxyParamCaption})}
+
+
+
+Padalina studentus į du konteinerius\+: \textquotesingle{}galvociai\textquotesingle{} (galutinis įvertinimas \texorpdfstring{$>$}{>}= 5) ir \textquotesingle{}nuskriaustukai\textquotesingle{} (galutinis įvertinimas \texorpdfstring{$<$}{<} 5). 
+
+Funkcija padalina studentus į du konteinerius (vector/list) pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro.
+
+
+\begin{DoxyParams}{Parameters}
+{\em struktura} & Studentų konteineris, kurį reikia apdoroti. \\
+\hline
+{\em duomenu\+Ivedimo\+Budas} & Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "{}\+Vid"{} ar "{}\+Med"{} įvertinimas. \\
+\hline
+{\em galvociai} & Konteineris, kuriame bus laikomi geriausi studentai. \\
+\hline
+{\em nuskriaustukai} & Konteineris, kuriame bus laikomi blogiausi studentai. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92}\index{Stud.h@{Stud.h}!studentoKategorija2@{studentoKategorija2}}
+\index{studentoKategorija2@{studentoKategorija2}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{studentoKategorija2()}{studentoKategorija2()}}
+{\footnotesize\ttfamily \label{_stud_8h_aeb0ac6a0f2ca580001ec14ac1bd01c92} 
+template$<$typename Struktura $>$ \\
+void studento\+Kategorija2 (\begin{DoxyParamCaption}\item[{Struktura \&}]{struktura}{, }\item[{int}]{duomenu\+Ivedimo\+Budas}{, }\item[{Struktura \&}]{nuskriaustukai}{}\end{DoxyParamCaption})}
+
+
+
+Rūšiuoja studentus pagal jų pažymius ir perkelia blogus studentus į \textquotesingle{}nuskriaustukai\textquotesingle{} konteinerį (vector/list). 
+
+Funkcija rūšiuoja studentus pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro. Po rūšiavimo studentai su mažesniu nei 5 pažymiu perkeliami į \textquotesingle{}nuskriaustukai\textquotesingle{} konteinerį ir pašalinami iš bendro \textquotesingle{}struktura\textquotesingle{} konteinerio.
+
+
+\begin{DoxyParams}{Parameters}
+{\em struktura} & Studentų konteineris, kurį reikia apdoroti. \\
+\hline
+{\em duomenu\+Ivedimo\+Budas} & Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "{}\+Vid"{} ar "{}\+Med"{} įvertinimas. \\
+\hline
+{\em nuskriaustukai} & Konteineris, kuriame bus laikomi blogiausi studentai. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_stud_8h_a700324f96195385ead3a15c1a07d6256}\index{Stud.h@{Stud.h}!studentoKategorija3@{studentoKategorija3}}
+\index{studentoKategorija3@{studentoKategorija3}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{studentoKategorija3()}{studentoKategorija3()}}
+{\footnotesize\ttfamily \label{_stud_8h_a700324f96195385ead3a15c1a07d6256} 
+template$<$typename Struktura $>$ \\
+void studento\+Kategorija3 (\begin{DoxyParamCaption}\item[{Struktura \&}]{struktura}{, }\item[{int}]{duomenu\+Ivedimo\+Budas}{, }\item[{Struktura \&}]{nuskriaustukai}{}\end{DoxyParamCaption})}
+
+
+
+Padalina studentus į dvi kategorijas pagal \doxylink{_stud_8cpp_aeb0ac6a0f2ca580001ec14ac1bd01c92}{studento\+Kategorija2()} funkciją, naudojant partition metodą. 
+
+Funkcija padalina studentus į dvi grupes\+: tuos, kurie atitinka galutinio įvertinimo sąlygą (\texorpdfstring{$>$}{>}= 5) ir tuos, kurie ne. Blogi studentai (su pažymiu \texorpdfstring{$<$}{<} 5) perkeliami į \textquotesingle{}nuskriaustukai\textquotesingle{} konteinerį ir ištrinami iš bendro \textquotesingle{}struktura\textquotesingle{} konteinerio.
+
+
+\begin{DoxyParams}{Parameters}
+{\em struktura} & Studentų konteineris, kurį reikia apdoroti. \\
+\hline
+{\em duomenu\+Ivedimo\+Budas} & Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "{}\+Vid"{} ar "{}\+Med"{} įvertinimas. \\
+\hline
+{\em nuskriaustukai} & Konteineris, kuriame bus laikomi blogiausi studentai. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{_stud_8h_a82fab0cbb5fbfb51f243cb9dff21bf3e}\index{Stud.h@{Stud.h}!studentoKategorijaVector@{studentoKategorijaVector}}
+\index{studentoKategorijaVector@{studentoKategorijaVector}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{studentoKategorijaVector()}{studentoKategorijaVector()}}
+{\footnotesize\ttfamily \label{_stud_8h_a82fab0cbb5fbfb51f243cb9dff21bf3e} 
+void studento\+Kategorija\+Vector (\begin{DoxyParamCaption}\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{struktura}{, }\item[{int}]{duomenu\+Ivedimo\+Budas}{, }\item[{vector$<$ \mbox{\hyperlink{class_studentas}{Studentas}} $>$ \&}]{nuskriaustukai}{}\end{DoxyParamCaption})}
+
+
+
+\doxylink{_stud_8cpp_a700324f96195385ead3a15c1a07d6256}{studento\+Kategorija3()} funkcija, pritaikyta išskirtinai tik vector tipo konteineriams. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em struktura} & Studentų vektorius, kurį reikia apdoroti. \\
+\hline
+{\em duomenu\+Ivedimo\+Budas} & Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "{}\+Vid"{} ar "{}\+Med"{} įvertinimas. \\
+\hline
+{\em nuskriaustukai} & vektorius, kuriame bus laikomi blogiausi studentai. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{_stud_8h_a401b491f56c8c9f9577a63bff033febd}\index{Stud.h@{Stud.h}!duomenuIvedimoBudas@{duomenuIvedimoBudas}}
+\index{duomenuIvedimoBudas@{duomenuIvedimoBudas}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{duomenuIvedimoBudas}{duomenuIvedimoBudas}}
+{\footnotesize\ttfamily \label{_stud_8h_a401b491f56c8c9f9577a63bff033febd} 
+int duomenu\+Ivedimo\+Budas\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Duomenų įvedimo būdas. 
+
+Kintamasis naudojamas nustatyti, kokiu būdu bus įvesti duomenys ar kaip jais bus manipuliuojama\+: Įvestis ranka, nuskaitymas iš failo, failų generavimas, Rule of Three demonstracija.
+
+Duomenų įvedimo būdas. \Hypertarget{_stud_8h_a6af4150f09f9f15c9173923584181203}\index{Stud.h@{Stud.h}!rikiavimoSalyga@{rikiavimoSalyga}}
+\index{rikiavimoSalyga@{rikiavimoSalyga}!Stud.h@{Stud.h}}
+\doxysubsubsection{\texorpdfstring{rikiavimoSalyga}{rikiavimoSalyga}}
+{\footnotesize\ttfamily \label{_stud_8h_a6af4150f09f9f15c9173923584181203} 
+int rikiavimo\+Salyga\hspace{0.3cm}{\ttfamily [extern]}}
+
+
+
+Rikiavimo sąlyga. 
+
+Kintamasis naudojamas nustatyti, kokia tvarka bus rikiuojami išvadami duomenys (pagal galutinį pažymį)\+: didėjančia ar mažėjančia.
+
+Rikiavimo sąlyga. 

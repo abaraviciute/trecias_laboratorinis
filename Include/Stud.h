@@ -34,9 +34,9 @@ protected:
 
 public:
     /**
-    * @brief Konstruktorius su parametrais.
-    * @param vardas Žmogaus vardas. Numatytasis parametras - tuščias string.
-    * @param pavarde Žmogaus pavardė. Numatytasis parametras - tuščias string.
+    * @brief Konstruktorius su numatytomis parametrų reikšmėmis.
+    * @param vardas Tuščias string.
+    * @param pavarde Tuščias string.
     */
     Zmogus(const string& vardas = "", const string& pavarde = "")
         : vardas_(vardas), pavarde_(pavarde) {
@@ -46,18 +46,27 @@ public:
     virtual ~Zmogus() = default;
 
     /**
-    * @brief Žmogaus vardo ir pavardės Getter'iai.
-    * @return Grąžina string tipo žmogaus vardą/pavardę.
+    * @brief Žmogaus vardo Getter'is.
+    * @return Grąžina string tipo žmogaus vardą.
     */
     string vardas() const { return vardas_; }
+
+    /**
+    * @brief Žmogaus pavardės Getter'is.
+    * @return Grąžina string tipo žmogaus pavardę.
+    */
     string pavarde() const { return pavarde_; }
 
     /**
-    * @brief Žmogaus vardo ir pavardės Setter'iai.
+    * @brief Žmogaus vardo Setter'is.
     * @param vardas Naujas nustatytas žmogaus vardas.
-    * @param pavarde Nauja nustatyta žmogaus pavardė.
     */
     void setVardas(const string& vardas) { vardas_ = vardas; }
+
+    /**
+    * @brief Žmogaus pavardės Setter'is.
+    * @param pavarde Nauja nustatyta žmogaus pavardė.
+    */
     void setPavarde(const string& pavarde) { pavarde_ = pavarde; }
 
     /**
@@ -71,6 +80,9 @@ public:
 /**
 * @class Studentas
 * @brief Išvestinė klasė iš klasės Zmogus studentui aprašyti.
+* 
+* Implementuota trijų metodų taisyklė (Rule of Three).
+* Apibrėžti įvesties/išvesties operatoriai.
 */
 class Studentas : public Zmogus {
 private:
@@ -83,37 +95,110 @@ private:
 public:
 
     /**
-    * @brief Studento namų darbų įvertinimų, egzamino įvertinimo, galutinių pažymių Getter'iai.
-    * @return Grąžina vector tipo namų darbų konteinerį, int tipo egzaminą, double tipo galutinius pažymius.
+    * @brief Studento namų darbų įvertinimų Getter'is.
+    * @return Grąžina vector tipo namų darbų konteinerį.
     */
     inline vector<int> nd() const { return nd_; }
+
+    /**
+    * @brief Studento egzamino įvertinimo Getter'is.
+    * @return Grąžina int tipo egzamino įvertinimą.
+    */
     inline int egzaminas() const { return egzaminas_; }
+
+    /**
+    * @brief Studento galutinio pažymio Getter'is.
+    * @return Grąžina double tipo galutinį pažymį.
+    */
     inline double galutinisPazymys() const { return galutinisPazymys_; }
+
+    /**
+    * @brief Studento galutinio pažymio pagal vidurkį Getter'is.
+    * @return Grąžina double tipo galutinį pažymį pagal vidurkį.
+    */
     inline double galutinisPazymysVid() const { return galutinisPazymysVid_; }
+
+    /**
+    * @brief Studento galutinio pažymio pagal medianą Getter'is.
+    * @return Grąžina double tipo galutinį pažymį pagal medianą.
+    */
     inline double galutinisPazymysMed() const { return galutinisPazymysMed_; }
 
+
+    /**
+    * @brief Studento namų darbų įvertinimo Setter'is.
+    * @param egzaminas Nauji įvesti namų darbų įvertinimai.
+    */
     inline void setNd(const vector<int>& nd) { nd_ = nd; }
+
+    /**
+    * @brief Studento egzamino įvertinimo Setter'is.
+    * @param egzaminas Naujas įvestas egzamino įvertinimas.
+    */
     inline void setEgzaminas(int egzaminas) { egzaminas_ = egzaminas; }
+
+    /**
+    * @brief Studento galutinio pažymio Setter'is.
+    * @param galutinisPazymys Naujas apskaičiuotas galutinis pažymys.
+    */
     inline void setGalutinisPazymys(double galutinisPazymys) { galutinisPazymys_ = galutinisPazymys; }
+
+    /**
+    * @brief Studento galutinio pažymio pagal vidurkį Setter'is.
+    * @param galutinisPazymysVid Naujas apskaičiuotas galutinis pažymys pagal vidurkį.
+    */
     inline void setGalutinisPazymysVid(double galutinisPazymysVid) { galutinisPazymysVid_ = galutinisPazymysVid; }
+
+    /**
+    * @brief Studento galutinio pažymio pagal medianą Setter'is.
+    * @param galutinisPazymysMed Naujas apskaičiuotas galutinis pažymys pagal medianą.
+    */
     inline void setGalutinisPazymysMed(double galutinisPazymysMed) { galutinisPazymysMed_ = galutinisPazymysMed; }
 
+
+    /**
+    * @brief Konstruktorius su numatytomis parametrų reikšmėmis.
+    * @param vardas Tuščia eilutė (atributas paveldimas iš tėvinės klasės Zmogus).
+    * @param pavarde Tuščia eilutė (atributas paveldimas iš tėvinės klasės Zmogus).
+    * @param egzaminas Reikšmė 0.
+    * @param galutinisPazymys Reikšmė 0.
+    * @param galutinisPazymysVid Reikšmė 0.
+    * @param galutinisPazymysMed Reikšmė 0.
+    */
     Studentas()
         : Zmogus("", ""), egzaminas_(0),
         galutinisPazymys_(0), galutinisPazymysVid_(0), galutinisPazymysMed_(0) {}
 
+    /**
+     * @brief Konstruktorius su parametrais, kuris inicializuoja Studentas objektą su pateiktais duomenimis.
+     * @param vardas Žmogaus vardas string tipo.
+     * @param pavarde Žmogaus pavardė string tipo.
+     * @param nd Namų darbų įvertinimai vector tipo konteineryje.
+     * @param egzaminas Egzamino įvertinimas int tipo.
+     */
     Studentas(const string& vardas, const string& pavarde, const vector<int>& nd, int egzaminas)
         : Zmogus(vardas, pavarde), nd_(nd), egzaminas_(egzaminas) {
         galutinisPazymysVid_ = rezultatai("Vid");
         galutinisPazymysMed_ = rezultatai("Med");
     }
 
+
+    /**
+     * @brief Kopijavimo konstruktorius, kuris sukuria kito Studentas objekto kopiją.
+     * @param other Klasės Studentas objektas, kurio duomenys bus nukopijuoti.
+     */
     Studentas(const Studentas& other)
         : Zmogus(other), nd_(other.nd_), egzaminas_(other.egzaminas_),
         galutinisPazymys_(other.galutinisPazymys_),
         galutinisPazymysVid_(other.galutinisPazymysVid_),
         galutinisPazymysMed_(other.galutinisPazymysMed_) {}
 
+
+    /**
+     * @brief Priskyrimo operatorius, kuris priskiria vieną Studentas objektą kitam.
+     * @param other Klasės Studentas objektas, kurio reikšmės bus priskirtos šiam objektui.
+     * @return Studentas& Grąžina nuorodą į objektą.
+     */
     Studentas& operator=(const Studentas& other) {
         if (this != &other) {
             vardas_ = other.vardas_;
@@ -127,11 +212,23 @@ public:
         return *this;
     }
 
+    /// Destruktorius
     ~Studentas() {
         nd_.clear();
         egzaminas_ = 0;
     }
 
+
+    /**
+     * @brief Įvesties operatorius, skirtas klasės Studentas objekto duomenims nuskaityti.
+     *
+     * Operatorius nuskaitymo metu apdoroja studento vardą, pavardę, namų darbų įvertinimus
+     * ir egzamino įvertinimą. Taip pat nustato galutinius pažymius.
+     *
+     * @param in Įvedimo srautas, iš kurio bus nuskaityti duomenys.
+     * @param studentas Klasės Studentas objekto nuoroda, kur bus įrašyti duomenys.
+     * @return Grąžina įvesties srautą.
+     */
     friend istream& operator>>(istream& in, Studentas& studentas) {
         string line;
         getline(in, line);
@@ -165,6 +262,16 @@ public:
         return in;
     }
 
+
+    /**
+     * @brief Išvesties operatorius, skirtas klasės Studentas objekto duomenims išvesti.
+     * 
+     * Duomenys išvedami į ekraną arba į .txt failus.
+     *
+     * @param out Išvesties srautas, kuriuo bus atspausdinta studento informacija.
+     * @param studentas Studentas, kurio duomenys bus išvedami.
+     * @return Grąžina išvesties srautą.
+     */
     friend ostream& operator<<(ostream& out, const Studentas& studentas) {
         out << setw(15) << left << studentas.pavarde_
             << setw(15) << left << studentas.vardas_;
@@ -186,6 +293,12 @@ public:
         return out;
     }
 
+
+    /**
+     * @brief Išveda informaciją apie klasę, kuriai priklauso objektas.
+     *
+     * Funkcija išveda tekstą, kad objektas priklauso "Studentas" klasei.
+     */
     void klase() const override { cout << "Studentas klase\n"; }
 
     void ivestis(bool generavimas);
