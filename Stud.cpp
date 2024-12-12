@@ -364,6 +364,21 @@ void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBu
     struktura.erase(it, struktura.end());
 }
 
+
+/**
+ * @brief Įrašo studentų duomenis į failą.
+ *
+ * Funkcija išveda studentų duomenis į nurodytą failą (galvociai.txt/nuskriaustukai.txt).
+ * Funkcija taip pat matuoja duomenų įrašymo į failą trukmę.
+ *
+ * @param failas Failo pavadinimas, į kurį bus įrašyti duomenys.
+ * @param studentai Studentų struktūra, kurios duomenis norima įrašyti.
+ * @param duomenuIvedimoBudas Nurodo, kaip bus išvedami duoemys (priklausomai jei buvo įvesti ranka ar nuskaityti iš failo).
+ * @param pazymioTipas Galutinio pažymio tipas ("Vid."/"Med.").
+ * @param trukme Laikas, per kurį buvo atliktas įrašymas į failą.
+ *
+ * @throw runtime_error Jei failo nepavyko sukurti.
+ */
 template <typename Struktura>
 void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimoBudas, const string& pazymioTipas, duration<double>& trukme) {
     ofstream ived(failas);
@@ -393,6 +408,16 @@ void iFaila(const string& failas, const Struktura& studentai, int duomenuIvedimo
 }
 
 
+/**
+ * @brief Pagalbinė duomenų išvedimo į failus (galvociai.txt/nuskriaustukai.txt) funkcija.
+ *
+ * @param galvociai Konteineris studentų, kurių galutiniai pažymiai yra >= 5.
+ * @param nuskriaustukai Konteineris studentų, kurių galutiniai pažymiai yra < 5.
+ * @param duomenuIvedimoBudas Nurodo, kaip bus išvedami duoemys (priklausomai jei buvo įvesti ranka ar nuskaityti iš failo).
+ * @param pazymioTipas Galutinio pažymio tipas ("Vid."/"Med.").
+ * @param trukmeGalvociu Laikas, per kurį duomenys buvo įrašyti į "galvociai.txt" failą.
+ * @param trukmeNuskriaustuku Laikas, per kurį duomenys buvo įrašyti į "nuskriaustukai.txt" failą.
+ */
 template <typename Struktura>
 void isvestisIFaila(const Struktura& galvociai, const Struktura& nuskriaustukai, int duomenuIvedimoBudas, string pazymioTipas, duration<double>& trukmeGalvociu, duration<double>& trukmeNuskriaustuku) {
     iFaila("galvociai.txt", galvociai, duomenuIvedimoBudas, pazymioTipas, trukmeGalvociu);
