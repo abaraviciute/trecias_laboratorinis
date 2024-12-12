@@ -29,19 +29,19 @@ int duomenuIvedimoBudas = 0;
  * - Programos spartos analizė arba duomenų išvestis į ekraną.
  */
 int main() {
-    Studentas Temporary;
-    int n = 0; //studentu skaicius
-    string pasirinkimas;
-    string pasirinkimasGeneravimo;
-    bool generavimas;
-    int failoNr;
-    vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000};
-    duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku;
-    int rezultataiArTyrimas  = 0;
-    int konteineris;
-    int strategija = 0;
-    vector<string> failai;
-    int vektoriausSkirst = 0;
+    Studentas Temporary; ///< Laikinas Studentas klasės objektas
+    int n = 0; /// Studentų skaičius
+    string pasirinkimas; /// Pasirinkimas galutinį pažymį skaičiuoti pagal "Vid." (vidurkį) ar "Med." (medianą) rankinio įvedimo metu
+    string pasirinkimasGeneravimo; /// Pasirinkimas, ar įvertinimai bus generuojami atsitiktinai, ar vedami ranka
+    bool generavimas; /// pasirinkimasGeneravimo bool tipo
+    int failoNr; /// Pasirenkamas failas nuskaityti
+    vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000}; /// Generuojamų failų dydžiai (kiek studentų bus generuojama)
+    duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku; /// Spartos analizei reikalingi laiko rodikliai
+    int rezultataiArTyrimas  = 0; /// Pasirinkimas išvesti į ekraną surikiuotus studentus su apskaičiuotais galutiniais įvertinimais ar spartos analizę
+    int konteineris; /// Pasirinkimas, kokiama konteineryje (vector/list) bus saugomi duomenys
+    int strategija = 0; /// Pasirinkimas, kokia strategija bus naudojama studentams padalinti į galvočius ir nuskriaustukus
+    vector<string> failai; /// Galimų nuskaityti failų vektorius
+    int vektoriausSkirst = 0; /// Pasirinkimas vektoriuje saugomus duomenis rūšiuoti į dvi grupes naudojant universalią ar tik vektoriams pritaikytą funkciją
 
     while (true) {
         try {
