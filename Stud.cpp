@@ -1,5 +1,22 @@
+﻿/**
+ * @file
+ * @brief Failas su funkcijomis.
+ * Faile implementuotas "Stud.h" header failas, kuriame yra funkcijų deklaracijos ir reikalingos klasės.
+ */
+
 #include "Stud.h"
 
+/**
+ * @brief Įveda studento duomenis rankinio įvedimo atveju.
+ *
+ * Funkcija leidžia įvesti studento vardą, pavardę, namų darbų ir egzamino įvertinimus.
+ * Jei pasirinktas automatinis duomenų generavimas (generavimas == true), tada funkcija sugeneruoja 4 
+ * atsitiktinius namų darbų ir egzamino pažymius. Jei generavimas yra false, funkcija leidžia vartotojui
+ * įvesti duomenis rankiniu būdu.
+ *
+ * @param generavimas Jei  `true`, sugeneruojami atsitiktiniai namų darbų ir egzamino pažymiai.
+ *                    Jei `false`, prašoma vartotojo įvesti duomenis rankiniu būdu.
+ */
 void Studentas::ivestis(bool generavimas)
 {
     if (generavimas) {
@@ -28,6 +45,21 @@ void Studentas::ivestis(bool generavimas)
     }
 }
 
+
+/**
+ * @brief Apskaičiuoja galutinį studento pažymį pagal pasirinktą rodiklį.
+ *
+ * Rodikliai: vidurkis ("Vid") ir mediana ("Med"). Abu rodikliai skaičiuojami pagal namų darbus.
+ *
+ * @param pasirinkimas Pasirinktas metodas pažymio apskaičiavimui:
+ *        - "Vid" – vidurkis.
+ *        - "Med" – mediana.
+ *
+ * @return Apskaičiuotas galutinis pažymys, atsižvelgiant į pasirinkimą:
+ *         - 0.4 * namų darbų vidurkis + 0.6 * egzaminas (jei pasirinktas "Vid").
+ *         - 0.4 * namų darbų medianą + 0.6 * egzaminas (jei pasirinktas "Med").
+ *         - 0, jei nėra namų darbų ir egzaminas neįvestas.
+ */
 double Studentas::rezultatai(const string& pasirinkimas)
 {
     if (nd_.empty() && egzaminas_ == 0) {
@@ -64,6 +96,15 @@ double Studentas::rezultatai(const string& pasirinkimas)
 }
 
 
+/**
+ * @brief Išveda studento duomenis į ekraną.
+ * Priklausomai nuo duomenų įvesties, išvedami duomenys apie studentą su arba be objekto saugojimo adreso.
+ *
+ * @param Lok Studentas, kurio duomenys bus išvedami.
+ * @param ivestiesPasirinkimas Pasirinkimas, nurodantis, kokius duomenis išvesti:
+ *        - 1: Išveda studento duomenis ir objekto saugojimo adresą.
+ *        - 2: Išveda tik studento duomenis.
+ */
 void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
     if (ivestiesPasirinkimas == 1) {
         cout << Lok << &Lok << endl;
@@ -75,6 +116,14 @@ void isvestis(const Studentas& Lok, int ivestiesPasirinkimas) {
 }
 
 
+/**
+ * @brief Nuskaito duomenis iš .txt failo į struktūrą (vector/list).
+ *
+ * @param failas Failo pavadinimas, iš kurio bus nuskaitomi duomenys.
+ * @param struktura Struktūra, į kurią bus įrašyti duomenys (vector/list).
+ * 
+ * @return Grąžina 0, jei duomenys sėkmingai įrašyti į struktūrą, arba -1 kitu atveju.
+ */
 template <typename Struktura>
 int ivestisIsFailo(const string& failas, Struktura& struktura)
 {
