@@ -234,6 +234,17 @@ void generuotiFaila(int studentuSkaicius, const string& failoPavadinimas)
     cout << "Failas " << failoPavadinimas << " sugeneruotas. Failo kurimo trukme: " << trukme.count() << "\n";
 }
 
+
+/**
+ * @brief Padalina studentus į du konteinerius: 'galvociai' (galutinis įvertinimas >= 5) ir 'nuskriaustukai' (galutinis įvertinimas < 5).
+ *
+ * Funkcija padalina studentus į du konteinerius (vector/list) pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param galvociai Konteineris, kuriame bus laikomi geriausi studentai.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, Struktura& galvociai, Struktura& nuskriaustukai)
 {
@@ -248,6 +259,17 @@ void studentoKategorija1(const Struktura& struktura, int duomenuIvedimoBudas, St
     }
 }
 
+
+/**
+ * @brief Rūšiuoja studentus pagal jų pažymius ir perkelia blogus studentus į 'nuskriaustukai' konteinerį (vector/list).
+ *
+ * Funkcija rūšiuoja studentus pagal jų galutinį pažymį (vidurkinį arba medianinį), priklausomai nuo įvesto parametro.
+ * Po rūšiavimo studentai su mažesniu nei 5 pažymiu perkeliami į 'nuskriaustukai' konteinerį ir pašalinami iš bendro 'struktura' konteinerio.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai)
 {
@@ -285,7 +307,16 @@ void studentoKategorija2(Struktura& struktura, int duomenuIvedimoBudas, Struktur
 }
 
 
-
+/**
+ * @brief Padalina studentus į dvi kategorijas pagal studentoKategorija2() funkciją, naudojant partition metodą.
+ *
+ * Funkcija padalina studentus į dvi grupes: tuos, kurie atitinka galutinio įvertinimo sąlygą (>= 5) ir tuos, kurie ne.
+ * Blogi studentai (su pažymiu < 5) perkeliami į 'nuskriaustukai' konteinerį ir ištrinami iš bendro 'struktura' konteinerio.
+ *
+ * @param struktura Studentų konteineris, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai Konteineris, kuriame bus laikomi blogiausi studentai.
+ */
 template <typename Struktura>
 void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktura& nuskriaustukai)
 {
@@ -305,6 +336,14 @@ void studentoKategorija3(Struktura& struktura, int duomenuIvedimoBudas, Struktur
     struktura.erase(it, struktura.end());
 }
 
+
+/**
+ * @brief studentoKategorija3() funkcija, pritaikyta išskirtinai tik vector tipo konteineriams.
+ * 
+ * @param struktura Studentų vektorius, kurį reikia apdoroti.
+ * @param duomenuIvedimoBudas Duomenų įvedimo metodas, nustatantis, ar turi būti naudojamas "Vid" ar "Med" įvertinimas.
+ * @param nuskriaustukai vektorius, kuriame bus laikomi blogiausi studentai.
+ */
 void studentoKategorijaVector(vector<Studentas>& struktura, int duomenuIvedimoBudas, vector<Studentas>& nuskriaustukai)
 {
     function<bool(const Studentas&)> condition;
