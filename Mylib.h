@@ -1,3 +1,10 @@
+﻿/**
+ * @file
+ * @brief Bibliotekų header failas.
+ *
+ * Header failas apima įvairias standartines bibliotekas ir pagerina kodo skaitomumą, naudojant dažnai reikalingus elementus.
+ */
+
 #pragma once
 
 #include <iostream>

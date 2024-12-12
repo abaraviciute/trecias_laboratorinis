@@ -1,5 +1,5 @@
 ﻿/**
- * @file pradineVersija.cpp
+ * @file
  * @brief Pagrindinis vykdomasis failas.
  *
  * Vartotojui leidžiama pasirinkti, kaip bus įvedami studentų duomenys, kokiuose konteineriuose jie bus saugomi, 
