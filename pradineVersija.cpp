@@ -4,7 +4,7 @@
  *
  * Vartotojui leidžiama pasirinkti, kaip bus įvedami studentų duomenys, kokiuose konteineriuose jie bus saugomi, 
  * kokia tvarka rikiuojami duomenys, kokia strategija rūšiuojami į failus, pasirenkama išvestis.
- * Taip pat programa atlieka veikimo spartos analizę.
+ * Taip pat programa atlieka veikimo spartos analizę, yra klaidų valdymas.
  */
 
 #include "Mylib.h"
@@ -43,6 +43,7 @@ int main() {
     vector<string> failai; /// Galimų nuskaityti failų vektorius
     int vektoriausSkirst = 0; /// Pasirinkimas vektoriuje saugomus duomenis rūšiuoti į dvi grupes naudojant universalią ar tik vektoriams pritaikytą funkciją
 
+    /// Vartotojo pasirinkimas ką daryti su duomenimis
     while (true) {
         try {
             cout << "Pasirinkite veiksma:\n";
@@ -66,6 +67,7 @@ int main() {
     }
 
     if (duomenuIvedimoBudas != 3 && duomenuIvedimoBudas != 4) {
+        /// Vartotojo pasirinkimas, kokį konteinerį naudoti duomenims saugoti
         while (true) {
             try {
                 cout << "Pasirinkite duomenu konteinerio tipa \"1\" vector arba \"2\" list: ";
@@ -82,6 +84,7 @@ int main() {
             }
         }
 
+        /// Vartotojo pasirinkimas, kokią duomenų skirstymo į dvi grupes (galvočiai ir nuskriaustukai) strategiją naudoti
         while (true) {
             try {
                 cout << "Iveskite, kokia bus studentu rusiavimo strategija: \n";
@@ -103,6 +106,7 @@ int main() {
             }
         }
 
+        /// Vartotojo pasirinkimas, ar dirbant su vektoriumi duomenis į dvi grupes dalinti universalia ar tik vektoriui pritaikyta funkcija
         if (strategija == 3 && konteineris == 1) {
             while (true) {
                 try {
@@ -128,10 +132,11 @@ int main() {
         vector<Studentas> studentaiVector, galvociaiVector, nuskriaustukaiVector, studentaiVectorVisas;
         list<Studentas> studentaiList, galvociaiList, nuskriaustukaiList, studentaiListVisas;
 
-        bool naudotiVektoriu = (konteineris == 1);
+        bool naudotiVektoriu = (konteineris == 1); /// Kintamasis nustatyti, ar toliau bus naudojamas vector (jei 'true'), ar list (jei 'false') konteineris
     
 
     if (duomenuIvedimoBudas == 2) {
+        /// Vartotojo pasirinkimas, kokia tvarka rikiuoti studentus pagal pažymį (didėjančia/mažėjančia)
         while (true) {
             try {
                 cout << "Iveskite, kokia tvarka rikiuoti pazymius: \n";
@@ -152,6 +157,7 @@ int main() {
             }
         }
 
+        /// Vartotojo pasirinkimas į ekraną išvesti studentų rezultatus ar spartos analizės rezultatus
         while (true) {
             try {
                 cout << "Iveskite, ka daryti su duomenimis: \n";
@@ -175,7 +181,7 @@ int main() {
 
 
     if (duomenuIvedimoBudas == 1) {
-
+        /// Vartotojo pasirinkimas pagal kokį rodiklį (vidurkį/medianą) skaičiuoti galutinį pažymį
         while (true) {
             try {
                 cout << "Ar norite skaiciuoti galutini pazymi pagal \"Vid\" (vidurki) ar \"Med\" (mediana)?: ";
@@ -191,6 +197,7 @@ int main() {
             }
         }
 
+        /// Vartotojo įvedamas studentų, kuriuos norės įvesti, skaičius
         while (true) {
             try {
                 cout << "Iveskite studentu skaiciu: ";
@@ -208,6 +215,7 @@ int main() {
             }
         }
 
+        /// Vartotojo pasirinkimas studento namų darbų ir egzamino įvertinimus vesti ranka ar sugeneruoti automatiškai
         for (int i = 0; i < n; i++) {
             while (true) {
                 try {
@@ -239,7 +247,7 @@ int main() {
         }
     }
     else if (duomenuIvedimoBudas == 2) {
-
+        /// Vartotojo pasirinkimas, kurio failo duomenis nuskaityti
         while (true) {
             try {
                 cout << "Iveskite, kuri faila skaityti:\n";
@@ -300,6 +308,7 @@ int main() {
         trukmeNuskaitymo = pabaiga - pradzia;
     }
     else if (duomenuIvedimoBudas == 3) {
+        /// Failų generavimas
         for (int dydis : dydziai) {
             string failoPavadinimas = "studentai_" + to_string(dydis) + ".txt";
             try {
@@ -311,6 +320,7 @@ int main() {
         }
         return (0);
     }
+    /// Atliekama Rule of Three ir klasių (ne)veikimo demonstracija
     else if (duomenuIvedimoBudas == 4) {
      //   Zmogus zmogus1("Vidas", "Vidauskas");
         
@@ -338,6 +348,7 @@ int main() {
     }
 
     if (duomenuIvedimoBudas != 3 && duomenuIvedimoBudas != 4) {
+        /// vector konteineryje saugomi studentai išrikiuojami, išrūšiuojami pagal galutinį įvertinimą į dvi grupes ir išvedami į du failus 'galvociai.txt' ir 'nuskriaustukai.txt'
         if (naudotiVektoriu) {
             sort(studentaiVector.begin(), studentaiVector.end(), rusiavimas);
 
@@ -379,6 +390,7 @@ int main() {
                 isvestisIFaila(studentaiVector, nuskriaustukaiVector, duomenuIvedimoBudas, pasirinkimas, trukmeGalvociu, trukmeNuskriaustuku);
             }
         }
+        /// list konteineryje saugomi studentai išrikiuojami, išrūšiuojami pagal galutinį įvertinimą į dvi grupes ir išvedami į du failus 'galvociai.txt' ir 'nuskriaustukai.txt'
         else {
             studentaiList.sort(rusiavimas);
 
@@ -417,6 +429,7 @@ int main() {
 
     cout << "\n";
 
+    /// Studentų apdorotų duomenų išvedimas į ekraną priklausomai nuo duomenų įvedimo būdo (įvedus ranka papildomai rodomas objekto saugojimo adresas)
     if (rezultataiArTyrimas == 1 || duomenuIvedimoBudas == 1) {
         if (duomenuIvedimoBudas == 1) {
             cout << setw(15) << left << "Pavarde" << setw(15) << left << "Vardas" 
@@ -448,6 +461,7 @@ int main() {
             }
         }
     }
+    /// Į ekraną išvedami programos veikimo spartos analizės rezultatai
     else if (rezultataiArTyrimas == 2) {
         if (duomenuIvedimoBudas != 1 && duomenuIvedimoBudas != 4) {
             cout << "Failo nuskaitymo laikas: " << trukmeNuskaitymo.count() << endl;
