@@ -275,4 +275,11 @@ Studentas:
 
 Kadang klasė Zmogus yra abstrakti, jos objektų kurti negalima: 
 
-![Klaida, rodoma bandant sukurti klasės Zmogus objektą](https://github.com/user-attachments/assets/8b9f443b-1b88-47fd-9469-cabc5d186283)
+![Klaida, rodoma bandant sukurti klasės Zmogus objektą](https://github.com/user-attachments/assets/8b9f443b-1b88-47fd-9469-cabc5d186283)  
+
+
+# v2.0 release
+
+## Kas naujo:
+- Projekto dokumentacija HTML, LaTeX ir PDF formatu;
+- Unit Test realizacija naudojant Google Test.

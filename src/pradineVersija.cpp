@@ -38,7 +38,7 @@ int main() {
     vector<int> dydziai = {1000, 10000, 100000, 1000000, 10000000}; /// Generuojamų failų dydžiai (kiek studentų bus generuojama).
     duration<double> trukmeNuskaitymo, trukmeRusiavimo, trukmeGalvociu, trukmeNuskriaustuku; /// Laiko kintamieji spartos analizei
     int rezultataiArTyrimas  = 0; /// Pasirinkimas išvesti į ekraną surikiuotus studentus su apskaičiuotais galutiniais įvertinimais ar spartos analizę.
-    int konteineris; /// Pasirinkimas, kokiame konteineryje (vector/list) bus saugomi duomenys.
+    int konteineris = 0; /// Pasirinkimas, kokiame konteineryje (vector/list) bus saugomi duomenys.
     int strategija = 0; /// Pasirinkimas, kokia strategija bus naudojama studentams padalinti į galvočius ir nuskriaustukus.
     vector<string> failai; /// Galimų nuskaityti failų vektorius.
     int vektoriausSkirst = 0; /// Pasirinkimas vektoriuje saugomus duomenis rūšiuoti į dvi grupes naudojant universalią ar tik vektoriams pritaikytą funkciją.
